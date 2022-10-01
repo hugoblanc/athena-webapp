@@ -1,0 +1,103 @@
+:host {
+  display: block;
+  background-color: #000000;
+  background: radial-gradient(circle at 55.1% 8.8%, rgb(26, 26, 26) 0%, rgb(0, 0, 0) 99.4%);
+  height: 100vh;
+}
+
+.img-container {
+  padding: 10px;
+  width: 100vw;
+  box-sizing: border-box;
+
+  img {
+    border-radius: 15px;
+    width: 100%;
+  }
+}
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  margin-top: 0;
+  color: white;
+  ;
+}
+
+
+.cta-container {
+  width: 100%;
+  text-align: right;
+  margin-top: 2rem;
+  bottom: 0px;
+  right: 0px;
+  position: absolute;
+}
+
+.access-button {
+  display: block;
+  padding: 0.65em 1.6em;
+  margin: 5px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+
+  position: relative;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 0.65em 1.6em;
+  border: 3px solid #ffffff;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+  animation: bn13bouncy 5s infinite linear;
+  position: relative;
+}
+
+.cta-button:hover {
+  background-color: white;
+  color: #000000;
+}
+
+@keyframes bn13bouncy {
+  0% {
+    top: 0em;
+  }
+
+  10% {
+    top: 0em;
+  }
+
+  13% {
+    top: -0.9em;
+  }
+
+  16% {
+    top: 0em;
+  }
+
+  18% {
+    top: -0.4em;
+  }
+
+  20% {
+    top: 0em;
+  }
+
+
+  100% {
+    top: 0em;
+  }
+}
