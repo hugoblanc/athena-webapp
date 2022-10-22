@@ -19,16 +19,8 @@ export class ShareComponent implements OnInit {
 
   ngOnInit(): void {
     this.shareableContent$ = this.route.paramMap.pipe(
-      map(paramMap => paramMap.get('id')),
-      filter(valueIsString),
-      map(id => parseInt(id)),
-      mergeMap(id => this.contentService.getSharedContent(id))
+      map(paramMap => ({ key: paramMap.get('key'), contentId: paramMap.get('contentId') })),
+      mergeMap(({ key, contentId }) => this.contentService.getSharedContent(key as string, contentId as string))
     )
   }
-
-}
-
-
-function valueIsString(value: any): value is string {
-  return typeof value === 'string';
 }

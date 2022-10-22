@@ -13,8 +13,8 @@ export class ContentService {
 
   constructor(private readonly http: HttpClient) { }
 
-  getSharedContent(id: number): Observable<ShareableContentResponse> {
-    return this.http.get<ShareableContentResponse>(ContentService.BASE_URL + '/get-shareable-content/' + id)
+  getSharedContent(key: string, contentId: string): Observable<ShareableContentResponse> {
+    return this.http.get<ShareableContentResponse>(`${ContentService.BASE_URL}/get-shareable-content/${key}/${contentId}`)
   }
 }
 
