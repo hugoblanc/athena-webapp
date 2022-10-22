@@ -1,11 +1,18 @@
 <ng-container *ngIf="shareableContent$ | async as shareableContent">
 
-  <div class="img-container">
-    <img [src]="shareableContent.image.url" alt="">
+  <div>
+    <div class="img-container">
+      <img [src]="shareableContent.image.url" alt="">
+    </div>
+    <div>
+      <h1 [innerHtml]="shareableContent.title"></h1>
+      <a class="access-button" [href]="shareableContent.originalUrl">Lire l'article</a>
+    </div>
   </div>
 
-  <h1 [innerHtml]="shareableContent.title"></h1>
-  <a class="access-button" [href]="shareableContent.originalUrl">Lire l'article</a>
+  <p>Sinon tu peux aussi télécharger l'application Athena pour rejoindre le mouvement</p>
+
+
 
   <div class="cta-container"><a routerLink="/home" class="cta-button">Télécharger Athena</a></div>
 

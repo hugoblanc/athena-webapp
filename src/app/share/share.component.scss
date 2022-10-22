@@ -1,6 +1,9 @@
 :host {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   background-color: #000000;
+  justify-content: space-between;
   background: radial-gradient(circle at 55.1% 8.8%, rgb(26, 26, 26) 0%, rgb(0, 0, 0) 99.4%);
   height: 100vh;
 }
@@ -12,7 +15,8 @@
 
   img {
     border-radius: 15px;
-    width: 100%;
+    max-width: 100%;
+    max-height: 50vh;
   }
 }
 
@@ -26,6 +30,15 @@ h1 {
   ;
 }
 
+p {
+  color: white;
+  font-size: 1.3rem;
+  font-family: 'Coming Soon';
+  bottom: 3rem;
+  margin: 3rem 2rem;
+}
+
+
 
 .cta-container {
   width: 100%;
@@ -35,6 +48,7 @@ h1 {
   right: 0px;
   position: absolute;
 }
+
 
 .access-button {
   display: block;
@@ -48,6 +62,7 @@ h1 {
   text-align: center;
 
   position: relative;
+
 }
 
 .cta-button {
