@@ -1,0 +1,494 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - MATERIAL FORMS OVERRIDE
+// Custom styling for form fields and inputs
+// ============================================================
+
+@use '../variables' as vars;
+
+// ============================================================
+// FORM FIELD BASE
+// ============================================================
+
+.mat-mdc-form-field {
+  width: 100% !important;
+
+  // Form field wrapper
+  .mat-mdc-text-field-wrapper {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: vars.$athena-radius-sm !important;
+    padding: 0 vars.$athena-spacing-md !important;
+    transition: background vars.$athena-transition-fast !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08) !important;
+    }
+  }
+
+  // Input element
+  .mat-mdc-input-element {
+    color: vars.$athena-text-primary !important;
+    caret-color: vars.$athena-primary-base !important;
+
+    &::placeholder {
+      color: vars.$athena-text-secondary !important;
+      opacity: 0.7 !important;
+    }
+
+    &:focus {
+      &::placeholder {
+        opacity: 0.5 !important;
+      }
+    }
+  }
+
+  // Label
+  .mat-mdc-floating-label {
+    color: vars.$athena-text-secondary !important;
+  }
+
+  // Focused state
+  &.mat-focused {
+    .mat-mdc-text-field-wrapper {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .mat-mdc-floating-label {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+
+  // Error state
+  &.mat-form-field-invalid {
+    .mat-mdc-text-field-wrapper {
+      background: rgba(vars.$athena-accent-red, 0.1) !important;
+    }
+
+    .mat-mdc-floating-label {
+      color: vars.$athena-accent-red !important;
+    }
+  }
+
+  // Disabled state
+  &.mat-form-field-disabled {
+    opacity: 0.5 !important;
+
+    .mat-mdc-text-field-wrapper {
+      background: rgba(255, 255, 255, 0.02) !important;
+    }
+
+    .mat-mdc-input-element {
+      color: vars.$athena-text-secondary !important;
+    }
+  }
+}
+
+// ============================================================
+// FORM FIELD VARIANTS
+// ============================================================
+
+// Fill variant (default)
+.mat-mdc-form-field.mat-form-field-appearance-fill {
+  .mdc-text-field {
+    background-color: transparent !important;
+  }
+
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.08) !important;
+    }
+  }
+
+  &.mat-focused .mdc-text-field--filled {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+// Outline variant
+.mat-mdc-form-field.mat-form-field-appearance-outline {
+  .mdc-notched-outline {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+  }
+
+  &:hover .mdc-notched-outline {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
+
+  &.mat-focused .mdc-notched-outline {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: vars.$athena-primary-base !important;
+      border-width: 2px !important;
+    }
+  }
+
+  &.mat-form-field-invalid .mdc-notched-outline {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: vars.$athena-accent-red !important;
+    }
+  }
+}
+
+// ============================================================
+// HINTS & ERRORS
+// ============================================================
+
+.mat-mdc-form-field-hint-wrapper,
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 vars.$athena-spacing-xs !important;
+}
+
+.mat-mdc-form-field-hint {
+  color: vars.$athena-text-secondary !important;
+  font-size: 0.75rem !important;
+}
+
+.mat-mdc-form-field-error {
+  color: vars.$athena-accent-red !important;
+  font-size: 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+
+  .mat-icon {
+    font-size: 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+
+// ============================================================
+// PREFIX & SUFFIX
+// ============================================================
+
+.mat-mdc-form-field-icon-prefix,
+.mat-mdc-form-field-icon-suffix {
+  color: vars.$athena-text-secondary !important;
+
+  .mat-icon {
+    color: inherit !important;
+  }
+}
+
+.mat-focused {
+  .mat-mdc-form-field-icon-prefix,
+  .mat-mdc-form-field-icon-suffix {
+    color: vars.$athena-primary-base !important;
+  }
+}
+
+// ============================================================
+// TEXTAREA
+// ============================================================
+
+.mat-mdc-form-field-textarea-control {
+  color: vars.$athena-text-primary !important;
+  resize: vertical !important;
+  min-height: 100px !important;
+
+  &::-webkit-scrollbar {
+    width: 8px !important;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 4px !important;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3) !important;
+    }
+  }
+}
+
+// ============================================================
+// SELECT
+// ============================================================
+
+.mat-mdc-select {
+  color: vars.$athena-text-primary !important;
+
+  .mat-mdc-select-value {
+    color: inherit !important;
+  }
+
+  .mat-mdc-select-placeholder {
+    color: vars.$athena-text-secondary !important;
+  }
+
+  .mat-mdc-select-arrow {
+    color: vars.$athena-text-secondary !important;
+  }
+
+  &.mat-focused .mat-mdc-select-arrow {
+    color: vars.$athena-primary-base !important;
+  }
+}
+
+// Select panel
+.mat-mdc-select-panel {
+  background: vars.$athena-surface-dark !important;
+  border-radius: vars.$athena-radius-md !important;
+  box-shadow: vars.$athena-shadow-xl !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  .mat-mdc-option {
+    color: vars.$athena-text-primary !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    &.mat-mdc-option-active {
+      background: rgba(vars.$athena-primary-base, 0.15) !important;
+      color: vars.$athena-primary-base !important;
+    }
+
+    &.mat-selected {
+      background: rgba(vars.$athena-primary-base, 0.2) !important;
+      color: vars.$athena-primary-base !important;
+
+      &:hover {
+        background: rgba(vars.$athena-primary-base, 0.25) !important;
+      }
+    }
+
+    .mat-pseudo-checkbox {
+      color: vars.$athena-text-secondary !important;
+
+      &.mat-pseudo-checkbox-checked {
+        background: vars.$athena-primary-base !important;
+        color: vars.$athena-primary-contrast !important;
+      }
+    }
+  }
+}
+
+// ============================================================
+// CHECKBOX
+// ============================================================
+
+.mat-mdc-checkbox {
+  .mdc-checkbox__background {
+    border-color: vars.$athena-text-secondary !important;
+  }
+
+  &.mat-mdc-checkbox-checked {
+    .mdc-checkbox__background {
+      background-color: vars.$athena-primary-base !important;
+      border-color: vars.$athena-primary-base !important;
+    }
+
+    .mdc-checkbox__checkmark {
+      color: vars.$athena-primary-contrast !important;
+    }
+  }
+
+  &:hover .mdc-checkbox__background {
+    border-color: vars.$athena-primary-base !important;
+  }
+
+  .mdc-label {
+    color: vars.$athena-text-primary !important;
+  }
+
+  &.mat-mdc-checkbox-disabled {
+    opacity: 0.5 !important;
+
+    .mdc-label {
+      color: vars.$athena-text-secondary !important;
+    }
+  }
+}
+
+// ============================================================
+// RADIO BUTTON
+// ============================================================
+
+.mat-mdc-radio-button {
+  .mdc-radio__outer-circle {
+    border-color: vars.$athena-text-secondary !important;
+  }
+
+  &.mat-mdc-radio-checked {
+    .mdc-radio__outer-circle {
+      border-color: vars.$athena-primary-base !important;
+    }
+
+    .mdc-radio__inner-circle {
+      background-color: vars.$athena-primary-base !important;
+    }
+  }
+
+  &:hover .mdc-radio__outer-circle {
+    border-color: vars.$athena-primary-base !important;
+  }
+
+  .mdc-label {
+    color: vars.$athena-text-primary !important;
+  }
+
+  &.mat-mdc-radio-disabled {
+    opacity: 0.5 !important;
+
+    .mdc-label {
+      color: vars.$athena-text-secondary !important;
+    }
+  }
+}
+
+// ============================================================
+// SLIDE TOGGLE
+// ============================================================
+
+.mat-mdc-slide-toggle {
+  .mdc-switch__track {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    border-color: transparent !important;
+  }
+
+  .mdc-switch__handle {
+    background-color: vars.$athena-text-secondary !important;
+  }
+
+  &.mat-mdc-slide-toggle-checked {
+    .mdc-switch__track {
+      background-color: vars.$athena-primary-tint !important;
+    }
+
+    .mdc-switch__handle {
+      background-color: vars.$athena-primary-base !important;
+    }
+  }
+
+  &:hover {
+    .mdc-switch__handle {
+      background-color: vars.$athena-text-primary !important;
+    }
+
+    &.mat-mdc-slide-toggle-checked .mdc-switch__handle {
+      background-color: vars.$athena-primary-shade !important;
+    }
+  }
+
+  .mdc-label {
+    color: vars.$athena-text-primary !important;
+  }
+
+  &.mat-mdc-slide-toggle-disabled {
+    opacity: 0.5 !important;
+
+    .mdc-label {
+      color: vars.$athena-text-secondary !important;
+    }
+  }
+}
+
+// ============================================================
+// SLIDER
+// ============================================================
+
+.mat-mdc-slider {
+  .mdc-slider__track--inactive {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .mdc-slider__track--active {
+    background-color: vars.$athena-primary-base !important;
+  }
+
+  .mdc-slider__thumb-knob {
+    background-color: vars.$athena-primary-base !important;
+    border-color: vars.$athena-primary-base !important;
+  }
+
+  &:hover {
+    .mdc-slider__thumb-knob {
+      background-color: vars.$athena-primary-tint !important;
+    }
+  }
+
+  &.mat-mdc-slider-disabled {
+    opacity: 0.5 !important;
+  }
+}
+
+// ============================================================
+// DATEPICKER
+// ============================================================
+
+.mat-datepicker-content {
+  background: vars.$athena-surface-dark !important;
+  color: vars.$athena-text-primary !important;
+  border-radius: vars.$athena-radius-md !important;
+  box-shadow: vars.$athena-shadow-xl !important;
+
+  .mat-calendar {
+    background: transparent !important;
+
+    .mat-calendar-header {
+      color: vars.$athena-text-primary !important;
+    }
+
+    .mat-calendar-body-label {
+      color: vars.$athena-text-secondary !important;
+    }
+
+    .mat-calendar-body-cell-content {
+      color: vars.$athena-text-primary !important;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+      }
+    }
+
+    .mat-calendar-body-selected {
+      background-color: vars.$athena-primary-base !important;
+      color: vars.$athena-primary-contrast !important;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+      border-color: vars.$athena-primary-base !important;
+    }
+  }
+}
+
+// ============================================================
+// AUTOCOMPLETE
+// ============================================================
+
+.mat-mdc-autocomplete-panel {
+  background: vars.$athena-surface-dark !important;
+  border-radius: vars.$athena-radius-md !important;
+  box-shadow: vars.$athena-shadow-xl !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  .mat-mdc-option {
+    color: vars.$athena-text-primary !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    &.mat-mdc-option-active {
+      background: rgba(vars.$athena-primary-base, 0.15) !important;
+      color: vars.$athena-primary-base !important;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<div class="media-container">
+  <div class="media-header">
+    <div class="media-info">
+      @if (currentMetaMedia.logo) {
+        <img [src]="currentMetaMedia.logo" [alt]="currentMetaMedia.title" class="media-logo">
+      }
+      <div class="media-text">
+        <h1>{{ currentMetaMedia.title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  @if (loading) {
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Chargement du contenu...</p>
+    </div>
+  }
+
+  @if (!loading && contents.length === 0) {
+    <div class="empty-state">
+      <mat-icon>inbox</mat-icon>
+      <p>Aucun contenu disponible</p>
+    </div>
+  }
+
+  @if (!loading && contents.length > 0) {
+    <div class="content-list">
+      @for (content of contents; track content.id) {
+        <div class="content-card" (click)="openContent(content)">
+          <div class="card-content-wrapper">
+            @if (getImageUrl(content)) {
+              <div class="content-image">
+                <img [src]="getImageUrl(content)" [alt]="getTitle(content)">
+              </div>
+            }
+            <div class="content-info">
+              <h3 class="content-title">{{ getTitle(content) }}</h3>
+              @if (getDate(content)) {
+                <div class="content-meta">
+                  <mat-icon>schedule</mat-icon>
+                  <span>{{ getDate(content) | date:'short' }}</span>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    @if (hasMore) {
+      <div class="load-more">
+        <button mat-raised-button color="primary" (click)="loadMore()" [disabled]="loadingMore">
+          @if (loadingMore) {
+            <mat-spinner diameter="20"></mat-spinner>
+          }
+          @if (!loadingMore) {
+            Charger plus
+          }
+        </button>
+      </div>
+    }
+  }
+</div>

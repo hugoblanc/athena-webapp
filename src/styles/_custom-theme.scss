@@ -1,0 +1,195 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - CUSTOM MATERIAL THEME
+// Configures Angular Material with custom orange palette
+// ============================================================
+
+@use '@angular/material' as mat;
+@use './variables' as vars;
+@use './typography' as typography;
+
+// ============================================================
+// INCLUDE MATERIAL CORE (only once in your app)
+// This will be included in styles.scss
+// ============================================================
+
+// @include mat.core();  // Commented out - will be included in styles.scss
+
+// ============================================================
+// DEFINE CUSTOM PALETTES
+// ============================================================
+
+// Primary palette (Orange)
+$athena-primary: mat.m2-define-palette(vars.$athena-primary-palette, 500, 400, 600);
+
+// Accent palette (Green)
+$athena-accent: mat.m2-define-palette(vars.$athena-accent-palette, 500, 400, 600);
+
+// Warn palette (Blue - using as warning color from Ionic)
+$athena-warn: mat.m2-define-palette(vars.$athena-warning-palette, 500, 400, 600);
+
+// ============================================================
+// DEFINE CUSTOM DARK THEME
+// ============================================================
+
+$athena-dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $athena-primary,
+    accent: $athena-accent,
+    warn: $athena-warn,
+  ),
+  typography: typography.$athena-typography-config,
+  density: 0,
+));
+
+// ============================================================
+// DEFINE CUSTOM LIGHT THEME (optional, for future use)
+// ============================================================
+
+$athena-light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $athena-primary,
+    accent: $athena-accent,
+    warn: $athena-warn,
+  ),
+  typography: typography.$athena-typography-config,
+  density: 0,
+));
+
+// ============================================================
+// CUSTOM CSS VARIABLES
+// Override Material's default CSS custom properties
+// ============================================================
+
+@mixin athena-theme-variables($theme) {
+  // Extract color config
+  $color-config: mat.m2-get-color-config($theme);
+  $primary: map-get($color-config, primary);
+  $accent: map-get($color-config, accent);
+  $warn: map-get($color-config, warn);
+  $is-dark: map-get($color-config, is-dark);
+
+  :root {
+    // ========== Primary Colors ==========
+    --athena-primary: #{vars.$athena-primary-base};
+    --athena-primary-shade: #{vars.$athena-primary-shade};
+    --athena-primary-tint: #{vars.$athena-primary-tint};
+    --athena-primary-contrast: #{vars.$athena-primary-contrast};
+
+    // ========== Accent Colors ==========
+    --athena-accent-green: #{vars.$athena-accent-green};
+    --athena-accent-blue: #{vars.$athena-accent-blue};
+    --athena-accent-red: #{vars.$athena-accent-red};
+
+    // ========== Background Colors ==========
+    --athena-bg-gradient-start: #{vars.$athena-bg-gradient-start};
+    --athena-bg-gradient-end: #{vars.$athena-bg-gradient-end};
+    --athena-surface-dark: #{vars.$athena-surface-dark};
+    --athena-surface-dark-transparent: #{vars.$athena-surface-dark-transparent};
+    --athena-surface-medium: #{vars.$athena-surface-medium};
+
+    // ========== Text Colors ==========
+    --athena-text-primary: #{vars.$athena-text-primary};
+    --athena-text-secondary: #{vars.$athena-text-secondary};
+    --athena-text-accent-dark: #{vars.$athena-text-accent-dark};
+
+    // ========== Spacing ==========
+    --athena-spacing-xs: #{vars.$athena-spacing-xs};
+    --athena-spacing-sm: #{vars.$athena-spacing-sm};
+    --athena-spacing-md: #{vars.$athena-spacing-md};
+    --athena-spacing-lg: #{vars.$athena-spacing-lg};
+    --athena-spacing-xl: #{vars.$athena-spacing-xl};
+
+    // ========== Border Radius ==========
+    --athena-radius-sm: #{vars.$athena-radius-sm};
+    --athena-radius-md: #{vars.$athena-radius-md};
+    --athena-radius-lg: #{vars.$athena-radius-lg};
+    --athena-radius-xl: #{vars.$athena-radius-xl};
+
+    // ========== Shadows ==========
+    --athena-shadow-sm: #{vars.$athena-shadow-sm};
+    --athena-shadow-md: #{vars.$athena-shadow-md};
+    --athena-shadow-lg: #{vars.$athena-shadow-lg};
+    --athena-shadow-xl: #{vars.$athena-shadow-xl};
+
+    // ========== Navigation ==========
+    --athena-nav-bg: #{vars.$athena-nav-bg};
+    --athena-nav-active: #{vars.$athena-nav-active-color};
+    --athena-nav-inactive: #{vars.$athena-nav-inactive-color};
+
+    // ========== Card ==========
+    --athena-card-bg: #{vars.$athena-card-bg};
+    --athena-card-padding: #{vars.$athena-card-padding};
+    --athena-card-radius: #{vars.$athena-card-radius};
+    --athena-card-shadow: #{vars.$athena-card-shadow};
+    --athena-card-border: #{vars.$athena-card-border};
+
+    // ========== Transitions ==========
+    --athena-transition-fast: #{vars.$athena-transition-fast};
+    --athena-transition-normal: #{vars.$athena-transition-normal};
+    --athena-transition-slow: #{vars.$athena-transition-slow};
+
+    // ========== Override Material's CSS Variables ==========
+    @if $is-dark {
+      // Dark theme overrides
+      --mdc-theme-primary: #{vars.$athena-primary-base};
+      --mdc-theme-secondary: #{vars.$athena-accent-green};
+      --mdc-theme-error: #{vars.$athena-accent-red};
+      --mdc-theme-background: #{vars.$athena-surface-dark};
+      --mdc-theme-surface: #{vars.$athena-surface-dark};
+      --mdc-theme-on-primary: #{vars.$athena-primary-contrast};
+      --mdc-theme-on-secondary: #ffffff;
+      --mdc-theme-on-surface: #{vars.$athena-text-primary};
+      --mdc-theme-on-error: #ffffff;
+      --mdc-theme-text-primary-on-background: #{vars.$athena-text-primary};
+      --mdc-theme-text-secondary-on-background: #{vars.$athena-text-secondary};
+
+      // Material 2 variables
+      --mat-app-background-color: #{vars.$athena-surface-dark};
+      --mat-app-text-color: #{vars.$athena-text-primary};
+      --mat-app-primary-color: #{vars.$athena-primary-base};
+      --mat-app-accent-color: #{vars.$athena-accent-green};
+      --mat-app-warn-color: #{vars.$athena-accent-blue};
+    } @else {
+      // Light theme overrides (optional)
+      --mdc-theme-primary: #{vars.$athena-primary-base};
+      --mdc-theme-secondary: #{vars.$athena-accent-green};
+      --mdc-theme-background: #{vars.$athena-surface-light};
+      --mdc-theme-surface: #ffffff;
+    }
+  }
+}
+
+// ============================================================
+// BACKGROUND & SURFACE OVERRIDES
+// Apply dark gradient background
+// ============================================================
+
+@mixin athena-dark-background {
+  .mat-app-background,
+  .mat-drawer-container,
+  .mat-sidenav-container {
+    background: vars.$athena-bg-gradient;
+    color: vars.$athena-text-primary;
+  }
+
+  body {
+    background: vars.$athena-bg-gradient;
+    background-attachment: fixed;
+    color: vars.$athena-text-primary;
+  }
+}
+
+// ============================================================
+// THEME MIXIN - Apply theme to all components
+// ============================================================
+
+@mixin athena-apply-theme($theme) {
+  // Include base Material component themes
+  @include mat.all-component-themes($theme);
+
+  // Include custom CSS variables
+  @include athena-theme-variables($theme);
+
+  // Include dark background
+  @include athena-dark-background();
+}

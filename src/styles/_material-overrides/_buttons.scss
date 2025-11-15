@@ -1,0 +1,372 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - MATERIAL BUTTONS OVERRIDE
+// Custom styling for mat-button components
+// ============================================================
+
+@use '../variables' as vars;
+
+// ============================================================
+// BASE BUTTON STYLES
+// ============================================================
+
+.mat-mdc-button,
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-icon-button,
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  border-radius: vars.$athena-radius-sm !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all vars.$athena-transition-fast !important;
+
+  // Remove Material's default ripple color
+  .mat-ripple-element {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+// ============================================================
+// RAISED BUTTON (Primary style)
+// ============================================================
+
+.mat-mdc-raised-button {
+  box-shadow: vars.$athena-shadow-sm !important;
+
+  &:hover {
+    box-shadow: vars.$athena-shadow-md !important;
+    transform: translateY(-1px) !important;
+  }
+
+  &:active {
+    box-shadow: vars.$athena-shadow-sm !important;
+    transform: translateY(0) !important;
+  }
+
+  // Primary color
+  &.mat-primary {
+    background-color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-contrast !important;
+
+    &:hover {
+      background-color: vars.$athena-primary-tint !important;
+    }
+
+    &:active {
+      background-color: vars.$athena-primary-shade !important;
+    }
+
+    &[disabled] {
+      background-color: rgba(vars.$athena-primary-base, 0.3) !important;
+      color: rgba(vars.$athena-primary-contrast, 0.5) !important;
+    }
+  }
+
+  // Accent color
+  &.mat-accent {
+    background-color: vars.$athena-accent-green !important;
+    color: #ffffff !important;
+
+    &:hover {
+      background-color: lighten(vars.$athena-accent-green, 10%) !important;
+    }
+
+    &[disabled] {
+      background-color: rgba(vars.$athena-accent-green, 0.3) !important;
+      color: rgba(#ffffff, 0.5) !important;
+    }
+  }
+
+  // Warn color
+  &.mat-warn {
+    background-color: vars.$athena-accent-red !important;
+    color: #ffffff !important;
+
+    &:hover {
+      background-color: lighten(vars.$athena-accent-red, 10%) !important;
+    }
+
+    &[disabled] {
+      background-color: rgba(vars.$athena-accent-red, 0.3) !important;
+      color: rgba(#ffffff, 0.5) !important;
+    }
+  }
+}
+
+// ============================================================
+// FLAT/TEXT BUTTON (Secondary style)
+// ============================================================
+
+.mat-mdc-button {
+  color: vars.$athena-text-primary !important;
+
+  &.mat-primary {
+    color: vars.$athena-primary-base !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+    }
+  }
+
+  &.mat-accent {
+    color: vars.$athena-accent-green !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+    }
+  }
+
+  &.mat-warn {
+    color: vars.$athena-accent-red !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-accent-red, 0.1) !important;
+    }
+  }
+
+  &[disabled] {
+    color: vars.$athena-text-secondary !important;
+    opacity: 0.5 !important;
+  }
+}
+
+// ============================================================
+// OUTLINED BUTTON
+// ============================================================
+
+.mat-mdc-outlined-button {
+  border: 1px solid currentColor !important;
+  color: vars.$athena-text-primary !important;
+
+  &.mat-primary {
+    color: vars.$athena-primary-base !important;
+    border-color: vars.$athena-primary-base !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+    }
+  }
+
+  &.mat-accent {
+    color: vars.$athena-accent-green !important;
+    border-color: vars.$athena-accent-green !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+    }
+  }
+
+  &.mat-warn {
+    color: vars.$athena-accent-red !important;
+    border-color: vars.$athena-accent-red !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-accent-red, 0.1) !important;
+    }
+  }
+
+  &[disabled] {
+    color: vars.$athena-text-secondary !important;
+    border-color: vars.$athena-text-secondary !important;
+    opacity: 0.5 !important;
+  }
+}
+
+// ============================================================
+// ICON BUTTON
+// ============================================================
+
+.mat-mdc-icon-button {
+  color: vars.$athena-text-primary !important;
+
+  &.mat-primary {
+    color: vars.$athena-primary-base !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+    }
+  }
+
+  &.mat-accent {
+    color: vars.$athena-accent-green !important;
+
+    &:hover {
+      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+    }
+  }
+
+  &[disabled] {
+    color: vars.$athena-text-secondary !important;
+    opacity: 0.5 !important;
+  }
+
+  .mat-icon {
+    color: inherit !important;
+  }
+}
+
+// ============================================================
+// FAB BUTTONS
+// ============================================================
+
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  background-color: vars.$athena-primary-base !important;
+  color: vars.$athena-primary-contrast !important;
+  box-shadow: vars.$athena-shadow-lg !important;
+
+  &:hover {
+    box-shadow: vars.$athena-shadow-xl !important;
+    transform: scale(1.05) !important;
+  }
+
+  &:active {
+    box-shadow: vars.$athena-shadow-md !important;
+    transform: scale(1) !important;
+  }
+
+  &.mat-accent {
+    background-color: vars.$athena-accent-green !important;
+  }
+
+  &[disabled] {
+    background-color: rgba(vars.$athena-primary-base, 0.3) !important;
+    color: rgba(vars.$athena-primary-contrast, 0.5) !important;
+  }
+}
+
+// ============================================================
+// BUTTON GROUPS
+// ============================================================
+
+.mat-mdc-button-group {
+  display: flex !important;
+  gap: vars.$athena-spacing-sm !important;
+
+  .mat-mdc-button,
+  .mat-mdc-raised-button,
+  .mat-mdc-outlined-button {
+    flex: 1 !important;
+  }
+}
+
+// ============================================================
+// SPECIAL BUTTON VARIANTS
+// ============================================================
+
+// Link button (looks like a link)
+.mat-mdc-button.button-link {
+  text-decoration: underline !important;
+  color: vars.$athena-primary-base !important;
+  padding: 0 !important;
+  min-width: auto !important;
+
+  &:hover {
+    text-decoration: none !important;
+    background: transparent !important;
+  }
+}
+
+// Transparent button (common in Ionic)
+.mat-mdc-button.button-transparent {
+  background: transparent !important;
+  color: vars.$athena-text-primary !important;
+
+  &.mat-primary {
+    color: vars.$athena-primary-base !important;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+}
+
+// Large button
+.mat-mdc-button.button-large,
+.mat-mdc-raised-button.button-large {
+  padding: vars.$athena-spacing-md vars.$athena-spacing-xl !important;
+  font-size: 1.125rem !important;
+  min-height: 48px !important;
+}
+
+// Small button
+.mat-mdc-button.button-small,
+.mat-mdc-raised-button.button-small {
+  padding: vars.$athena-spacing-xs vars.$athena-spacing-md !important;
+  font-size: 0.875rem !important;
+  min-height: 32px !important;
+}
+
+// Block button (full width)
+.mat-mdc-button.button-block,
+.mat-mdc-raised-button.button-block {
+  width: 100% !important;
+  display: block !important;
+}
+
+// ============================================================
+// LOADING STATE (with spinner)
+// ============================================================
+
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  &.loading {
+    position: relative !important;
+    pointer-events: none !important;
+    color: transparent !important;
+
+    &::after {
+      content: '' !important;
+      position: absolute !important;
+      width: 16px !important;
+      height: 16px !important;
+      top: 50% !important;
+      left: 50% !important;
+      margin-left: -8px !important;
+      margin-top: -8px !important;
+      border: 2px solid currentColor !important;
+      border-radius: 50% !important;
+      border-top-color: transparent !important;
+      animation: button-spin 0.6s linear infinite !important;
+    }
+
+    // Show color for spinner
+    &.mat-primary::after {
+      border-color: vars.$athena-primary-contrast !important;
+      border-top-color: transparent !important;
+    }
+
+    &.mat-accent::after {
+      border-color: #ffffff !important;
+      border-top-color: transparent !important;
+    }
+  }
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// ============================================================
+// BUTTON WITH ICON
+// ============================================================
+
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  .mat-icon {
+    margin-right: vars.$athena-spacing-sm !important;
+    vertical-align: middle !important;
+
+    &:last-child {
+      margin-right: 0 !important;
+      margin-left: vars.$athena-spacing-sm !important;
+    }
+
+    &:only-child {
+      margin: 0 !important;
+    }
+  }
+}

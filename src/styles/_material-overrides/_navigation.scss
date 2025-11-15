@@ -1,0 +1,369 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - MATERIAL NAVIGATION OVERRIDE
+// Custom styling for toolbar, sidenav, and tabs
+// ============================================================
+
+@use '../variables' as vars;
+
+// ============================================================
+// TOOLBAR
+// ============================================================
+
+.mat-toolbar {
+  background: vars.$athena-surface-dark !important;
+  color: vars.$athena-text-primary !important;
+  box-shadow: vars.$athena-shadow-sm !important;
+  padding: 0 vars.$athena-spacing-md !important;
+
+  // Gradient background option
+  &.toolbar-gradient {
+    background: vars.$athena-bg-gradient !important;
+  }
+
+  // Toolbar title
+  .mat-toolbar-title {
+    color: vars.$athena-text-primary !important;
+    font-weight: 600 !important;
+    font-size: 1.25rem !important;
+  }
+
+  // Toolbar buttons
+  .mat-mdc-icon-button {
+    color: vars.$athena-text-primary !important;
+
+    &.active {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+
+  // Spacer
+  .toolbar-spacer {
+    flex: 1 1 auto !important;
+  }
+}
+
+// Primary toolbar
+.mat-toolbar.mat-primary {
+  background: vars.$athena-primary-base !important;
+  color: vars.$athena-primary-contrast !important;
+
+  .mat-toolbar-title,
+  .mat-mdc-icon-button {
+    color: vars.$athena-primary-contrast !important;
+  }
+}
+
+// ============================================================
+// SIDENAV CONTAINER
+// ============================================================
+
+.mat-drawer-container {
+  background: vars.$athena-bg-gradient !important;
+  color: vars.$athena-text-primary !important;
+}
+
+.mat-drawer-backdrop {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+// ============================================================
+// SIDENAV
+// ============================================================
+
+.mat-drawer {
+  background: vars.$athena-surface-dark !important;
+  color: vars.$athena-text-primary !important;
+  box-shadow: vars.$athena-shadow-xl !important;
+  border: none !important;
+
+  // Sidenav header
+  .sidenav-header {
+    padding: vars.$athena-spacing-lg !important;
+    background: vars.$athena-bg-gradient !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+    h2 {
+      color: vars.$athena-text-primary !important;
+      margin: 0 !important;
+      font-weight: 600 !important;
+    }
+
+    p {
+      color: vars.$athena-text-secondary !important;
+      margin: vars.$athena-spacing-xs 0 0 !important;
+      font-size: 0.875rem !important;
+    }
+  }
+
+  // Sidenav content
+  .sidenav-content {
+    padding: vars.$athena-spacing-md !important;
+  }
+}
+
+// ============================================================
+// NAV LIST (in sidenav)
+// ============================================================
+
+.mat-mdc-list-base,
+.mat-nav-list {
+  padding: 0 !important;
+
+  .mat-mdc-list-item {
+    color: vars.$athena-text-primary !important;
+    border-radius: vars.$athena-radius-sm !important;
+    margin-bottom: vars.$athena-spacing-xs !important;
+    transition: background vars.$athena-transition-fast !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    &.active {
+      background: rgba(vars.$athena-primary-base, 0.15) !important;
+      color: vars.$athena-primary-base !important;
+
+      .mat-icon {
+        color: vars.$athena-primary-base !important;
+      }
+    }
+
+    .mat-icon {
+      color: vars.$athena-text-secondary !important;
+      margin-right: vars.$athena-spacing-md !important;
+    }
+
+    .mat-mdc-list-item-title {
+      color: inherit !important;
+      font-weight: 500 !important;
+    }
+
+    &[disabled] {
+      opacity: 0.5 !important;
+      color: vars.$athena-text-secondary !important;
+    }
+  }
+}
+
+// ============================================================
+// TABS (Bottom Navigation on Mobile)
+// ============================================================
+
+.mat-mdc-tab-nav-bar,
+.mat-mdc-tab-header {
+  border-bottom: none !important;
+  background: vars.$athena-nav-bg !important;
+  border-radius: vars.$athena-radius-lg !important;
+  box-shadow: vars.$athena-shadow-lg !important;
+
+  // Mobile bottom nav styling
+  &.bottom-navigation {
+    position: fixed !important;
+    bottom: vars.$athena-nav-margin !important;
+    left: vars.$athena-nav-margin !important;
+    right: vars.$athena-nav-margin !important;
+    z-index: 100 !important;
+    height: auto !important;
+    min-height: 60px !important;
+    background: vars.$athena-nav-bg !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
+    @media (min-width: 768px) {
+      display: none !important;
+    }
+  }
+}
+
+// Tab links/buttons
+.mat-mdc-tab-link,
+.mat-mdc-tab {
+  color: vars.$athena-nav-inactive-color !important;
+  opacity: 1 !important;
+  transition: color vars.$athena-transition-fast !important;
+  min-width: 64px !important;
+
+  &:hover {
+    color: vars.$athena-text-primary !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  &.mat-mdc-tab-active,
+  &.mdc-tab--active {
+    color: vars.$athena-nav-active-color !important;
+
+    .mat-icon {
+      color: vars.$athena-nav-active-color !important;
+    }
+  }
+
+  .mat-icon {
+    color: inherit !important;
+    margin-bottom: 4px !important;
+  }
+
+  .mat-mdc-tab-label-content,
+  .mdc-tab__text-label {
+    color: inherit !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+  }
+
+  // Icon-only tabs
+  &.icon-only {
+    .mat-mdc-tab-label-content {
+      font-size: 0 !important;
+    }
+
+    .mat-icon {
+      margin: 0 !important;
+      font-size: 24px !important;
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+}
+
+// Tab indicator (active underline)
+.mat-mdc-tab-nav-bar .mat-mdc-tab-header-pagination,
+.mat-mdc-tab-header .mat-mdc-tab-header-pagination {
+  display: none !important;
+}
+
+.mdc-tab-indicator__content--underline,
+.mat-mdc-tab-indicator {
+  background-color: vars.$athena-nav-active-color !important;
+  height: 3px !important;
+  border-radius: 3px 3px 0 0 !important;
+}
+
+// ============================================================
+// MENU
+// ============================================================
+
+.mat-mdc-menu-panel {
+  background: vars.$athena-surface-dark !important;
+  color: vars.$athena-text-primary !important;
+  border-radius: vars.$athena-radius-md !important;
+  box-shadow: vars.$athena-shadow-xl !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+
+  .mat-mdc-menu-content {
+    padding: vars.$athena-spacing-xs 0 !important;
+  }
+
+  .mat-mdc-menu-item {
+    color: vars.$athena-text-primary !important;
+    transition: background vars.$athena-transition-fast !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    &.active {
+      background: rgba(vars.$athena-primary-base, 0.15) !important;
+      color: vars.$athena-primary-base !important;
+
+      .mat-icon {
+        color: vars.$athena-primary-base !important;
+      }
+    }
+
+    &[disabled] {
+      color: vars.$athena-text-secondary !important;
+      opacity: 0.5 !important;
+    }
+
+    .mat-icon {
+      color: vars.$athena-text-secondary !important;
+      margin-right: vars.$athena-spacing-md !important;
+    }
+  }
+
+  // Menu divider
+  .mat-divider {
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+    margin: vars.$athena-spacing-xs 0 !important;
+  }
+}
+
+// ============================================================
+// BREADCRUMB (Custom implementation)
+// ============================================================
+
+.breadcrumb {
+  display: flex !important;
+  align-items: center !important;
+  gap: vars.$athena-spacing-sm !important;
+  padding: vars.$athena-spacing-md 0 !important;
+  color: vars.$athena-text-secondary !important;
+  font-size: 0.875rem !important;
+
+  a {
+    color: vars.$athena-text-secondary !important;
+    text-decoration: none !important;
+    transition: color vars.$athena-transition-fast !important;
+
+    &:hover {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+
+  .breadcrumb-separator {
+    color: vars.$athena-text-secondary !important;
+    opacity: 0.5 !important;
+  }
+
+  .breadcrumb-current {
+    color: vars.$athena-text-primary !important;
+    font-weight: 500 !important;
+  }
+}
+
+// ============================================================
+// PAGINATION (Custom implementation)
+// ============================================================
+
+.pagination {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: vars.$athena-spacing-sm !important;
+  padding: vars.$athena-spacing-lg 0 !important;
+
+  .mat-mdc-icon-button {
+    &.active {
+      background: vars.$athena-primary-base !important;
+      color: vars.$athena-primary-contrast !important;
+    }
+
+    &[disabled] {
+      opacity: 0.3 !important;
+    }
+  }
+}
+
+// ============================================================
+// SIDE NAV RESPONSIVE
+// ============================================================
+
+@media (max-width: 767px) {
+  // Hide desktop sidenav on mobile
+  .mat-drawer.desktop-sidenav {
+    display: none !important;
+  }
+
+  // Full width sidenav on mobile
+  .mat-drawer {
+    width: 85vw !important;
+    max-width: 320px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  // Permanent sidenav on desktop
+  .mat-drawer.desktop-sidenav {
+    position: relative !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}

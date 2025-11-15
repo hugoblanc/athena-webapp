@@ -1,71 +1,88 @@
-@use '@angular/material' as mat;
+// ============================================================
+// ATHENA WEBAPP - MAIN STYLES ENTRY POINT
+// Custom design system matching Ionic mobile app
+// ============================================================
+
+// ============================================================
+// IMPORTS - Must be first (Sass @use rule requirement)
+// ============================================================
+
+@use '@angular/material'as mat;
+@use './styles/variables'as vars;
+@use './styles/typography'as typography;
+@use './styles/custom-theme'as theme;
+@use './styles/material-overrides'as overrides;
+@use './styles/global'as global;
+
+// ============================================================
+// MATERIAL CORE (required, include only once)
+// ============================================================
 
 @include mat.core();
 
-// Define custom color palettes
-$athena-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
-$athena-accent: mat.m2-define-palette(mat.$m2-pink-palette, A200, A100, A400);
-$athena-warn: mat.m2-define-palette(mat.$m2-red-palette);
+// ============================================================
+// APPLY CUSTOM THEME
+// Applies dark theme with custom orange palette
+// ============================================================
 
-// Create light theme
-$athena-light-theme: mat.m2-define-light-theme((
-  color: (
-    primary: $athena-primary,
-    accent: $athena-accent,
-    warn: $athena-warn,
-  ),
-  typography: mat.m2-define-typography-config(),
-  density: 0,
-));
+@include theme.athena-apply-theme(theme.$athena-dark-theme);
 
-// Create dark theme
-$athena-dark-theme: mat.m2-define-dark-theme((
-  color: (
-    primary: $athena-primary,
-    accent: $athena-accent,
-    warn: $athena-warn,
-  )
-));
+// ============================================================
+// OPTIONAL: Light Theme Support (for future implementation)
+// Uncomment to enable light theme toggle
+// ============================================================
 
-// Apply light theme by default
-@include mat.all-component-themes($athena-light-theme);
+// .light-theme {
+//   @include theme.athena-apply-theme(theme.$athena-light-theme);
+// }
 
-// Dark theme class
-.dark-theme {
-  @include mat.all-component-colors($athena-dark-theme);
+// ============================================================
+// COMPONENT-SPECIFIC OVERRIDES
+// Page-specific styles that don't fit in global
+// ============================================================
+
+// Main app container
+.app-container {
+  min-height: 100vh;
+  background: vars.$athena-bg-gradient;
+  background-attachment: fixed;
 }
 
-// Global CSS variables for custom theming
-:root {
-  --primary-color: #3f51b5;
-  --accent-color: #ff4081;
-  --background-color: #fafafa;
-  --surface-color: #ffffff;
-  --text-primary-color: rgba(0, 0, 0, 0.87);
-  --text-secondary-color: rgba(0, 0, 0, 0.54);
-  --divider-color: rgba(0, 0, 0, 0.12);
+// Router outlet wrapper
+router-outlet+* {
+  animation: fadeIn 0.3s ease-in;
 }
 
-.dark-theme {
-  --primary-color: #3f51b5;
-  --accent-color: #ff4081;
-  --background-color: #303030;
-  --surface-color: #424242;
-  --text-primary-color: rgba(255, 255, 255, 0.87);
-  --text-secondary-color: rgba(255, 255, 255, 0.54);
-  --divider-color: rgba(255, 255, 255, 0.12);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+// ============================================================
+// PRINT STYLES (optional)
+// ============================================================
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .mat-toolbar,
+  .mat-drawer,
+  .mat-mdc-tab-nav-bar,
+  .bottom-navigation {
+    display: none;
+  }
 }
 
-body {
-  font-family: 'Roboto', 'Coming Soon', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-primary-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+
+
+.mat-drawer-content.mat-sidenav-content {
+  height: 100vh;
 }

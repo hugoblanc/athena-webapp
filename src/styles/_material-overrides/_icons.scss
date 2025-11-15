@@ -1,0 +1,420 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - MATERIAL ICONS OVERRIDE
+// Custom styling for mat-icon components
+// ============================================================
+
+@use '../variables' as vars;
+
+// ============================================================
+// ICON BASE STYLES
+// ============================================================
+
+.mat-icon {
+  color: vars.$athena-text-primary !important;
+  vertical-align: middle !important;
+
+  // Ensure icons are always centered
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+// ============================================================
+// ICON SIZES
+// ============================================================
+
+// Small icons (16px)
+.mat-icon.icon-sm,
+.mat-icon.icon-small {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+// Medium icons (24px - default)
+.mat-icon.icon-md,
+.mat-icon.icon-medium {
+  font-size: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+// Large icons (32px)
+.mat-icon.icon-lg,
+.mat-icon.icon-large {
+  font-size: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+// Extra large icons (48px)
+.mat-icon.icon-xl,
+.mat-icon.icon-xlarge {
+  font-size: 48px !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
+// Hero icons (64px+)
+.mat-icon.icon-hero {
+  font-size: 64px !important;
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.mat-icon.icon-hero-lg {
+  font-size: 80px !important;
+  width: 80px !important;
+  height: 80px !important;
+}
+
+// ============================================================
+// ICON COLORS
+// ============================================================
+
+// Primary color
+.mat-icon.icon-primary {
+  color: vars.$athena-primary-base !important;
+}
+
+// Accent colors
+.mat-icon.icon-accent {
+  color: vars.$athena-accent-green !important;
+}
+
+.mat-icon.icon-accent-blue {
+  color: vars.$athena-accent-blue !important;
+}
+
+.mat-icon.icon-accent-red {
+  color: vars.$athena-accent-red !important;
+}
+
+// Text colors
+.mat-icon.icon-text-primary {
+  color: vars.$athena-text-primary !important;
+}
+
+.mat-icon.icon-text-secondary {
+  color: vars.$athena-text-secondary !important;
+}
+
+// Success/Warning/Danger semantic colors
+.mat-icon.icon-success {
+  color: vars.$athena-accent-green !important;
+}
+
+.mat-icon.icon-warning {
+  color: vars.$athena-accent-blue !important;
+}
+
+.mat-icon.icon-danger,
+.mat-icon.icon-error {
+  color: vars.$athena-accent-red !important;
+}
+
+.mat-icon.icon-info {
+  color: vars.$athena-accent-blue !important;
+}
+
+// ============================================================
+// ICON BADGES (with badge component)
+// ============================================================
+
+.icon-with-badge {
+  position: relative !important;
+  display: inline-flex !important;
+
+  .mat-badge-content {
+    background: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-contrast !important;
+    font-size: 10px !important;
+    font-weight: 600 !important;
+  }
+
+  &.badge-accent .mat-badge-content {
+    background: vars.$athena-accent-green !important;
+  }
+
+  &.badge-warn .mat-badge-content {
+    background: vars.$athena-accent-red !important;
+  }
+}
+
+// ============================================================
+// ICON BUTTONS (already styled in _buttons.scss)
+// Additional icon-specific overrides
+// ============================================================
+
+.mat-mdc-icon-button {
+  .mat-icon {
+    color: inherit !important;
+  }
+
+  // Icon button with background
+  &.icon-button-filled {
+    background: rgba(255, 255, 255, 0.1) !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    &.mat-primary {
+      background: vars.$athena-primary-base !important;
+
+      .mat-icon {
+        color: vars.$athena-primary-contrast !important;
+      }
+
+      &:hover {
+        background: vars.$athena-primary-tint !important;
+      }
+    }
+  }
+
+  // Icon button with border
+  &.icon-button-outlined {
+    border: 1px solid currentColor !important;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+  }
+}
+
+// ============================================================
+// ICON IN SPECIFIC CONTEXTS
+// ============================================================
+
+// Icons in cards
+.mat-mdc-card {
+  .mat-icon {
+    &.card-icon {
+      color: vars.$athena-primary-base !important;
+      font-size: 48px !important;
+      width: 48px !important;
+      height: 48px !important;
+    }
+  }
+}
+
+// Icons in lists
+.mat-mdc-list-item {
+  .mat-icon {
+    color: vars.$athena-text-secondary !important;
+    margin-right: vars.$athena-spacing-md !important;
+  }
+
+  &.active .mat-icon,
+  &:hover .mat-icon {
+    color: vars.$athena-primary-base !important;
+  }
+}
+
+// Icons in navigation
+.mat-toolbar,
+.mat-mdc-tab-nav-bar,
+.mat-drawer {
+  .mat-icon {
+    color: vars.$athena-text-primary !important;
+  }
+
+  .active .mat-icon {
+    color: vars.$athena-primary-base !important;
+  }
+}
+
+// Icons in form fields
+.mat-mdc-form-field {
+  .mat-icon {
+    color: vars.$athena-text-secondary !important;
+  }
+
+  &.mat-focused .mat-icon {
+    color: vars.$athena-primary-base !important;
+  }
+
+  &.mat-form-field-invalid .mat-icon {
+    color: vars.$athena-accent-red !important;
+  }
+}
+
+// ============================================================
+// ICON ANIMATIONS
+// ============================================================
+
+// Spinning icon (for loading states)
+.mat-icon.icon-spin {
+  animation: icon-spin 1s linear infinite !important;
+}
+
+@keyframes icon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Pulse animation
+.mat-icon.icon-pulse {
+  animation: icon-pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes icon-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+}
+
+// Bounce animation
+.mat-icon.icon-bounce {
+  animation: icon-bounce 1s ease-in-out infinite !important;
+}
+
+@keyframes icon-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+// ============================================================
+// ICON STATES
+// ============================================================
+
+// Disabled icon
+.mat-icon[disabled],
+.mat-icon.icon-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+// Interactive icon (clickable)
+.mat-icon.icon-interactive {
+  cursor: pointer !important;
+  transition: color vars.$athena-transition-fast,
+              transform vars.$athena-transition-fast !important;
+
+  &:hover {
+    color: vars.$athena-primary-base !important;
+    transform: scale(1.1) !important;
+  }
+
+  &:active {
+    transform: scale(0.95) !important;
+  }
+}
+
+// ============================================================
+// ICON GROUPS
+// ============================================================
+
+.icon-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: vars.$athena-spacing-xs !important;
+
+  .mat-icon {
+    flex-shrink: 0 !important;
+  }
+}
+
+// Stacked icons
+.icon-stack {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  .mat-icon {
+    position: absolute !important;
+
+    &:first-child {
+      position: relative !important;
+    }
+
+    &.icon-stack-top {
+      font-size: 14px !important;
+      width: 14px !important;
+      height: 14px !important;
+      top: -4px !important;
+      right: -4px !important;
+    }
+  }
+}
+
+// ============================================================
+// ICON WITH TEXT
+// ============================================================
+
+.icon-text {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: vars.$athena-spacing-sm !important;
+  color: vars.$athena-text-primary !important;
+
+  .mat-icon {
+    color: inherit !important;
+  }
+
+  &.icon-text-vertical {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: vars.$athena-spacing-xs !important;
+  }
+}
+
+// ============================================================
+// CUSTOM ICON BACKGROUNDS
+// ============================================================
+
+.icon-circle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  padding: vars.$athena-spacing-sm !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+
+  &.icon-circle-primary {
+    background: rgba(vars.$athena-primary-base, 0.2) !important;
+
+    .mat-icon {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+
+  &.icon-circle-accent {
+    background: rgba(vars.$athena-accent-green, 0.2) !important;
+
+    .mat-icon {
+      color: vars.$athena-accent-green !important;
+    }
+  }
+}
+
+.icon-square {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: vars.$athena-radius-sm !important;
+  padding: vars.$athena-spacing-sm !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+
+  &.icon-square-primary {
+    background: rgba(vars.$athena-primary-base, 0.2) !important;
+
+    .mat-icon {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+}

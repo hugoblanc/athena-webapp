@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InformationsRoutingModule } from './informations-routing.module';
 import { InformationsComponent } from './informations.component';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +11,8 @@ import { InformationsComponent } from './informations.component';
   ],
   imports: [
     CommonModule,
-    InformationsRoutingModule
+    InformationsRoutingModule,
+    SharedModule
   ]
 })
 export class InformationsModule { }

@@ -1,1 +1,68 @@
-<p>feed works!</p>
+<div class="feed-container">
+  <!-- Search bar -->
+  <div class="search-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Rechercher du contenu</mat-label>
+      <input matInput
+             type="text"
+             placeholder="Rechercher..."
+             (input)="onSearch($any($event.target).value)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <!-- Content list -->
+  <div class="content-list" *ngIf="contents.length > 0">
+    <div *ngFor="let content of contents; trackBy: trackByContentId"
+         class="content-card"
+         (click)="navigateToContent(content)">
+
+      <div class="card-content-wrapper">
+        <!-- Image -->
+        <div class="content-image" *ngIf="content.image">
+          <img [src]="content.image.url" [alt]="content.title" />
+        </div>
+
+        <!-- Content info -->
+        <div class="content-info">
+          <div class="media-badge">
+            <img [src]="content.metaMedia.logo" [alt]="content.metaMedia.title" class="media-logo" />
+            <span>{{ content.metaMedia.title }}</span>
+          </div>
+
+          <h3 class="content-title">{{ content.title }}</h3>
+
+          <div class="content-meta">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ content.publishedAt | date:'short' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div class="loading-container" *ngIf="loading && contents.length === 0">
+    <mat-spinner></mat-spinner>
+    <p>Chargement du fil d'actualité...</p>
+  </div>
+
+  <!-- Load more button -->
+  <div class="load-more" *ngIf="!loading && hasMore && contents.length > 0">
+    <button mat-raised-button color="primary" (click)="loadContents()">
+      Charger plus
+    </button>
+  </div>
+
+  <!-- Loading more indicator -->
+  <div class="loading-more" *ngIf="loading && contents.length > 0">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && contents.length === 0">
+    <mat-icon>search_off</mat-icon>
+    <p *ngIf="searchTerm">Aucun résultat pour "{{ searchTerm }}"</p>
+    <p *ngIf="!searchTerm">Aucun contenu disponible</p>
+  </div>
+</div>

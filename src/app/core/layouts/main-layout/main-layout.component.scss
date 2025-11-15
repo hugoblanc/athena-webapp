@@ -1,89 +1,305 @@
-.sidenav-container {
-  height: 100%;
+// Fix global pour le box-sizing
+* {
+  box-sizing: border-box;
 }
 
-.sidenav {
-  width: 250px;
+.sidenav-container {
+  height: 100%;
 
-  mat-toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    font-size: 1.5rem;
-    font-weight: 500;
+  // On laisse Material gérer le layout naturellement en mode side
+  // Seulement en mode mobile (over), on empêche le scroll
+  &.mobile-layout {
+    overflow-x: hidden;
   }
 }
 
-.mat-toolbar.mat-primary {
+.sidenav.mat-drawer {
+  width: 280px;
+  background: var(--athena-surface-dark);
+  border: none;
+  padding: var(--athena-spacing-lg) var(--athena-spacing-md);
+
+  // Header du sidenav
+  mat-toolbar.mat-toolbar {
+    background: transparent;
+    color: var(--athena-text-primary);
+    padding: var(--athena-spacing-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: var(--athena-spacing-lg);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  // Liste de navigation
+  mat-nav-list.mat-mdc-nav-list {
+    padding: 0;
+
+    a.mat-mdc-list-item {
+      margin-bottom: var(--athena-spacing-sm);
+      border-radius: var(--athena-radius-lg);
+      padding: var(--athena-spacing-md) var(--athena-spacing-lg);
+      color: var(--athena-text-secondary);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+
+      // Effet de fond au survol
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg,
+            rgba(252, 116, 58, 0.1) 0%,
+            rgba(255, 139, 84, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+      }
+
+      // Contenu par-dessus l'overlay
+      >* {
+        position: relative;
+        z-index: 1;
+      }
+
+      // État hover
+      &:hover {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--athena-text-primary);
+
+        &::before {
+          opacity: 1;
+        }
+
+        mat-icon {
+          color: var(--athena-primary-tint);
+          transform: scale(1.1);
+        }
+      }
+
+      // État actif
+      &.active-link {
+        background: linear-gradient(135deg,
+            rgba(252, 116, 58, 0.2) 0%,
+            rgba(255, 139, 84, 0.15) 100%);
+        color: var(--athena-primary);
+
+        &::before {
+          opacity: 0;
+        }
+
+        mat-icon {
+          color: var(--athena-primary);
+          transform: scale(1.15);
+        }
+
+        span {
+          font-weight: 600;
+        }
+      }
+
+      // Icônes
+      mat-icon {
+        color: var(--athena-text-secondary);
+        margin-right: var(--athena-spacing-md);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      // Texte
+      span {
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      // Badge/compteur (si présent)
+      .nav-badge {
+        position: absolute;
+        right: var(--athena-spacing-md);
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--athena-primary);
+        color: var(--athena-primary-contrast);
+        border-radius: 12px;
+        padding: 2px 8px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        min-width: 20px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+// Toolbar du haut (mobile)
+mat-toolbar.mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: var(--athena-surface-dark);
+  color: var(--athena-text-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .app-title {
   margin-left: 16px;
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
+  color: var(--athena-text-primary);
+  letter-spacing: -0.3px;
 }
 
+// Contenu principal
 .content-wrapper {
-  padding: 16px;
-  min-height: calc(100vh - 64px); // Subtract toolbar height
-  background-color: var(--background-color);
+  padding: var(--athena-spacing-lg);
+  min-height: calc(100vh - 64px);
+  background: transparent;
+  max-width: 100%; // Empêche le débordement
+  box-sizing: border-box; // Inclut le padding dans la largeur totale
 }
 
-// Mobile layout adjustments
+// Ajustements mobile
 .mobile-layout {
   .content-wrapper {
-    padding: 8px;
-    padding-bottom: 72px; // Space for bottom navigation
-    min-height: calc(100vh - 64px - 56px); // Subtract toolbar and bottom nav
+    padding: var(--athena-spacing-md);
+    padding-bottom: 88px; // Espace pour bottom navigation
+    min-height: calc(100vh - 64px - 72px);
   }
 }
 
-// Bottom navigation for mobile
-.bottom-navigation {
+// Bottom navigation moderne (mobile)
+nav.bottom-navigation.mat-mdc-tab-nav-bar {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: var(--athena-spacing-md);
+  left: var(--athena-spacing-md);
+  right: var(--athena-spacing-md);
   z-index: 1000;
-  background-color: var(--surface-color);
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--athena-nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--athena-radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-around;
+  padding: var(--athena-spacing-xs) 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-  a {
+  a.mat-mdc-tab-link {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8px 0;
-    min-width: 80px;
+    padding: var(--athena-spacing-sm) 0;
+    min-width: 64px;
     text-decoration: none;
-    color: var(--text-secondary-color);
-    transition: color 0.3s ease;
+    color: var(--athena-nav-inactive);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    border-radius: var(--athena-radius-md);
+
+    // Indicateur actif (barre du dessus)
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 32px;
+      height: 3px;
+      background: var(--athena-nav-active);
+      border-radius: 0 0 3px 3px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
     mat-icon {
       margin-bottom: 4px;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     span {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-top: 2px;
     }
 
+    // Hover
+    &:hover:not(.active) {
+      color: var(--athena-text-primary);
+      background: rgba(255, 255, 255, 0.05);
+
+      mat-icon {
+        transform: translateY(-2px) scale(1.05);
+      }
+    }
+
+    // État actif
     &.active {
-      color: var(--primary-color);
+      color: var(--athena-nav-active);
+
+      &::before {
+        transform: translateX(-50%) scaleX(1);
+      }
+
+      mat-icon {
+        transform: scale(1.1);
+        filter: drop-shadow(0 2px 4px rgba(252, 116, 58, 0.4));
+      }
+
+      span {
+        font-weight: 600;
+      }
     }
   }
 }
 
-// Active link styling for side navigation
-.active-link {
-  background-color: rgba(0, 0, 0, 0.04);
-
-  .dark-theme & {
-    background-color: rgba(255, 255, 255, 0.04);
+// Animation d'entrée pour le sidenav
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
   }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.sidenav {
+  animation: slideInFromLeft 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+// Responsive
+@media (max-width: 767px) {
+  .sidenav {
+    width: 280px;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidenav.mat-drawer {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Amélioration de l'overlay backdrop
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }

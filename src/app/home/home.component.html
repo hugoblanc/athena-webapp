@@ -11,28 +11,28 @@
       <h2 class="section-title">{{ section.title }}</h2>
 
       <div class="media-grid">
-        <mat-card *ngFor="let media of section.metaMedias"
-                  class="media-card"
-                  (click)="navigateToMedia(media)">
-          <mat-card-header>
-            <div mat-card-avatar class="media-avatar">
+        <div *ngFor="let media of section.metaMedias"
+             class="media-card"
+             (click)="navigateToMedia(media)">
+          <div class="card-header">
+            <div class="media-avatar">
               <img [src]="media.logo" [alt]="media.title" />
             </div>
-            <mat-card-title>{{ media.title }}</mat-card-title>
-            <mat-card-subtitle>{{ media.type }}</mat-card-subtitle>
-          </mat-card-header>
+            <div class="media-info">
+              <h3 class="media-title">{{ media.title }}</h3>
+              <span class="media-type">{{ media.type }}</span>
+            </div>
+          </div>
 
-          <mat-card-content>
+          <div class="card-content">
             <p class="media-url">{{ media.url }}</p>
-          </mat-card-content>
+          </div>
 
-          <mat-card-actions align="end">
-            <button mat-button color="primary">
-              <mat-icon>arrow_forward</mat-icon>
-              Voir le contenu
-            </button>
-          </mat-card-actions>
-        </mat-card>
+          <div class="card-actions">
+            <mat-icon>arrow_forward</mat-icon>
+            <span>Voir le contenu</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

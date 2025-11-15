@@ -73,15 +73,17 @@ export class WordpressService extends ContentService<Post> {
     return this.http.get(url);
   }
 
-  public getContentById(id: number): Observable<Post> {
+  public getContentById(id: number | string): Observable<Post> {
+    const numericId = typeof id === 'string' ? parseInt(id, 10) : id;
+
     // On cherche d'abord en local
-    const post = this.findLocalContentById(id);
+    const post = this.findLocalContentById(numericId);
     if (post != null) {
       return of(post);
     }
 
     // Si pas trouvé en local on cherche coté serveur
-    return this.findServerContentById(id);
+    return this.findServerContentById(numericId);
   }
 
   /**

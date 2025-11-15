@@ -1,1 +1,70 @@
-<p>informations works!</p>
+<div class="informations-container">
+  <div class="hero">
+    <mat-icon class="hero-icon">info</mat-icon>
+    <h1>À propos d'Athena</h1>
+    <p class="subtitle">Application d'agrégation de contenu libre et open source</p>
+  </div>
+
+  <div class="info-card">
+    <div class="card-header">
+      <mat-icon>lightbulb</mat-icon>
+      <h2>Informations libres</h2>
+    </div>
+    <div class="card-content">
+      <ol>
+        <li>Les technologies doivent nous servir et non nous asservir.</li>
+        <li>Un outil numérique devrait évoluer dans la direction décidée par ses utilisateurs.</li>
+        <li>Aucun utilisateur ne devrait avoir un poids de décision plus important qu'un autre.</li>
+      </ol>
+      <p><strong>L'application Athena gratuite et open source repose sur ces trois fondements.</strong></p>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="card-header">
+      <mat-icon>code</mat-icon>
+      <h2>Open Source</h2>
+    </div>
+    <div class="card-content">
+      <p>Vous pouvez contribuer à ce projet sur GitHub :</p>
+      <div class="links">
+        <button mat-raised-button color="primary" (click)="openLink('https://github.com/hugoblanc/athena_api')">
+          <mat-icon>api</mat-icon>
+          API Backend
+        </button>
+        <button mat-raised-button color="primary" (click)="openLink('https://github.com/hugoblanc/Athena')">
+          <mat-icon>phone_android</mat-icon>
+          Application Mobile
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="card-header">
+      <mat-icon>help</mat-icon>
+      <h2>Assistance</h2>
+    </div>
+    <div class="card-content">
+      <p>Pour toutes questions, vous pouvez me contacter par email :</p>
+      <a href="mailto:hugoblanc.blend@gmail.com" mat-raised-button color="accent">
+        <mat-icon>email</mat-icon>
+        hugoblanc.blend&#64;gmail.com
+      </a>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="card-header">
+      <mat-icon>privacy_tip</mat-icon>
+      <h2>Confidentialité</h2>
+    </div>
+    <div class="card-content">
+      <p>Consultez notre politique de confidentialité pour en savoir plus sur la protection de vos données.</p>
+      <a routerLink="/privacy" mat-raised-button>
+        <mat-icon>description</mat-icon>
+        Politique de confidentialité
+      </a>
+    </div>
+  </div>
+</div>

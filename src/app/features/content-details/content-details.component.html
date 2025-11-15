@@ -1,0 +1,63 @@
+<div class="content-details-container">
+  @if (loading) {
+    <div class="loading-container">
+      <mat-spinner></mat-spinner>
+      <p>Chargement du contenu...</p>
+    </div>
+  }
+
+  @if (!loading && content) {
+    <div class="content-header">
+      <button mat-icon-button (click)="goBack()" class="back-button">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="header-actions">
+        @if (canShare) {
+          <button mat-icon-button (click)="share()" class="share-button">
+            <mat-icon>share</mat-icon>
+          </button>
+        }
+      </div>
+    </div>
+
+    @if (getImageUrl()) {
+      <div class="content-image">
+        <img [src]="getImageUrl()" [alt]="getTitle()">
+      </div>
+    }
+
+    <div class="content-body">
+      <h1 class="content-title">{{ getTitle() }}</h1>
+
+      <div class="content-meta">
+        <div class="media-badge">
+          @if (currentMetaMedia.logo) {
+            <img [src]="currentMetaMedia.logo" [alt]="currentMetaMedia.title" class="media-logo">
+          }
+          <span>{{ currentMetaMedia.title }}</span>
+        </div>
+        @if (getDate()) {
+          <div class="date-info">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ getDate() | date:'long' }}</span>
+          </div>
+        }
+      </div>
+
+      @if (audioUrl) {
+        <div class="audio-player-container">
+          <div class="audio-header">
+            <mat-icon>headphones</mat-icon>
+            <h3>Lecteur audio</h3>
+          </div>
+          <audio controls class="audio-player">
+            <source [src]="audioUrl" type="audio/mpeg">
+            Votre navigateur ne supporte pas la lecture audio.
+          </audio>
+        </div>
+      }
+
+      <div class="content-html" [innerHTML]="safeHtmlContent"></div>
+    </div>
+  }
+</div>

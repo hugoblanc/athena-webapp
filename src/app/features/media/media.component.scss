@@ -1,0 +1,155 @@
+.media-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.media-header {
+  margin-bottom: 32px;
+  padding: 24px 16px;
+  background: transparent;
+  color: white;
+
+  .media-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .media-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: white;
+      padding: 4px;
+    }
+
+    .media-text {
+      flex: 1;
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 2rem;
+        font-weight: 500;
+      }
+
+      .media-description {
+        margin: 0;
+        font-size: 1rem;
+        opacity: 0.95;
+        line-height: 1.5;
+      }
+    }
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      text-align: center;
+
+      .media-logo {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.content-card {
+  cursor: pointer;
+  margin-bottom: var(--athena-spacing-lg);
+
+  .card-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .content-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: var(--athena-radius-lg);
+
+    @media (min-width: 600px) {
+      height: 300px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .content-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 4px;
+
+    .content-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--athena-text-primary);
+      line-height: 1.3;
+    }
+
+    .content-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--athena-text-secondary);
+      font-size: 0.875rem;
+
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+}
+
+.loading-container,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 16px;
+  color: var(--text-secondary-color);
+
+  mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+
+  button {
+    min-width: 150px;
+  }
+}
+
+.loading-more {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}

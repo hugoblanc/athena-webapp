@@ -1,0 +1,219 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - DESIGN TOKENS
+// Extracted from Ionic mobile app design
+// ============================================================
+
+// ============================================================
+// PRIMARY COLORS (Orange Palette)
+// ============================================================
+$athena-primary-base: #FC743A;
+$athena-primary-shade: #de6633;
+$athena-primary-tint: #fc824e;
+$athena-primary-contrast: #000000;
+
+// Full Material palette for primary orange
+$athena-primary-palette: (
+  50: #fff3ee,
+  100: #ffe1d5,
+  200: #ffc6ad,
+  300: #ffa67b,
+  400: #fc824e,
+  500: #FC743A,  // Base color
+  600: #de6633,
+  700: #c54a1f,
+  800: #a33c1a,
+  900: #7d2e14,
+  A100: #ffc6ad,
+  A200: #fc824e,
+  A400: #fc6623,
+  A700: #c54a1f,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  )
+);
+
+// ============================================================
+// ACCENT COLORS
+// ============================================================
+$athena-accent-green: #4CAF50;
+$athena-accent-blue: #4285f4;
+$athena-accent-red: #e6665a;
+$athena-tertiary-purple: #64205d;
+
+// Accent palette for Material (Green)
+$athena-accent-palette: (
+  50: #e8f5e9,
+  100: #c8e6c9,
+  200: #a5d6a7,
+  300: #81c784,
+  400: #66bb6a,
+  500: #4CAF50,  // Base color
+  600: #43a047,
+  700: #388e3c,
+  800: #2e7d32,
+  900: #1b5e20,
+  A100: #b9f6ca,
+  A200: #69f0ae,
+  A400: #00e676,
+  A700: #00c853,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  )
+);
+
+// Warning palette (Blue)
+$athena-warning-palette: (
+  50: #e8f4fd,
+  100: #c6e2fb,
+  200: #a1cef8,
+  300: #7bbaf5,
+  400: #5eacf3,
+  500: #4285f4,  // Base color
+  600: #3c7de3,
+  700: #3372cf,
+  800: #2b68bb,
+  900: #1d5599,
+  A100: #a1cef8,
+  A200: #5eacf3,
+  A400: #1976d2,
+  A700: #1d5599,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  )
+);
+
+// ============================================================
+// BACKGROUND COLORS
+// ============================================================
+$athena-bg-gradient-start: #485563;
+$athena-bg-gradient-end: #29323c;
+$athena-bg-gradient: linear-gradient(to right, $athena-bg-gradient-start, $athena-bg-gradient-end);
+
+$athena-surface-dark: #222428;
+$athena-surface-dark-transparent: #222428dd;
+$athena-surface-medium: #3d4f5c;
+$athena-surface-light: #f4f5f8;
+
+// ============================================================
+// TEXT COLORS
+// ============================================================
+$athena-text-primary: #ffffff;
+$athena-text-secondary: #989aa2;
+$athena-text-accent-dark: #647985;
+$athena-text-on-light: rgba(0, 0, 0, 0.87);
+
+// ============================================================
+// SPACING
+// ============================================================
+$athena-spacing-xs: 4px;
+$athena-spacing-sm: 8px;
+$athena-spacing-md: 16px;
+$athena-spacing-lg: 24px;
+$athena-spacing-xl: 32px;
+$athena-spacing-xxl: 48px;
+
+// ============================================================
+// BORDER RADIUS
+// ============================================================
+$athena-radius-sm: 10px;
+$athena-radius-md: 12px;
+$athena-radius-lg: 16px;
+$athena-radius-xl: 35px;
+
+// ============================================================
+// SHADOWS (Subtle, modern)
+// ============================================================
+$athena-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$athena-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+$athena-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+$athena-shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.25);
+
+// ============================================================
+// GRADIENTS & OVERLAYS
+// ============================================================
+$athena-overlay-dark: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+$athena-overlay-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+$athena-nav-height: 10vh;
+$athena-nav-margin: 1.5%;
+$athena-nav-bg: $athena-surface-dark-transparent;
+$athena-nav-active-color: $athena-primary-base;
+$athena-nav-inactive-color: $athena-text-secondary;
+
+// ============================================================
+// CARD STYLING
+// ============================================================
+// Glassmorphism transparent background comme dans l'app Ionic
+$athena-card-bg: rgba(255, 255, 255, 0.05);
+$athena-card-padding: $athena-spacing-md;
+$athena-card-radius: $athena-radius-lg; // Plus arrondi (16px)
+$athena-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+$athena-card-border: 1px solid rgba(255, 255, 255, 0.08);
+
+// ============================================================
+// TRANSITIONS
+// ============================================================
+$athena-transition-fast: 0.2s ease;
+$athena-transition-normal: 0.3s ease;
+$athena-transition-slow: 0.5s ease;
+
+// ============================================================
+// Z-INDEX LAYERS
+// ============================================================
+$z-index-base: 0;
+$z-index-dropdown: 100;
+$z-index-sticky: 200;
+$z-index-overlay: 300;
+$z-index-modal: 400;
+$z-index-toast: 500;
+
+// ============================================================
+// BREAKPOINTS (matching Angular CDK)
+// ============================================================
+$breakpoint-xs: 0;
+$breakpoint-sm: 600px;
+$breakpoint-md: 960px;
+$breakpoint-lg: 1280px;
+$breakpoint-xl: 1920px;

@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-informations',
   templateUrl: './informations.component.html',
-  styleUrl: './informations.component.scss'
+  styleUrls: ['./informations.component.scss']
 })
-export class InformationsComponent {
+export class InformationsComponent implements OnInit {
 
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  openLink(url: string): void {
+    window.open(url, '_blank');
+  }
 }

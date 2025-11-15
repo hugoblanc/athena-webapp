@@ -1,0 +1,293 @@
+// ============================================================
+// ATHENA DESIGN SYSTEM - MATERIAL CARDS OVERRIDE
+// Custom styling for mat-card components
+// ============================================================
+
+@use '../variables'as vars;
+
+// ============================================================
+// CARD BASE STYLES
+// ============================================================
+
+.mat-mdc-card {
+  background: vars.$athena-card-bg !important;
+  color: vars.$athena-text-primary !important;
+  border-radius: vars.$athena-card-radius !important;
+  box-shadow: vars.$athena-card-shadow !important;
+  padding: vars.$athena-card-padding !important;
+  border: vars.$athena-card-border !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  transition: transform vars.$athena-transition-fast,
+    box-shadow vars.$athena-transition-fast,
+    background vars.$athena-transition-fast !important;
+
+  // Remove Material's default elevation
+  &.mat-elevation-z1,
+  &.mat-elevation-z2,
+  &.mat-elevation-z3,
+  &.mat-elevation-z4 {
+    box-shadow: vars.$athena-card-shadow !important;
+  }
+
+  // Hover effect - légère augmentation de l'opacité du background
+  &:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  // Clickable cards (with pointer cursor)
+  &[role="button"],
+  &.clickable {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    &:active {
+      transform: translateY(0);
+      background: rgba(255, 255, 255, 0.06) !important;
+      box-shadow: vars.$athena-card-shadow !important;
+    }
+  }
+}
+
+// ============================================================
+// CARD HEADER
+// ============================================================
+
+.mat-mdc-card-header {
+  padding: 0 0 vars.$athena-spacing-md 0 !important;
+  margin-bottom: vars.$athena-spacing-md !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .mat-mdc-card-header-text {
+    margin: 0 !important;
+  }
+}
+
+.mat-mdc-card-title {
+  color: vars.$athena-text-primary !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  margin-bottom: vars.$athena-spacing-sm !important;
+}
+
+.mat-mdc-card-subtitle {
+  color: vars.$athena-text-secondary !important;
+  font-size: 0.875rem !important;
+  margin-bottom: 0 !important;
+}
+
+.mat-mdc-card-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+
+  // If avatar is an icon
+  &.mat-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-contrast !important;
+  }
+}
+
+// ============================================================
+// CARD CONTENT
+// ============================================================
+
+.mat-mdc-card-content {
+  color: vars.$athena-text-primary !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  padding: 0 !important;
+
+  p {
+    margin-bottom: vars.$athena-spacing-md !important;
+
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  // Images in content
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: vars.$athena-radius-sm !important;
+    margin: vars.$athena-spacing-md 0 !important;
+  }
+}
+
+// ============================================================
+// CARD IMAGE
+// ============================================================
+
+.mat-mdc-card-image {
+  width: calc(100% + #{vars.$athena-card-padding * 2}) !important;
+  margin: calc(-1 * #{vars.$athena-card-padding}) calc(-1 * #{vars.$athena-card-padding}) vars.$athena-spacing-md !important;
+  border-radius: vars.$athena-card-radius vars.$athena-card-radius 0 0 !important;
+  object-fit: cover !important;
+
+  &:first-child {
+    margin-top: calc(-1 * #{vars.$athena-card-padding}) !important;
+  }
+}
+
+// For custom image wrappers
+.card-image-wrapper {
+  width: 100% !important;
+  overflow: hidden !important;
+  border-radius: vars.$athena-radius-md !important;
+  position: relative !important;
+
+  img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  // Gradient overlay for better text readability
+  &.with-overlay::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 60% !important;
+    background: vars.$athena-overlay-gradient !important;
+    pointer-events: none !important;
+  }
+}
+
+// ============================================================
+// CARD ACTIONS
+// ============================================================
+
+.mat-mdc-card-actions {
+  padding: vars.$athena-spacing-md 0 0 0 !important;
+  margin-top: vars.$athena-spacing-md !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  gap: vars.$athena-spacing-sm !important;
+  align-items: center !important;
+
+  &.mat-mdc-card-actions-align-end {
+    justify-content: flex-end !important;
+  }
+
+  .mat-mdc-button,
+  .mat-mdc-icon-button {
+    margin: 0 !important;
+  }
+}
+
+// ============================================================
+// SPECIAL CARD VARIANTS
+// ============================================================
+
+// Info card (like in informations page)
+.info-card {
+  background: vars.$athena-card-bg !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: vars.$athena-card-border !important;
+  margin-bottom: vars.$athena-spacing-lg !important;
+
+  .mat-mdc-card-title {
+    display: flex !important;
+    align-items: center !important;
+    gap: vars.$athena-spacing-md !important;
+
+    .mat-icon {
+      color: vars.$athena-primary-base !important;
+      font-size: 1.5rem !important;
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+  }
+}
+
+// Content card (in feed/media pages)
+.content-card {
+  cursor: pointer !important;
+  transition: transform vars.$athena-transition-fast,
+    box-shadow vars.$athena-transition-fast !important;
+
+
+  .card-content-wrapper {
+    display: flex !important;
+    gap: vars.$athena-spacing-md !important;
+
+    @media (max-width: 600px) {
+      flex-direction: column !important;
+    }
+  }
+}
+
+// Media card (in home page)
+.media-card {
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: vars.$athena-overlay-gradient !important;
+    opacity: 0 !important;
+    transition: opacity vars.$athena-transition-fast !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+
+  &:hover::before {
+    opacity: 1 !important;
+  }
+
+  .mat-mdc-card-content {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+}
+
+// Audio player card
+.audio-player-card {
+  background: rgba(vars.$athena-primary-base, 0.1) !important;
+  border: 1px solid rgba(vars.$athena-primary-base, 0.3) !important;
+
+  .mat-mdc-card-header {
+    border-bottom-color: rgba(vars.$athena-primary-base, 0.2) !important;
+
+    .mat-icon {
+      color: vars.$athena-primary-base !important;
+    }
+  }
+
+  .audio-player {
+    width: 100% !important;
+    margin-top: vars.$athena-spacing-sm !important;
+
+    &::-webkit-media-controls-panel {
+      background-color: rgba(vars.$athena-surface-dark, 0.8) !important;
+    }
+
+    &::-webkit-media-controls-play-button,
+    &::-webkit-media-controls-current-time-display,
+    &::-webkit-media-controls-time-remaining-display {
+      color: vars.$athena-text-primary !important;
+    }
+  }
+}
