@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container" [class.mobile-layout]="isHandset$ | async">
+  <!-- Side Navigation for desktop/tablet -->
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Athena</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navItems" [routerLink]="item.route" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+        <span matListItemTitle>{{item.label}}</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Main content -->
+  <mat-sidenav-content>
+    <!-- Toolbar for mobile -->
+    <mat-toolbar color="primary" *ngIf="isHandset$ | async">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="app-title">Athena</span>
+    </mat-toolbar>
+
+    <!-- Router outlet for page content -->
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Bottom navigation for mobile -->
+    <nav mat-tab-nav-bar class="bottom-navigation" *ngIf="isHandset$ | async">
+      <a mat-tab-link *ngFor="let item of navItems"
+         [routerLink]="item.route"
+         routerLinkActive
+         #rla="routerLinkActive"
+         [active]="rla.isActive">
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span>{{item.label}}</span>
+      </a>
+    </nav>
+  </mat-sidenav-content>
+</mat-sidenav-container>
