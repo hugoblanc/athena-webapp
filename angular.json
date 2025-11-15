@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "athena-webapp:build:production"
+              "buildTarget": "athena-webapp:build:production"
             },
             "development": {
-              "browserTarget": "athena-webapp:build:development"
+              "buildTarget": "athena-webapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "athena-webapp:build"
+            "buildTarget": "athena-webapp:build"
           }
         },
         "test": {
