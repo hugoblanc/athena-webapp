@@ -1,107 +1,96 @@
 .informations-container {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 40px 24px;
 }
 
 .hero {
-  text-align: center;
-  margin-bottom: 48px;
-
-  .hero-icon {
-    font-size: 80px;
-    width: 80px;
-    height: 80px;
-    color: var(--primary-color);
-    margin-bottom: 16px;
-  }
+  margin-bottom: 56px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
   h1 {
-    margin: 16px 0 8px;
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: var(--text-primary-color);
+    margin: 0 0 12px 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--athena-text-primary);
+    letter-spacing: -0.02em;
   }
 
   .subtitle {
-    font-size: 1.125rem;
-    color: var(--text-secondary-color);
+    font-size: 1rem;
+    color: var(--athena-text-secondary);
     margin: 0;
+    font-weight: 400;
   }
 }
 
-.info-card {
-  margin-bottom: 24px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: var(--athena-radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: var(--athena-spacing-lg);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.info-section {
+  margin-bottom: 48px;
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.07);
-  }
-
-  .card-header {
+  h2 {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px;
+    margin: 0 0 20px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--athena-text-primary);
+    letter-spacing: -0.01em;
 
     mat-icon {
-      color: var(--athena-primary);
-      font-size: 28px;
-      width: 28px;
-      height: 28px;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--athena-text-primary);
+      color: var(--athena-text-secondary);
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
     }
   }
 
-  .card-content {
-    p {
-      line-height: 1.6;
-      margin-bottom: 16px;
-      color: var(--athena-text-primary);
+  p {
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: var(--athena-text-secondary);
+    font-size: 0.95rem;
+  }
+
+  ol {
+    line-height: 1.8;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    color: var(--athena-text-secondary);
+    font-size: 0.95rem;
+
+    li {
+      margin-bottom: 12px;
     }
+  }
 
-    ol {
-      line-height: 1.8;
-      padding-left: 24px;
-      margin-bottom: 16px;
-      color: var(--athena-text-primary);
+  strong {
+    color: var(--athena-text-primary);
+    font-weight: 500;
+  }
 
-      li {
-        margin-bottom: 8px;
-      }
-    }
+  .links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 
-    .links {
+    button {
       display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-
-      button {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-    }
-
-    a[mat-raised-button] {
-      display: inline-flex;
       align-items: center;
       gap: 8px;
+      text-transform: none;
+      font-weight: 500;
     }
+  }
+
+  a[mat-raised-button] {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: none;
+    font-weight: 500;
+    margin-top: 12px;
   }
 }

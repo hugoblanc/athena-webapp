@@ -68,7 +68,8 @@ export class ContentDetailsComponent implements OnInit {
   }
 
   loadAudioFromBackend(contentId: string): void {
-    this.audioService.getAudioUrlByContentId(contentId).subscribe({
+    const mediaKey = this.currentMetaMedia.key;
+    this.audioService.getAudioUrlByContentId(contentId, mediaKey).subscribe({
       next: (response) => {
         if (response && response.url) {
           this.audioUrl = response.url;

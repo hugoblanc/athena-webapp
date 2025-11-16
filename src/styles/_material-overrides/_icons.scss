@@ -9,14 +9,14 @@
 // ICON BASE STYLES
 // ============================================================
 
-.mat-icon {
-  color: vars.$athena-text-primary !important;
-  vertical-align: middle !important;
+body .mat-icon {
+  color: vars.$athena-text-primary;
+  vertical-align: middle;
 
   // Ensure icons are always centered
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 // ============================================================
@@ -24,48 +24,48 @@
 // ============================================================
 
 // Small icons (16px)
-.mat-icon.icon-sm,
-.mat-icon.icon-small {
-  font-size: 16px !important;
-  width: 16px !important;
-  height: 16px !important;
+body .mat-icon.icon-sm,
+body .mat-icon.icon-small {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
 }
 
 // Medium icons (24px - default)
-.mat-icon.icon-md,
-.mat-icon.icon-medium {
-  font-size: 24px !important;
-  width: 24px !important;
-  height: 24px !important;
+body .mat-icon.icon-md,
+body .mat-icon.icon-medium {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 // Large icons (32px)
-.mat-icon.icon-lg,
-.mat-icon.icon-large {
-  font-size: 32px !important;
-  width: 32px !important;
-  height: 32px !important;
+body .mat-icon.icon-lg,
+body .mat-icon.icon-large {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
 }
 
 // Extra large icons (48px)
-.mat-icon.icon-xl,
-.mat-icon.icon-xlarge {
-  font-size: 48px !important;
-  width: 48px !important;
-  height: 48px !important;
+body .mat-icon.icon-xl,
+body .mat-icon.icon-xlarge {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
 }
 
 // Hero icons (64px+)
-.mat-icon.icon-hero {
-  font-size: 64px !important;
-  width: 64px !important;
-  height: 64px !important;
+body .mat-icon.icon-hero {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
 }
 
-.mat-icon.icon-hero-lg {
-  font-size: 80px !important;
-  width: 80px !important;
-  height: 80px !important;
+body .mat-icon.icon-hero-lg {
+  font-size: 80px;
+  width: 80px;
+  height: 80px;
 }
 
 // ============================================================
@@ -73,71 +73,71 @@
 // ============================================================
 
 // Primary color
-.mat-icon.icon-primary {
-  color: vars.$athena-primary-base !important;
+body .mat-icon.icon-primary {
+  color: vars.$athena-primary-base;
 }
 
 // Accent colors
-.mat-icon.icon-accent {
-  color: vars.$athena-accent-green !important;
+body .mat-icon.icon-accent {
+  color: vars.$athena-accent-green;
 }
 
-.mat-icon.icon-accent-blue {
-  color: vars.$athena-accent-blue !important;
+body .mat-icon.icon-accent-blue {
+  color: vars.$athena-accent-blue;
 }
 
-.mat-icon.icon-accent-red {
-  color: vars.$athena-accent-red !important;
+body .mat-icon.icon-accent-red {
+  color: vars.$athena-accent-red;
 }
 
 // Text colors
-.mat-icon.icon-text-primary {
-  color: vars.$athena-text-primary !important;
+body .mat-icon.icon-text-primary {
+  color: vars.$athena-text-primary;
 }
 
-.mat-icon.icon-text-secondary {
-  color: vars.$athena-text-secondary !important;
+body .mat-icon.icon-text-secondary {
+  color: vars.$athena-text-secondary;
 }
 
 // Success/Warning/Danger semantic colors
-.mat-icon.icon-success {
-  color: vars.$athena-accent-green !important;
+body .mat-icon.icon-success {
+  color: vars.$athena-accent-green;
 }
 
-.mat-icon.icon-warning {
-  color: vars.$athena-accent-blue !important;
+body .mat-icon.icon-warning {
+  color: vars.$athena-accent-blue;
 }
 
-.mat-icon.icon-danger,
-.mat-icon.icon-error {
-  color: vars.$athena-accent-red !important;
+body .mat-icon.icon-danger,
+body .mat-icon.icon-error {
+  color: vars.$athena-accent-red;
 }
 
-.mat-icon.icon-info {
-  color: vars.$athena-accent-blue !important;
+body .mat-icon.icon-info {
+  color: vars.$athena-accent-blue;
 }
 
 // ============================================================
 // ICON BADGES (with badge component)
 // ============================================================
 
-.icon-with-badge {
-  position: relative !important;
-  display: inline-flex !important;
+body .icon-with-badge {
+  position: relative;
+  display: inline-flex;
 
   .mat-badge-content {
-    background: vars.$athena-primary-base !important;
-    color: vars.$athena-primary-contrast !important;
-    font-size: 10px !important;
-    font-weight: 600 !important;
+    background: vars.$athena-primary-base;
+    color: vars.$athena-primary-contrast;
+    font-size: 10px;
+    font-weight: 600;
   }
 
   &.badge-accent .mat-badge-content {
-    background: vars.$athena-accent-green !important;
+    background: vars.$athena-accent-green;
   }
 
   &.badge-warn .mat-badge-content {
-    background: vars.$athena-accent-red !important;
+    background: vars.$athena-accent-red;
   }
 }
 
@@ -146,38 +146,38 @@
 // Additional icon-specific overrides
 // ============================================================
 
-.mat-mdc-icon-button {
+body .mat-mdc-icon-button {
   .mat-icon {
-    color: inherit !important;
+    color: inherit;
   }
 
   // Icon button with background
   &.icon-button-filled {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.1);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.15) !important;
+      background: rgba(255, 255, 255, 0.15);
     }
 
     &.mat-primary {
-      background: vars.$athena-primary-base !important;
+      background: vars.$athena-primary-base;
 
       .mat-icon {
-        color: vars.$athena-primary-contrast !important;
+        color: vars.$athena-primary-contrast;
       }
 
       &:hover {
-        background: vars.$athena-primary-tint !important;
+        background: vars.$athena-primary-tint;
       }
     }
   }
 
   // Icon button with border
   &.icon-button-outlined {
-    border: 1px solid currentColor !important;
+    border: 1px solid currentColor;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.05) !important;
+      background: rgba(255, 255, 255, 0.05);
     }
   }
 }
@@ -187,55 +187,55 @@
 // ============================================================
 
 // Icons in cards
-.mat-mdc-card {
+body .mat-mdc-card {
   .mat-icon {
     &.card-icon {
-      color: vars.$athena-primary-base !important;
-      font-size: 48px !important;
-      width: 48px !important;
-      height: 48px !important;
+      color: vars.$athena-primary-base;
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
     }
   }
 }
 
 // Icons in lists
-.mat-mdc-list-item {
+body .mat-mdc-list-item {
   .mat-icon {
-    color: vars.$athena-text-secondary !important;
-    margin-right: vars.$athena-spacing-md !important;
+    color: vars.$athena-text-secondary;
+    margin-right: vars.$athena-spacing-md;
   }
 
   &.active .mat-icon,
   &:hover .mat-icon {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 }
 
 // Icons in navigation
-.mat-toolbar,
+body .mat-toolbar,
 .mat-mdc-tab-nav-bar,
 .mat-drawer {
   .mat-icon {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
   }
 
   .active .mat-icon {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 }
 
 // Icons in form fields
-.mat-mdc-form-field {
+body .mat-mdc-form-field {
   .mat-icon {
-    color: vars.$athena-text-secondary !important;
+    color: vars.$athena-text-secondary;
   }
 
   &.mat-focused .mat-icon {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 
   &.mat-form-field-invalid .mat-icon {
-    color: vars.$athena-accent-red !important;
+    color: vars.$athena-accent-red;
   }
 }
 
@@ -244,8 +244,8 @@
 // ============================================================
 
 // Spinning icon (for loading states)
-.mat-icon.icon-spin {
-  animation: icon-spin 1s linear infinite !important;
+body .mat-icon.icon-spin {
+  animation: icon-spin 1s linear infinite;
 }
 
 @keyframes icon-spin {
@@ -258,8 +258,8 @@
 }
 
 // Pulse animation
-.mat-icon.icon-pulse {
-  animation: icon-pulse 2s ease-in-out infinite !important;
+body .mat-icon.icon-pulse {
+  animation: icon-pulse 2s ease-in-out infinite;
 }
 
 @keyframes icon-pulse {
@@ -274,8 +274,8 @@
 }
 
 // Bounce animation
-.mat-icon.icon-bounce {
-  animation: icon-bounce 1s ease-in-out infinite !important;
+body .mat-icon.icon-bounce {
+  animation: icon-bounce 1s ease-in-out infinite;
 }
 
 @keyframes icon-bounce {
@@ -292,25 +292,25 @@
 // ============================================================
 
 // Disabled icon
-.mat-icon[disabled],
-.mat-icon.icon-disabled {
-  opacity: 0.5 !important;
-  cursor: not-allowed !important;
+body .mat-icon[disabled],
+body .mat-icon.icon-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 // Interactive icon (clickable)
-.mat-icon.icon-interactive {
-  cursor: pointer !important;
+body .mat-icon.icon-interactive {
+  cursor: pointer;
   transition: color vars.$athena-transition-fast,
-              transform vars.$athena-transition-fast !important;
+              transform vars.$athena-transition-fast;
 
   &:hover {
-    color: vars.$athena-primary-base !important;
-    transform: scale(1.1) !important;
+    color: vars.$athena-primary-base;
+    transform: scale(1.1);
   }
 
   &:active {
-    transform: scale(0.95) !important;
+    transform: scale(0.95);
   }
 }
 
@@ -318,36 +318,36 @@
 // ICON GROUPS
 // ============================================================
 
-.icon-group {
-  display: flex !important;
-  align-items: center !important;
-  gap: vars.$athena-spacing-xs !important;
+body .icon-group {
+  display: flex;
+  align-items: center;
+  gap: vars.$athena-spacing-xs;
 
   .mat-icon {
-    flex-shrink: 0 !important;
+    flex-shrink: 0;
   }
 }
 
 // Stacked icons
-.icon-stack {
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+body .icon-stack {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   .mat-icon {
-    position: absolute !important;
+    position: absolute;
 
     &:first-child {
-      position: relative !important;
+      position: relative;
     }
 
     &.icon-stack-top {
-      font-size: 14px !important;
-      width: 14px !important;
-      height: 14px !important;
-      top: -4px !important;
-      right: -4px !important;
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+      top: -4px;
+      right: -4px;
     }
   }
 }
@@ -356,20 +356,20 @@
 // ICON WITH TEXT
 // ============================================================
 
-.icon-text {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: vars.$athena-spacing-sm !important;
-  color: vars.$athena-text-primary !important;
+body .icon-text {
+  display: inline-flex;
+  align-items: center;
+  gap: vars.$athena-spacing-sm;
+  color: vars.$athena-text-primary;
 
   .mat-icon {
-    color: inherit !important;
+    color: inherit;
   }
 
   &.icon-text-vertical {
-    flex-direction: column !important;
-    text-align: center !important;
-    gap: vars.$athena-spacing-xs !important;
+    flex-direction: column;
+    text-align: center;
+    gap: vars.$athena-spacing-xs;
   }
 }
 
@@ -377,44 +377,44 @@
 // CUSTOM ICON BACKGROUNDS
 // ============================================================
 
-.icon-circle {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 50% !important;
-  padding: vars.$athena-spacing-sm !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+body .icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: vars.$athena-spacing-sm;
+  background: rgba(255, 255, 255, 0.1);
 
   &.icon-circle-primary {
-    background: rgba(vars.$athena-primary-base, 0.2) !important;
+    background: rgba(vars.$athena-primary-base, 0.2);
 
     .mat-icon {
-      color: vars.$athena-primary-base !important;
+      color: vars.$athena-primary-base;
     }
   }
 
   &.icon-circle-accent {
-    background: rgba(vars.$athena-accent-green, 0.2) !important;
+    background: rgba(vars.$athena-accent-green, 0.2);
 
     .mat-icon {
-      color: vars.$athena-accent-green !important;
+      color: vars.$athena-accent-green;
     }
   }
 }
 
-.icon-square {
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: vars.$athena-radius-sm !important;
-  padding: vars.$athena-spacing-sm !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+body .icon-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: vars.$athena-radius-sm;
+  padding: vars.$athena-spacing-sm;
+  background: rgba(255, 255, 255, 0.1);
 
   &.icon-square-primary {
-    background: rgba(vars.$athena-primary-base, 0.2) !important;
+    background: rgba(vars.$athena-primary-base, 0.2);
 
     .mat-icon {
-      color: vars.$athena-primary-base !important;
+      color: vars.$athena-primary-base;
     }
   }
 }

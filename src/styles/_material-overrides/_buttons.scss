@@ -9,21 +9,21 @@
 // BASE BUTTON STYLES
 // ============================================================
 
-.mat-mdc-button,
-.mat-mdc-raised-button,
-.mat-mdc-outlined-button,
-.mat-mdc-unelevated-button,
-.mat-mdc-icon-button,
-.mat-mdc-fab,
-.mat-mdc-mini-fab {
-  border-radius: vars.$athena-radius-sm !important;
-  font-weight: 600 !important;
-  text-transform: none !important;
-  transition: all vars.$athena-transition-fast !important;
+body .mat-mdc-button,
+body .mat-mdc-raised-button,
+body .mat-mdc-outlined-button,
+body .mat-mdc-unelevated-button,
+body .mat-mdc-icon-button,
+body .mat-mdc-fab,
+body .mat-mdc-mini-fab {
+  border-radius: vars.$athena-radius-sm;
+  font-weight: 600;
+  text-transform: none;
+  transition: all vars.$athena-transition-fast;
 
   // Remove Material's default ripple color
   .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -31,65 +31,65 @@
 // RAISED BUTTON (Primary style)
 // ============================================================
 
-.mat-mdc-raised-button {
-  box-shadow: vars.$athena-shadow-sm !important;
+body .mat-mdc-raised-button {
+  box-shadow: vars.$athena-shadow-sm;
 
   &:hover {
-    box-shadow: vars.$athena-shadow-md !important;
-    transform: translateY(-1px) !important;
+    box-shadow: vars.$athena-shadow-md;
+    transform: translateY(-1px);
   }
 
   &:active {
-    box-shadow: vars.$athena-shadow-sm !important;
-    transform: translateY(0) !important;
+    box-shadow: vars.$athena-shadow-sm;
+    transform: translateY(0);
   }
 
   // Primary color
   &.mat-primary {
-    background-color: vars.$athena-primary-base !important;
-    color: vars.$athena-primary-contrast !important;
+    background-color: vars.$athena-primary-base;
+    color: vars.$athena-primary-contrast;
 
     &:hover {
-      background-color: vars.$athena-primary-tint !important;
+      background-color: vars.$athena-primary-tint;
     }
 
     &:active {
-      background-color: vars.$athena-primary-shade !important;
+      background-color: vars.$athena-primary-shade;
     }
 
     &[disabled] {
-      background-color: rgba(vars.$athena-primary-base, 0.3) !important;
-      color: rgba(vars.$athena-primary-contrast, 0.5) !important;
+      background-color: rgba(vars.$athena-primary-base, 0.3);
+      color: rgba(vars.$athena-primary-contrast, 0.5);
     }
   }
 
   // Accent color
   &.mat-accent {
-    background-color: vars.$athena-accent-green !important;
-    color: #ffffff !important;
+    background-color: vars.$athena-accent-green;
+    color: #ffffff;
 
     &:hover {
-      background-color: lighten(vars.$athena-accent-green, 10%) !important;
+      background-color: lighten(vars.$athena-accent-green, 10%);
     }
 
     &[disabled] {
-      background-color: rgba(vars.$athena-accent-green, 0.3) !important;
-      color: rgba(#ffffff, 0.5) !important;
+      background-color: rgba(vars.$athena-accent-green, 0.3);
+      color: rgba(#ffffff, 0.5);
     }
   }
 
   // Warn color
   &.mat-warn {
-    background-color: vars.$athena-accent-red !important;
-    color: #ffffff !important;
+    background-color: vars.$athena-accent-red;
+    color: #ffffff;
 
     &:hover {
-      background-color: lighten(vars.$athena-accent-red, 10%) !important;
+      background-color: lighten(vars.$athena-accent-red, 10%);
     }
 
     &[disabled] {
-      background-color: rgba(vars.$athena-accent-red, 0.3) !important;
-      color: rgba(#ffffff, 0.5) !important;
+      background-color: rgba(vars.$athena-accent-red, 0.3);
+      color: rgba(#ffffff, 0.5);
     }
   }
 }
@@ -98,36 +98,36 @@
 // FLAT/TEXT BUTTON (Secondary style)
 // ============================================================
 
-.mat-mdc-button {
-  color: vars.$athena-text-primary !important;
+body .mat-mdc-button {
+  color: vars.$athena-text-primary;
 
   &.mat-primary {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
 
     &:hover {
-      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+      background-color: rgba(vars.$athena-primary-base, 0.1);
     }
   }
 
   &.mat-accent {
-    color: vars.$athena-accent-green !important;
+    color: vars.$athena-accent-green;
 
     &:hover {
-      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+      background-color: rgba(vars.$athena-accent-green, 0.1);
     }
   }
 
   &.mat-warn {
-    color: vars.$athena-accent-red !important;
+    color: vars.$athena-accent-red;
 
     &:hover {
-      background-color: rgba(vars.$athena-accent-red, 0.1) !important;
+      background-color: rgba(vars.$athena-accent-red, 0.1);
     }
   }
 
   &[disabled] {
-    color: vars.$athena-text-secondary !important;
-    opacity: 0.5 !important;
+    color: vars.$athena-text-secondary;
+    opacity: 0.5;
   }
 }
 
@@ -135,41 +135,41 @@
 // OUTLINED BUTTON
 // ============================================================
 
-.mat-mdc-outlined-button {
-  border: 1px solid currentColor !important;
-  color: vars.$athena-text-primary !important;
+body .mat-mdc-outlined-button {
+  border: 1px solid currentColor;
+  color: vars.$athena-text-primary;
 
   &.mat-primary {
-    color: vars.$athena-primary-base !important;
-    border-color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
+    border-color: vars.$athena-primary-base;
 
     &:hover {
-      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+      background-color: rgba(vars.$athena-primary-base, 0.1);
     }
   }
 
   &.mat-accent {
-    color: vars.$athena-accent-green !important;
-    border-color: vars.$athena-accent-green !important;
+    color: vars.$athena-accent-green;
+    border-color: vars.$athena-accent-green;
 
     &:hover {
-      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+      background-color: rgba(vars.$athena-accent-green, 0.1);
     }
   }
 
   &.mat-warn {
-    color: vars.$athena-accent-red !important;
-    border-color: vars.$athena-accent-red !important;
+    color: vars.$athena-accent-red;
+    border-color: vars.$athena-accent-red;
 
     &:hover {
-      background-color: rgba(vars.$athena-accent-red, 0.1) !important;
+      background-color: rgba(vars.$athena-accent-red, 0.1);
     }
   }
 
   &[disabled] {
-    color: vars.$athena-text-secondary !important;
-    border-color: vars.$athena-text-secondary !important;
-    opacity: 0.5 !important;
+    color: vars.$athena-text-secondary;
+    border-color: vars.$athena-text-secondary;
+    opacity: 0.5;
   }
 }
 
@@ -177,32 +177,32 @@
 // ICON BUTTON
 // ============================================================
 
-.mat-mdc-icon-button {
-  color: vars.$athena-text-primary !important;
+body .mat-mdc-icon-button {
+  color: vars.$athena-text-primary;
 
   &.mat-primary {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
 
     &:hover {
-      background-color: rgba(vars.$athena-primary-base, 0.1) !important;
+      background-color: rgba(vars.$athena-primary-base, 0.1);
     }
   }
 
   &.mat-accent {
-    color: vars.$athena-accent-green !important;
+    color: vars.$athena-accent-green;
 
     &:hover {
-      background-color: rgba(vars.$athena-accent-green, 0.1) !important;
+      background-color: rgba(vars.$athena-accent-green, 0.1);
     }
   }
 
   &[disabled] {
-    color: vars.$athena-text-secondary !important;
-    opacity: 0.5 !important;
+    color: vars.$athena-text-secondary;
+    opacity: 0.5;
   }
 
   .mat-icon {
-    color: inherit !important;
+    color: inherit;
   }
 }
 
@@ -210,29 +210,29 @@
 // FAB BUTTONS
 // ============================================================
 
-.mat-mdc-fab,
-.mat-mdc-mini-fab {
-  background-color: vars.$athena-primary-base !important;
-  color: vars.$athena-primary-contrast !important;
-  box-shadow: vars.$athena-shadow-lg !important;
+body .mat-mdc-fab,
+body .mat-mdc-mini-fab {
+  background-color: vars.$athena-primary-base;
+  color: vars.$athena-primary-contrast;
+  box-shadow: vars.$athena-shadow-lg;
 
   &:hover {
-    box-shadow: vars.$athena-shadow-xl !important;
-    transform: scale(1.05) !important;
+    box-shadow: vars.$athena-shadow-xl;
+    transform: scale(1.05);
   }
 
   &:active {
-    box-shadow: vars.$athena-shadow-md !important;
-    transform: scale(1) !important;
+    box-shadow: vars.$athena-shadow-md;
+    transform: scale(1);
   }
 
   &.mat-accent {
-    background-color: vars.$athena-accent-green !important;
+    background-color: vars.$athena-accent-green;
   }
 
   &[disabled] {
-    background-color: rgba(vars.$athena-primary-base, 0.3) !important;
-    color: rgba(vars.$athena-primary-contrast, 0.5) !important;
+    background-color: rgba(vars.$athena-primary-base, 0.3);
+    color: rgba(vars.$athena-primary-contrast, 0.5);
   }
 }
 
@@ -240,14 +240,14 @@
 // BUTTON GROUPS
 // ============================================================
 
-.mat-mdc-button-group {
-  display: flex !important;
-  gap: vars.$athena-spacing-sm !important;
+body .mat-mdc-button-group {
+  display: flex;
+  gap: vars.$athena-spacing-sm;
 
   .mat-mdc-button,
   .mat-mdc-raised-button,
   .mat-mdc-outlined-button {
-    flex: 1 !important;
+    flex: 1;
   }
 }
 
@@ -256,91 +256,89 @@
 // ============================================================
 
 // Link button (looks like a link)
-.mat-mdc-button.button-link {
-  text-decoration: underline !important;
-  color: vars.$athena-primary-base !important;
-  padding: 0 !important;
-  min-width: auto !important;
+body .mat-mdc-button.button-link {
+  text-decoration: underline;
+  color: vars.$athena-primary-base;
+  padding: 0;
+  min-width: auto;
 
   &:hover {
-    text-decoration: none !important;
-    background: transparent !important;
+    text-decoration: none;
+    background: transparent;
   }
 }
 
 // Transparent button (common in Ionic)
-.mat-mdc-button.button-transparent {
-  background: transparent !important;
-  color: vars.$athena-text-primary !important;
+body .mat-mdc-button.button-transparent {
+  background: transparent;
+  color: vars.$athena-text-primary;
 
   &.mat-primary {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 
 // Large button
-.mat-mdc-button.button-large,
-.mat-mdc-raised-button.button-large {
-  padding: vars.$athena-spacing-md vars.$athena-spacing-xl !important;
-  font-size: 1.125rem !important;
-  min-height: 48px !important;
+body .mat-mdc-button.button-large,
+body .mat-mdc-raised-button.button-large {
+  padding: vars.$athena-spacing-md vars.$athena-spacing-xl;
+  font-size: 1.125rem;
+  min-height: 48px;
 }
 
 // Small button
-.mat-mdc-button.button-small,
-.mat-mdc-raised-button.button-small {
-  padding: vars.$athena-spacing-xs vars.$athena-spacing-md !important;
-  font-size: 0.875rem !important;
-  min-height: 32px !important;
+body .mat-mdc-button.button-small,
+body .mat-mdc-raised-button.button-small {
+  padding: vars.$athena-spacing-xs vars.$athena-spacing-md;
+  font-size: 0.875rem;
+  min-height: 32px;
 }
 
 // Block button (full width)
-.mat-mdc-button.button-block,
-.mat-mdc-raised-button.button-block {
-  width: 100% !important;
-  display: block !important;
+body .mat-mdc-button.button-block,
+body .mat-mdc-raised-button.button-block {
+  width: 100%;
+  display: block;
 }
 
 // ============================================================
 // LOADING STATE (with spinner)
 // ============================================================
 
-.mat-mdc-button,
-.mat-mdc-raised-button {
-  &.loading {
-    position: relative !important;
-    pointer-events: none !important;
-    color: transparent !important;
+body .mat-mdc-button.loading,
+body .mat-mdc-raised-button.loading {
+  position: relative;
+  pointer-events: none;
+  color: transparent;
 
-    &::after {
-      content: '' !important;
-      position: absolute !important;
-      width: 16px !important;
-      height: 16px !important;
-      top: 50% !important;
-      left: 50% !important;
-      margin-left: -8px !important;
-      margin-top: -8px !important;
-      border: 2px solid currentColor !important;
-      border-radius: 50% !important;
-      border-top-color: transparent !important;
-      animation: button-spin 0.6s linear infinite !important;
-    }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: button-spin 0.6s linear infinite;
+  }
 
-    // Show color for spinner
-    &.mat-primary::after {
-      border-color: vars.$athena-primary-contrast !important;
-      border-top-color: transparent !important;
-    }
+  // Show color for spinner
+  &.mat-primary::after {
+    border-color: vars.$athena-primary-contrast;
+    border-top-color: transparent;
+  }
 
-    &.mat-accent::after {
-      border-color: #ffffff !important;
-      border-top-color: transparent !important;
-    }
+  &.mat-accent::after {
+    border-color: #ffffff;
+    border-top-color: transparent;
   }
 }
 
@@ -354,19 +352,17 @@
 // BUTTON WITH ICON
 // ============================================================
 
-.mat-mdc-button,
-.mat-mdc-raised-button {
-  .mat-icon {
-    margin-right: vars.$athena-spacing-sm !important;
-    vertical-align: middle !important;
+body .mat-mdc-button .mat-icon,
+body .mat-mdc-raised-button .mat-icon {
+  margin-right: vars.$athena-spacing-sm;
+  vertical-align: middle;
 
-    &:last-child {
-      margin-right: 0 !important;
-      margin-left: vars.$athena-spacing-sm !important;
-    }
+  &:last-child {
+    margin-right: 0;
+    margin-left: vars.$athena-spacing-sm;
+  }
 
-    &:only-child {
-      margin: 0 !important;
-    }
+  &:only-child {
+    margin: 0;
   }
 }

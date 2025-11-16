@@ -9,75 +9,75 @@
 // FORM FIELD BASE
 // ============================================================
 
-.mat-mdc-form-field {
-  width: 100% !important;
+body .mat-mdc-form-field {
+  width: 100%;
 
   // Form field wrapper
   .mat-mdc-text-field-wrapper {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: vars.$athena-radius-sm !important;
-    padding: 0 vars.$athena-spacing-md !important;
-    transition: background vars.$athena-transition-fast !important;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: vars.$athena-radius-xl;
+    padding: 0 vars.$athena-spacing-md;
+    transition: background vars.$athena-transition-fast;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.08) !important;
+      background: rgba(255, 255, 255, 0.08);
     }
   }
 
   // Input element
   .mat-mdc-input-element {
-    color: vars.$athena-text-primary !important;
-    caret-color: vars.$athena-primary-base !important;
+    color: vars.$athena-text-primary;
+    caret-color: vars.$athena-primary-base;
 
     &::placeholder {
-      color: vars.$athena-text-secondary !important;
-      opacity: 0.7 !important;
+      color: vars.$athena-text-secondary;
+      opacity: 0.7;
     }
 
     &:focus {
       &::placeholder {
-        opacity: 0.5 !important;
+        opacity: 0.5;
       }
     }
   }
 
   // Label
   .mat-mdc-floating-label {
-    color: vars.$athena-text-secondary !important;
+    color: vars.$athena-text-secondary;
   }
 
   // Focused state
   &.mat-focused {
     .mat-mdc-text-field-wrapper {
-      background: rgba(255, 255, 255, 0.1) !important;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .mat-mdc-floating-label {
-      color: vars.$athena-primary-base !important;
+      color: vars.$athena-primary-base;
     }
   }
 
   // Error state
   &.mat-form-field-invalid {
     .mat-mdc-text-field-wrapper {
-      background: rgba(vars.$athena-accent-red, 0.1) !important;
+      background: rgba(vars.$athena-accent-red, 0.1);
     }
 
     .mat-mdc-floating-label {
-      color: vars.$athena-accent-red !important;
+      color: vars.$athena-accent-red;
     }
   }
 
   // Disabled state
   &.mat-form-field-disabled {
-    opacity: 0.5 !important;
+    opacity: 0.5;
 
     .mat-mdc-text-field-wrapper {
-      background: rgba(255, 255, 255, 0.02) !important;
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .mat-mdc-input-element {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
     }
   }
 }
@@ -87,31 +87,46 @@
 // ============================================================
 
 // Fill variant (default)
-.mat-mdc-form-field.mat-form-field-appearance-fill {
+body .mat-mdc-form-field.mat-form-field-appearance-fill {
   .mdc-text-field {
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
   .mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(255, 255, 255, 0.05);
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.08) !important;
+      background-color: rgba(255, 255, 255, 0.08);
     }
   }
 
   &.mat-focused .mdc-text-field--filled {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 
 // Outline variant
-.mat-mdc-form-field.mat-form-field-appearance-outline {
+body .mat-mdc-form-field.mat-form-field-appearance-outline {
   .mdc-notched-outline {
     .mdc-notched-outline__leading,
     .mdc-notched-outline__notch,
     .mdc-notched-outline__trailing {
-      border-color: rgba(255, 255, 255, 0.2) !important;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .mdc-notched-outline__leading {
+      border-radius: vars.$athena-radius-xl 0 0 vars.$athena-radius-xl;
+      width: vars.$athena-radius-xl;
+      border-right: none;
+    }
+
+    .mdc-notched-outline__trailing {
+      border-radius: 0 vars.$athena-radius-xl vars.$athena-radius-xl 0;
+    }
+
+    .mdc-notched-outline__notch {
+      border-right: none;
+      border-left: none;
     }
   }
 
@@ -119,7 +134,7 @@
     .mdc-notched-outline__leading,
     .mdc-notched-outline__notch,
     .mdc-notched-outline__trailing {
-      border-color: rgba(255, 255, 255, 0.3) !important;
+      border-color: rgba(255, 255, 255, 0.3);
     }
   }
 
@@ -127,8 +142,8 @@
     .mdc-notched-outline__leading,
     .mdc-notched-outline__notch,
     .mdc-notched-outline__trailing {
-      border-color: vars.$athena-primary-base !important;
-      border-width: 2px !important;
+      border-color: vars.$athena-primary-base;
+      border-width: 2px;
     }
   }
 
@@ -136,7 +151,7 @@
     .mdc-notched-outline__leading,
     .mdc-notched-outline__notch,
     .mdc-notched-outline__trailing {
-      border-color: vars.$athena-accent-red !important;
+      border-color: vars.$athena-accent-red;
     }
   }
 }
@@ -145,27 +160,27 @@
 // HINTS & ERRORS
 // ============================================================
 
-.mat-mdc-form-field-hint-wrapper,
-.mat-mdc-form-field-error-wrapper {
-  padding: 0 vars.$athena-spacing-xs !important;
+body .mat-mdc-form-field-hint-wrapper,
+body .mat-mdc-form-field-error-wrapper {
+  padding: 0 vars.$athena-spacing-xs;
 }
 
-.mat-mdc-form-field-hint {
-  color: vars.$athena-text-secondary !important;
-  font-size: 0.75rem !important;
+body .mat-mdc-form-field-hint {
+  color: vars.$athena-text-secondary;
+  font-size: 0.75rem;
 }
 
-.mat-mdc-form-field-error {
-  color: vars.$athena-accent-red !important;
-  font-size: 0.75rem !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 4px !important;
+body .mat-mdc-form-field-error {
+  color: vars.$athena-accent-red;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
   .mat-icon {
-    font-size: 16px !important;
-    width: 16px !important;
-    height: 16px !important;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -173,19 +188,19 @@
 // PREFIX & SUFFIX
 // ============================================================
 
-.mat-mdc-form-field-icon-prefix,
-.mat-mdc-form-field-icon-suffix {
-  color: vars.$athena-text-secondary !important;
+body .mat-mdc-form-field-icon-prefix,
+body .mat-mdc-form-field-icon-suffix {
+  color: vars.$athena-text-secondary;
 
   .mat-icon {
-    color: inherit !important;
+    color: inherit;
   }
 }
 
-.mat-focused {
+body .mat-focused {
   .mat-mdc-form-field-icon-prefix,
   .mat-mdc-form-field-icon-suffix {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 }
 
@@ -193,26 +208,26 @@
 // TEXTAREA
 // ============================================================
 
-.mat-mdc-form-field-textarea-control {
-  color: vars.$athena-text-primary !important;
-  resize: vertical !important;
-  min-height: 100px !important;
+body .mat-mdc-form-field-textarea-control {
+  color: vars.$athena-text-primary;
+  resize: vertical;
+  min-height: 100px;
 
   &::-webkit-scrollbar {
-    width: 8px !important;
+    width: 8px;
   }
 
   &::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-radius: 4px !important;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2) !important;
-    border-radius: 4px !important;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.3) !important;
+      background: rgba(255, 255, 255, 0.3);
     }
   }
 }
@@ -221,60 +236,60 @@
 // SELECT
 // ============================================================
 
-.mat-mdc-select {
-  color: vars.$athena-text-primary !important;
+body .mat-mdc-select {
+  color: vars.$athena-text-primary;
 
   .mat-mdc-select-value {
-    color: inherit !important;
+    color: inherit;
   }
 
   .mat-mdc-select-placeholder {
-    color: vars.$athena-text-secondary !important;
+    color: vars.$athena-text-secondary;
   }
 
   .mat-mdc-select-arrow {
-    color: vars.$athena-text-secondary !important;
+    color: vars.$athena-text-secondary;
   }
 
   &.mat-focused .mat-mdc-select-arrow {
-    color: vars.$athena-primary-base !important;
+    color: vars.$athena-primary-base;
   }
 }
 
 // Select panel
-.mat-mdc-select-panel {
-  background: vars.$athena-surface-dark !important;
-  border-radius: vars.$athena-radius-md !important;
-  box-shadow: vars.$athena-shadow-xl !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+body .mat-mdc-select-panel {
+  background: vars.$athena-surface-dark;
+  border-radius: vars.$athena-radius-lg;
+  box-shadow: vars.$athena-shadow-xl;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   .mat-mdc-option {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.05) !important;
+      background: rgba(255, 255, 255, 0.05);
     }
 
     &.mat-mdc-option-active {
-      background: rgba(vars.$athena-primary-base, 0.15) !important;
-      color: vars.$athena-primary-base !important;
+      background: rgba(vars.$athena-primary-base, 0.15);
+      color: vars.$athena-primary-base;
     }
 
     &.mat-selected {
-      background: rgba(vars.$athena-primary-base, 0.2) !important;
-      color: vars.$athena-primary-base !important;
+      background: rgba(vars.$athena-primary-base, 0.2);
+      color: vars.$athena-primary-base;
 
       &:hover {
-        background: rgba(vars.$athena-primary-base, 0.25) !important;
+        background: rgba(vars.$athena-primary-base, 0.25);
       }
     }
 
     .mat-pseudo-checkbox {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
 
       &.mat-pseudo-checkbox-checked {
-        background: vars.$athena-primary-base !important;
-        color: vars.$athena-primary-contrast !important;
+        background: vars.$athena-primary-base;
+        color: vars.$athena-primary-contrast;
       }
     }
   }
@@ -284,35 +299,35 @@
 // CHECKBOX
 // ============================================================
 
-.mat-mdc-checkbox {
+body .mat-mdc-checkbox {
   .mdc-checkbox__background {
-    border-color: vars.$athena-text-secondary !important;
+    border-color: vars.$athena-text-secondary;
   }
 
   &.mat-mdc-checkbox-checked {
     .mdc-checkbox__background {
-      background-color: vars.$athena-primary-base !important;
-      border-color: vars.$athena-primary-base !important;
+      background-color: vars.$athena-primary-base;
+      border-color: vars.$athena-primary-base;
     }
 
     .mdc-checkbox__checkmark {
-      color: vars.$athena-primary-contrast !important;
+      color: vars.$athena-primary-contrast;
     }
   }
 
   &:hover .mdc-checkbox__background {
-    border-color: vars.$athena-primary-base !important;
+    border-color: vars.$athena-primary-base;
   }
 
   .mdc-label {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
   }
 
   &.mat-mdc-checkbox-disabled {
-    opacity: 0.5 !important;
+    opacity: 0.5;
 
     .mdc-label {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
     }
   }
 }
@@ -321,34 +336,34 @@
 // RADIO BUTTON
 // ============================================================
 
-.mat-mdc-radio-button {
+body .mat-mdc-radio-button {
   .mdc-radio__outer-circle {
-    border-color: vars.$athena-text-secondary !important;
+    border-color: vars.$athena-text-secondary;
   }
 
   &.mat-mdc-radio-checked {
     .mdc-radio__outer-circle {
-      border-color: vars.$athena-primary-base !important;
+      border-color: vars.$athena-primary-base;
     }
 
     .mdc-radio__inner-circle {
-      background-color: vars.$athena-primary-base !important;
+      background-color: vars.$athena-primary-base;
     }
   }
 
   &:hover .mdc-radio__outer-circle {
-    border-color: vars.$athena-primary-base !important;
+    border-color: vars.$athena-primary-base;
   }
 
   .mdc-label {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
   }
 
   &.mat-mdc-radio-disabled {
-    opacity: 0.5 !important;
+    opacity: 0.5;
 
     .mdc-label {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
     }
   }
 }
@@ -357,45 +372,45 @@
 // SLIDE TOGGLE
 // ============================================================
 
-.mat-mdc-slide-toggle {
+body .mat-mdc-slide-toggle {
   .mdc-switch__track {
-    background-color: rgba(255, 255, 255, 0.3) !important;
-    border-color: transparent !important;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: transparent;
   }
 
   .mdc-switch__handle {
-    background-color: vars.$athena-text-secondary !important;
+    background-color: vars.$athena-text-secondary;
   }
 
   &.mat-mdc-slide-toggle-checked {
     .mdc-switch__track {
-      background-color: vars.$athena-primary-tint !important;
+      background-color: vars.$athena-primary-tint;
     }
 
     .mdc-switch__handle {
-      background-color: vars.$athena-primary-base !important;
+      background-color: vars.$athena-primary-base;
     }
   }
 
   &:hover {
     .mdc-switch__handle {
-      background-color: vars.$athena-text-primary !important;
+      background-color: vars.$athena-text-primary;
     }
 
     &.mat-mdc-slide-toggle-checked .mdc-switch__handle {
-      background-color: vars.$athena-primary-shade !important;
+      background-color: vars.$athena-primary-shade;
     }
   }
 
   .mdc-label {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
   }
 
   &.mat-mdc-slide-toggle-disabled {
-    opacity: 0.5 !important;
+    opacity: 0.5;
 
     .mdc-label {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
     }
   }
 }
@@ -404,28 +419,28 @@
 // SLIDER
 // ============================================================
 
-.mat-mdc-slider {
+body .mat-mdc-slider {
   .mdc-slider__track--inactive {
-    background-color: rgba(255, 255, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 
   .mdc-slider__track--active {
-    background-color: vars.$athena-primary-base !important;
+    background-color: vars.$athena-primary-base;
   }
 
   .mdc-slider__thumb-knob {
-    background-color: vars.$athena-primary-base !important;
-    border-color: vars.$athena-primary-base !important;
+    background-color: vars.$athena-primary-base;
+    border-color: vars.$athena-primary-base;
   }
 
   &:hover {
     .mdc-slider__thumb-knob {
-      background-color: vars.$athena-primary-tint !important;
+      background-color: vars.$athena-primary-tint;
     }
   }
 
   &.mat-mdc-slider-disabled {
-    opacity: 0.5 !important;
+    opacity: 0.5;
   }
 }
 
@@ -433,38 +448,38 @@
 // DATEPICKER
 // ============================================================
 
-.mat-datepicker-content {
-  background: vars.$athena-surface-dark !important;
-  color: vars.$athena-text-primary !important;
-  border-radius: vars.$athena-radius-md !important;
-  box-shadow: vars.$athena-shadow-xl !important;
+body .mat-datepicker-content {
+  background: vars.$athena-surface-dark;
+  color: vars.$athena-text-primary;
+  border-radius: vars.$athena-radius-lg;
+  box-shadow: vars.$athena-shadow-xl;
 
   .mat-calendar {
-    background: transparent !important;
+    background: transparent;
 
     .mat-calendar-header {
-      color: vars.$athena-text-primary !important;
+      color: vars.$athena-text-primary;
     }
 
     .mat-calendar-body-label {
-      color: vars.$athena-text-secondary !important;
+      color: vars.$athena-text-secondary;
     }
 
     .mat-calendar-body-cell-content {
-      color: vars.$athena-text-primary !important;
+      color: vars.$athena-text-primary;
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1) !important;
+        background: rgba(255, 255, 255, 0.1);
       }
     }
 
     .mat-calendar-body-selected {
-      background-color: vars.$athena-primary-base !important;
-      color: vars.$athena-primary-contrast !important;
+      background-color: vars.$athena-primary-base;
+      color: vars.$athena-primary-contrast;
     }
 
     .mat-calendar-body-today:not(.mat-calendar-body-selected) {
-      border-color: vars.$athena-primary-base !important;
+      border-color: vars.$athena-primary-base;
     }
   }
 }
@@ -473,22 +488,22 @@
 // AUTOCOMPLETE
 // ============================================================
 
-.mat-mdc-autocomplete-panel {
-  background: vars.$athena-surface-dark !important;
-  border-radius: vars.$athena-radius-md !important;
-  box-shadow: vars.$athena-shadow-xl !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+body .mat-mdc-autocomplete-panel {
+  background: vars.$athena-surface-dark;
+  border-radius: vars.$athena-radius-lg;
+  box-shadow: vars.$athena-shadow-xl;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   .mat-mdc-option {
-    color: vars.$athena-text-primary !important;
+    color: vars.$athena-text-primary;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.05) !important;
+      background: rgba(255, 255, 255, 0.05);
     }
 
     &.mat-mdc-option-active {
-      background: rgba(vars.$athena-primary-base, 0.15) !important;
-      color: vars.$athena-primary-base !important;
+      background: rgba(vars.$athena-primary-base, 0.15);
+      color: vars.$athena-primary-base;
     }
   }
 }

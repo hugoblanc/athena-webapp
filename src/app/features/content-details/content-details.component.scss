@@ -109,26 +109,27 @@
 
   .audio-player-container {
     margin-bottom: 24px;
-    padding: 16px;
+    padding: 20px;
     border-radius: var(--athena-radius-lg);
-    background: transparent;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     .audio-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
 
       mat-icon {
-        font-size: 32px;
-        width: 32px;
-        height: 32px;
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
         color: var(--primary-color);
       }
 
       h3 {
         margin: 0;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-weight: 600;
         color: var(--athena-text-primary);
       }
@@ -136,7 +137,9 @@
 
     .audio-player {
       width: 100%;
-      border-radius: 8px;
+      height: 54px;
+      outline: none;
+      filter: brightness(1.1) contrast(0.95);
     }
   }
 

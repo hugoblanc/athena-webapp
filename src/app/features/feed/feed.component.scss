@@ -9,27 +9,27 @@
 .search-bar {
   margin-bottom: 24px;
 
-  .search-field {
+  :host ::ng-deep .search-field {
     width: 100%;
 
     // Fix pour le label qui apparaît en rouge/orange
     .mat-mdc-floating-label {
-      color: var(--athena-text-secondary) !important;
+      color: var(--athena-text-secondary);
     }
 
     &.mat-focused {
       .mat-mdc-floating-label {
-        color: var(--athena-primary) !important;
+        color: var(--athena-primary);
       }
     }
 
     // Input text
     .mat-mdc-input-element {
-      color: var(--athena-text-primary) !important;
+      color: var(--athena-text-primary);
 
       &::placeholder {
-        color: var(--athena-text-secondary) !important;
-        opacity: 0.7 !important;
+        color: var(--athena-text-secondary);
+        opacity: 0.7;
       }
     }
 
@@ -38,7 +38,7 @@
       .mdc-notched-outline__leading,
       .mdc-notched-outline__notch,
       .mdc-notched-outline__trailing {
-        border-color: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.2);
       }
     }
 
@@ -46,7 +46,7 @@
       .mdc-notched-outline__leading,
       .mdc-notched-outline__notch,
       .mdc-notched-outline__trailing {
-        border-color: rgba(255, 255, 255, 0.3) !important;
+        border-color: rgba(255, 255, 255, 0.3);
       }
     }
 
@@ -54,18 +54,18 @@
       .mdc-notched-outline__leading,
       .mdc-notched-outline__notch,
       .mdc-notched-outline__trailing {
-        border-color: var(--athena-primary) !important;
-        border-width: 2px !important;
+        border-color: var(--athena-primary);
+        border-width: 2px;
       }
     }
 
     // Icône de recherche
     .mat-mdc-form-field-icon-suffix {
-      color: var(--athena-text-secondary) !important;
+      color: var(--athena-text-secondary);
     }
 
     &.mat-focused .mat-mdc-form-field-icon-suffix {
-      color: var(--athena-primary) !important;
+      color: var(--athena-primary);
     }
   }
 }

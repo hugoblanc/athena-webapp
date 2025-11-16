@@ -52,7 +52,7 @@ export class FeedComponent implements OnInit {
 
     this.loading = true;
     this.mixedContentService.getLastFeedContent(
-      this.currentPage,
+      this.currentPage + 1, // Backend expects 1-based pagination
       this.pageSize,
       this.searchTerm
     ).subscribe({
