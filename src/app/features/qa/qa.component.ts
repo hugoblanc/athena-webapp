@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef, NgZone } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  NgZone,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -10,7 +16,7 @@ import { AlertService } from '../../core/services/alert.service';
 @Component({
   selector: 'app-qa',
   templateUrl: './qa.component.html',
-  styleUrls: ['./qa.component.scss']
+  styleUrls: ['./qa.component.scss'],
 })
 export class QaComponent implements OnInit, OnDestroy {
   questionForm: FormGroup;
@@ -33,7 +39,7 @@ export class QaComponent implements OnInit, OnDestroy {
     private ngZone: NgZone
   ) {
     this.questionForm = this.fb.group({
-      question: ['', [Validators.required, Validators.minLength(3)]]
+      question: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -47,7 +53,8 @@ export class QaComponent implements OnInit, OnDestroy {
   }
 
   loadHistory(): void {
-    this.qaService.getHistory()
+    this.qaService
+      .getHistory()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
@@ -55,7 +62,7 @@ export class QaComponent implements OnInit, OnDestroy {
         },
         error: (error) => {
           console.error('Error loading history:', error);
-        }
+        },
       });
   }
 
@@ -75,7 +82,8 @@ export class QaComponent implements OnInit, OnDestroy {
     this.questionForm.reset();
 
     // Step 1: Ask the question to get jobId
-    this.qaService.askQuestion(question)
+    this.qaService
+      .askQuestion(question)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
@@ -84,7 +92,8 @@ export class QaComponent implements OnInit, OnDestroy {
           this.isStreaming = true;
 
           // Step 2: Stream the answer using the jobId
-          this.qaService.streamAnswer(jobId)
+          this.qaService
+            .streamAnswer(jobId)
             .pipe(takeUntil(this.destroy$))
             .subscribe({
               next: (event) => {
@@ -93,7 +102,12 @@ export class QaComponent implements OnInit, OnDestroy {
                   if (event.type === 'token' && event.content) {
                     // Append token to the answer
                     this.streamedAnswer += event.content;
-                    console.log('Token received:', event.content, 'Total length:', this.streamedAnswer.length);
+                    console.log(
+                      'Token received:',
+                      event.content,
+                      'Total length:',
+                      this.streamedAnswer.length
+                    );
                     this.cdr.detectChanges();
                   } else if (event.type === 'done' && event.sources) {
                     // Set sources when done
@@ -103,7 +117,8 @@ export class QaComponent implements OnInit, OnDestroy {
                   } else if (event.type === 'error') {
                     console.error('Stream error:', event.error);
                     this.alertService.showError(
-                      event.error || 'Erreur lors de la génération de la réponse.'
+                      event.error ||
+                        'Erreur lors de la génération de la réponse.'
                     );
                   }
                 });
@@ -121,12 +136,15 @@ export class QaComponent implements OnInit, OnDestroy {
               complete: () => {
                 this.ngZone.run(() => {
                   this.isStreaming = false;
-                  console.log('Stream complete. Final answer length:', this.streamedAnswer.length);
+                  console.log(
+                    'Stream complete. Final answer length:',
+                    this.streamedAnswer.length
+                  );
                   // Reload history to include the new Q&A
                   this.loadHistory();
                   this.cdr.detectChanges();
                 });
-              }
+              },
             });
         },
         error: (error) => {
@@ -134,13 +152,19 @@ export class QaComponent implements OnInit, OnDestroy {
           this.isStreaming = false;
           console.error('Error asking question:', error);
           this.alertService.showError(
-            'Impossible d\'envoyer la question. Veuillez réessayer.'
+            "Impossible d'envoyer la question. Veuillez réessayer."
           );
-        }
+        },
       });
   }
 
   navigateToContent(source: QaSource): void {
+    if (!source.mediaKey) {
+      console.error('Cannot navigate: missing mediaKey', source);
+      this.alertService.showError("Impossible d'accéder à cet article.");
+      return;
+    }
+
     this.router.navigate(['/content', source.mediaKey, source.contentId]);
   }
 

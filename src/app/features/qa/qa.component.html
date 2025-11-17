@@ -1,6 +1,7 @@
 <div class="qa-container">
   <!-- Question Form -->
-  <div class="question-section">
+  <div class="question-section" [class.has-conversation]="currentQuestion">
+    <h1 class="title" *ngIf="!currentQuestion">Que voulez-vous savoir ?</h1>
     <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
       <div class="input-wrapper">
         <textarea
@@ -58,7 +59,7 @@
     </div>
 
     <div class="sources-list">
-      <a
+      <span
         class="source-item"
         *ngFor="let source of sources; let i = index"
         (click)="navigateToContent(source)"
@@ -73,7 +74,7 @@
             </span>
           </div>
         </div>
-      </a>
+      </span>
     </div>
   </div>
 
