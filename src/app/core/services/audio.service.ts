@@ -21,16 +21,27 @@ export class AudioService {
    */
   getAudioUrlByContentId(contentId: string | number, mediaKey: string): Observable<{ url: string } | null> {
     // D'abord récupérer l'ID interne à partir du contentId et mediaKey
-    return this.http.get<{ id: number }>(`${this.apiUrl}/content/get-id-from-content-id-and-media-key/${mediaKey}/${contentId}`)
+    const idResolveUrl = `${this.apiUrl}/content/get-id-from-content-id-and-media-key/${mediaKey}/${contentId}`;
+    console.log('[AudioService] Resolving content ID:', { contentId, mediaKey, url: idResolveUrl });
+
+    return this.http.get<{ id: number }>(idResolveUrl)
       .pipe(
         switchMap((content) => {
+          const audioUrl = `${this.apiUrl}/content/get-audio-content-url-by-id/${content.id}`;
+          console.log('[AudioService] Fetching audio URL for internal ID:', { internalId: content.id, url: audioUrl });
+
           // Ensuite récupérer l'audio avec l'ID interne
-          return this.http.get<{ url: string } | null>(
-            `${this.apiUrl}/content/get-audio-content-url-by-id/${content.id}`
-          );
+          return this.http.get<{ url: string } | null>(audioUrl);
         }),
         catchError((error) => {
-          console.log('Error fetching audio:', error);
+          console.error('[AudioService] ERROR fetching audio:', {
+            contentId,
+            mediaKey,
+            error: error.message || error,
+            status: error.status,
+            statusText: error.statusText,
+            url: error.url
+          });
           return of(null);
         })
       );

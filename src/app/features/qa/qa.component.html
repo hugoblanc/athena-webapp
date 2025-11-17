@@ -1,0 +1,147 @@
+<div class="qa-container">
+  <div class="qa-header">
+    <h1>
+      <mat-icon>question_answer</mat-icon>
+      Posez votre question
+    </h1>
+    <p class="subtitle">
+      Obtenez des réponses basées sur tous les articles disponibles
+    </p>
+  </div>
+
+  <!-- Question Form -->
+  <mat-card class="question-card">
+    <mat-card-content>
+      <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Votre question</mat-label>
+          <textarea
+            matInput
+            formControlName="question"
+            rows="3"
+            placeholder="Ex: Quelles sont les dernières nouvelles sur le climat ?"
+            [disabled]="isStreaming"
+          ></textarea>
+          <mat-icon matSuffix>help_outline</mat-icon>
+          <mat-error *ngIf="questionForm.get('question')?.hasError('required')">
+            La question est requise
+          </mat-error>
+          <mat-error *ngIf="questionForm.get('question')?.hasError('minlength')">
+            La question doit contenir au moins 3 caractères
+          </mat-error>
+        </mat-form-field>
+
+        <div class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="questionForm.invalid || isStreaming"
+          >
+            <mat-icon>send</mat-icon>
+            Poser la question
+          </button>
+
+          <button
+            mat-button
+            type="button"
+            (click)="clearAnswer()"
+            *ngIf="hasAnswer"
+            [disabled]="isStreaming"
+          >
+            <mat-icon>clear</mat-icon>
+            Effacer
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading && !streamedAnswer">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Recherche de la réponse...</p>
+  </div>
+
+  <!-- Answer Display -->
+  <mat-card class="answer-card" *ngIf="currentQuestion && (streamedAnswer || isStreaming)">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>lightbulb</mat-icon>
+        Réponse
+      </mat-card-title>
+      <mat-card-subtitle>{{ currentQuestion }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="answer-text" [class.streaming]="isStreaming">
+        {{ streamedAnswer }}
+        <span class="cursor" *ngIf="isStreaming">|</span>
+      </div>
+
+      <mat-spinner
+        *ngIf="isStreaming && !streamedAnswer"
+        diameter="30"
+        class="inline-spinner"
+      ></mat-spinner>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Sources Display -->
+  <div class="sources-section" *ngIf="sources && sources.length > 0">
+    <h2>
+      <mat-icon>source</mat-icon>
+      Sources utilisées ({{ sources.length }})
+    </h2>
+
+    <div class="sources-grid">
+      <mat-card
+        class="source-card"
+        *ngFor="let source of sources"
+        (click)="navigateToContent(source)"
+      >
+        <mat-card-content>
+          <div class="source-header">
+            <mat-icon>article</mat-icon>
+            <span class="source-media">{{ source.mediaKey }}</span>
+            <span class="source-relevance" *ngIf="source.relevanceScore">
+              {{ (source.relevanceScore * 100) | number: '1.0-0' }}%
+            </span>
+          </div>
+          <h3 class="source-title">{{ source.title }}</h3>
+          <p class="source-date" *ngIf="source.publishedAt">
+            {{ source.publishedAt | date: 'dd/MM/yyyy' }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <!-- History Section -->
+  <mat-expansion-panel class="history-panel" *ngIf="history && history.length > 0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon>history</mat-icon>
+        Historique ({{ history.length }})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="history-list">
+      <mat-card
+        class="history-item"
+        *ngFor="let item of history"
+        (click)="loadHistoryItem(item)"
+      >
+        <mat-card-content>
+          <p class="history-question">
+            <mat-icon>question_mark</mat-icon>
+            {{ item.question }}
+          </p>
+          <p class="history-date">
+            {{ item.createdAt | date: 'dd/MM/yyyy HH:mm' }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-expansion-panel>
+</div>

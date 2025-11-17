@@ -69,15 +69,30 @@ export class ContentDetailsComponent implements OnInit {
 
   loadAudioFromBackend(contentId: string): void {
     const mediaKey = this.currentMetaMedia.key;
+    console.log('[ContentDetails] Loading audio from backend:', { contentId, mediaKey });
+
     this.audioService.getAudioUrlByContentId(contentId, mediaKey).subscribe({
       next: (response) => {
+        console.log('[ContentDetails] Audio response received:', response);
         if (response && response.url) {
           this.audioUrl = response.url;
+          console.log('[ContentDetails] Audio URL set:', this.audioUrl);
+
+          // Vérifier si l'URL est HTTP au lieu de HTTPS (problème Android)
+          if (this.audioUrl.startsWith('http:')) {
+            console.warn('[ContentDetails] WARNING: Audio URL uses HTTP instead of HTTPS. This may be blocked on Android!', this.audioUrl);
+          }
+        } else {
+          console.warn('[ContentDetails] No audio URL in response');
         }
       },
       error: (error) => {
         // L'audio n'est peut-être pas disponible pour ce contenu, ce n'est pas grave
-        console.log('No audio available for this content:', error);
+        console.error('[ContentDetails] ERROR: No audio available for this content:', {
+          error: error.message || error,
+          status: error.status,
+          statusText: error.statusText
+        });
       }
     });
   }
