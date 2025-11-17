@@ -158,4 +158,10 @@ export class QaComponent implements OnInit, OnDestroy {
   get hasAnswer(): boolean {
     return this.streamedAnswer.length > 0;
   }
+
+  autoResize(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+  }
 }
