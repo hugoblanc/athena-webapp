@@ -8,18 +8,12 @@
 // Question Form - Sticky en bas
 .question-section {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 16px;
-  background: var(--athena-background, #2d3748);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 900px;
   z-index: 10;
-
-  form {
-    max-width: 900px;
-    margin: 0 auto;
-  }
 
   .input-wrapper {
     display: flex;
