@@ -9,6 +9,7 @@
           placeholder="Posez votre question..."
           [disabled]="isStreaming"
           (input)="autoResize($event)"
+          (keydown)="onKeyDown($event)"
         ></textarea>
         <button
           mat-icon-button

@@ -167,4 +167,12 @@ export class QaComponent implements OnInit, OnDestroy {
     textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
   }
+
+  onKeyDown(event: KeyboardEvent): void {
+    // Send on Enter (but allow Shift+Enter for new line)
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      this.onSubmit();
+    }
+  }
 }
