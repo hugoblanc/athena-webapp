@@ -1,42 +1,63 @@
 .qa-container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 16px;
+  padding: 16px 16px 100px 16px; // Bottom padding for sticky input
   min-height: calc(100vh - 64px);
 }
 
-// Question Form - En haut comme dans Feed
+// Question Form - Sticky en bas
 .question-section {
-  margin-bottom: 24px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: var(--athena-background, #2d3748);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 10;
+
+  form {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
   .input-wrapper {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     align-items: flex-end;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px; // Arrondi pill
+    transition: all 0.2s;
+
+    &:focus-within {
+      border-color: var(--athena-primary, #ff6b35);
+      background: rgba(255, 255, 255, 0.08);
+    }
 
     textarea {
       flex: 1;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 12px 16px;
+      background: transparent;
+      border: none;
+      padding: 8px 4px;
       color: var(--athena-text-primary, #fff);
       font-size: 1rem;
       line-height: 1.5;
       font-family: inherit;
       resize: none;
       outline: none;
-      transition: all 0.2s;
-      min-height: 48px;
       max-height: 200px;
+      overflow-y: auto;
 
-      &::placeholder {
-        color: var(--athena-text-secondary, rgba(255, 255, 255, 0.6));
+      // Hide scrollbar
+      scrollbar-width: none; // Firefox
+      &::-webkit-scrollbar {
+        display: none; // Chrome, Safari
       }
 
-      &:focus {
-        border-color: var(--athena-primary, #ff6b35);
-        background: rgba(255, 255, 255, 0.08);
+      &::placeholder {
+        color: var(--athena-text-secondary, rgba(255, 255, 255, 0.5));
       }
 
       &:disabled {
@@ -47,32 +68,35 @@
 
     .send-button {
       flex-shrink: 0;
-      width: 48px;
-      height: 48px;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
       background: var(--athena-primary, #ff6b35);
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 50%;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 0;
 
       &:hover:not(:disabled) {
         background: var(--athena-primary-dark, #e65a2b);
-        transform: translateY(-2px);
+        transform: scale(1.1);
       }
 
       &:disabled {
-        opacity: 0.5;
+        opacity: 0.3;
         cursor: not-allowed;
+        background: rgba(255, 255, 255, 0.2);
       }
 
       mat-icon {
-        font-size: 24px;
-        width: 24px;
-        height: 24px;
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
       }
     }
   }
@@ -81,7 +105,7 @@
     font-size: 0.85rem;
     color: #ef5350;
     margin-top: 8px;
-    padding-left: 4px;
+    padding-left: 16px;
   }
 }
 

@@ -71,6 +71,9 @@ export class QaComponent implements OnInit, OnDestroy {
     this.isStreaming = false;
     this.isLoading = true;
 
+    // Clear the input immediately
+    this.questionForm.reset();
+
     // Step 1: Ask the question to get jobId
     this.qaService.askQuestion(question)
       .pipe(takeUntil(this.destroy$))
