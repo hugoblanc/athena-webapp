@@ -91,18 +91,15 @@
 }
 
 .message {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   animation: fadeIn 0.3s ease-in;
 
   &.user-message {
     .message-content {
-      background: rgba(255, 255, 255, 0.05);
       color: var(--athena-text-primary, #fff);
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+      line-height: 1.6;
+      padding: 0;
     }
   }
 
@@ -113,31 +110,28 @@
 
     .message-icon {
       flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      background: var(--athena-primary, #ff6b35);
-      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
 
       mat-icon {
-        font-size: 20px;
-        width: 20px;
-        height: 20px;
-        color: white;
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        color: var(--athena-text-secondary, rgba(255, 255, 255, 0.6));
       }
     }
 
     .message-content {
       flex: 1;
-      padding: 12px 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0;
 
       .answer-text {
-        font-size: 0.95rem;
+        font-size: 1rem;
         line-height: 1.7;
         color: var(--athena-text-primary, #fff);
         white-space: pre-wrap;
@@ -147,7 +141,7 @@
           display: inline-block;
           width: 2px;
           height: 1em;
-          background: var(--athena-primary, #ff6b35);
+          background: var(--athena-text-secondary, rgba(255, 255, 255, 0.6));
           margin-left: 2px;
           animation: blink 1s infinite;
         }
@@ -190,63 +184,64 @@
   }
 }
 
-// Sources - Style cards comme Feed
+// Sources - Minimaliste
 .sources-section {
-  margin-bottom: 24px;
+  margin: 32px 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 
   .sources-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-    font-size: 0.9rem;
+    gap: 6px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
     font-weight: 500;
-    color: var(--athena-text-secondary, rgba(255, 255, 255, 0.7));
+    color: var(--athena-text-secondary, rgba(255, 255, 255, 0.5));
 
     mat-icon {
-      font-size: 18px;
-      width: 18px;
-      height: 18px;
-      color: var(--athena-primary, #ff6b35);
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
     }
   }
 
   .sources-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   .source-item {
     display: flex;
-    gap: 12px;
-    padding: 16px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px;
+    padding: 8px 0;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: opacity 0.2s;
     text-decoration: none;
     color: inherit;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--athena-primary, #ff6b35);
-      transform: translateY(-2px);
+      opacity: 0.8;
+
+      .source-number {
+        background: rgba(255, 255, 255, 0.15);
+      }
     }
 
     .source-number {
       flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--athena-text-secondary, rgba(255, 255, 255, 0.7));
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--athena-text-secondary, rgba(255, 255, 255, 0.5));
+      transition: background 0.2s;
     }
 
     .source-info {
@@ -255,39 +250,32 @@
     }
 
     .source-title {
-      font-size: 0.95rem;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 400;
       color: var(--athena-text-primary, #fff);
-      margin-bottom: 6px;
+      margin-bottom: 2px;
       overflow: hidden;
       text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
+      white-space: nowrap;
     }
 
     .source-meta {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.8rem;
-      color: var(--athena-text-secondary, rgba(255, 255, 255, 0.6));
+      font-size: 0.75rem;
+      color: var(--athena-text-secondary, rgba(255, 255, 255, 0.4));
     }
 
     .source-media {
       text-transform: uppercase;
-      font-weight: 600;
-      color: var(--athena-primary, #ff6b35);
-      font-size: 0.75rem;
+      font-weight: 500;
+      font-size: 0.7rem;
     }
 
     .source-relevance {
-      font-size: 0.75rem;
-      background: rgba(76, 175, 80, 0.2);
-      color: #66bb6a;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 600;
+      font-size: 0.7rem;
+      color: var(--athena-text-secondary, rgba(255, 255, 255, 0.5));
     }
   }
 }
