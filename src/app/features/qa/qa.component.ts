@@ -12,6 +12,7 @@ import { takeUntil } from 'rxjs/operators';
 import { QaService } from './services/qa.service';
 import { QaHistoryItem, QaSource } from '../../models/qa.model';
 import { AlertService } from '../../core/services/alert.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-qa',
@@ -36,7 +37,8 @@ export class QaComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private router: Router,
     private cdr: ChangeDetectorRef,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private sanitizer: DomSanitizer
   ) {
     this.questionForm = this.fb.group({
       question: ['', [Validators.required, Validators.minLength(3)]],
@@ -197,6 +199,62 @@ export class QaComponent implements OnInit, OnDestroy {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       this.onSubmit();
+    }
+  }
+
+  /**
+   * Parse answer text to convert inline article citations to clickable links
+   * Pattern: [contentId:X,mediaKey:Y] -> clickable link
+   */
+  parseAnswerWithLinks(text: string): SafeHtml {
+    if (!text) return '';
+
+    // Pattern to match: [contentId:123,mediaKey:relevepeste]
+    const pattern = /\[contentId:(\d+),mediaKey:([a-zA-Z0-9_-]+)\]/g;
+
+    // Escape HTML in the original text first to prevent XSS
+    const escapedText = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+    // Replace citation patterns with clickable links
+    const htmlText = escapedText.replace(
+      pattern,
+      (_match, contentId, mediaKey) => {
+        return `<a href="#" class="inline-source" data-content-id="${contentId}" data-media-key="${mediaKey}">source</a>`;
+      }
+    );
+
+    // Bypass security as we've already escaped the original text
+    return this.sanitizer.bypassSecurityTrustHtml(htmlText);
+  }
+
+  /**
+   * Handle click on inline source links
+   */
+  onInlineSourceClick(event: Event): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const target = event.target as HTMLElement;
+
+    // Check if the clicked element or its parent is an inline-source link
+    let sourceElement: HTMLElement | null = target;
+    while (sourceElement && !sourceElement.classList.contains('inline-source')) {
+      sourceElement = sourceElement.parentElement;
+    }
+
+    if (sourceElement && sourceElement.classList.contains('inline-source')) {
+      const contentId = sourceElement.getAttribute('data-content-id');
+      const mediaKey = sourceElement.getAttribute('data-media-key');
+
+      if (contentId && mediaKey) {
+        console.log('Navigating to article:', { contentId, mediaKey });
+        this.router.navigate(['/content', mediaKey, contentId]);
+      }
     }
   }
 }

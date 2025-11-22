@@ -1,23 +1,15 @@
 <div class="qa-container">
   <!-- Question Form -->
   <div class="question-section" [class.has-conversation]="currentQuestion">
-    <h1 class="title" *ngIf="!currentQuestion">Que voulez-vous savoir ?</h1>
+    <div class="header-content" *ngIf="!currentQuestion">
+      <h1 class="title">Que voulez-vous savoir ?</h1>
+      <p class="subtitle">Je vais chercher la réponse dans 8 ans d'articles vérifiés</p>
+    </div>
     <form [formGroup]="questionForm" (ngSubmit)="onSubmit()">
       <div class="input-wrapper">
-        <textarea
-          formControlName="question"
-          rows="1"
-          placeholder="Posez votre question..."
-          [disabled]="isStreaming"
-          (input)="autoResize($event)"
-          (keydown)="onKeyDown($event)"
-        ></textarea>
-        <button
-          mat-icon-button
-          type="submit"
-          [disabled]="questionForm.invalid || isStreaming"
-          class="send-button"
-        >
+        <textarea formControlName="question" rows="1" placeholder="Posez votre question..." [disabled]="isStreaming"
+          (input)="autoResize($event)" (keydown)="onKeyDown($event)"></textarea>
+        <button mat-icon-button type="submit" [disabled]="questionForm.invalid || isStreaming" class="send-button">
           <mat-icon>arrow_upward</mat-icon>
         </button>
       </div>
@@ -41,8 +33,9 @@
         <img src="assets/icon-192.png" alt="Athena" />
       </div>
       <div class="message-content">
-        <div class="answer-text" *ngIf="streamedAnswer">
-          {{ streamedAnswer }}<span class="cursor" *ngIf="isStreaming"></span>
+        <div class="answer-text" *ngIf="streamedAnswer" (click)="onInlineSourceClick($event)">
+          <span [innerHTML]="parseAnswerWithLinks(streamedAnswer)"></span><span class="cursor"
+            *ngIf="isStreaming"></span>
         </div>
         <div class="loading-dots" *ngIf="isLoading || (isStreaming && !streamedAnswer)">
           <span></span><span></span><span></span>
@@ -59,11 +52,7 @@
     </div>
 
     <div class="sources-list">
-      <span
-        class="source-item"
-        *ngFor="let source of sources; let i = index"
-        (click)="navigateToContent(source)"
-      >
+      <span class="source-item" *ngFor="let source of sources; let i = index" (click)="navigateToContent(source)">
         <span class="source-number">{{ i + 1 }}</span>
         <div class="source-info">
           <div class="source-title">{{ source.title }}</div>
@@ -88,11 +77,7 @@
     </mat-expansion-panel-header>
 
     <div class="history-list">
-      <mat-card
-        class="history-item"
-        *ngFor="let item of history"
-        (click)="loadHistoryItem(item)"
-      >
+      <mat-card class="history-item" *ngFor="let item of history" (click)="loadHistoryItem(item)">
         <mat-card-content>
           <p class="history-question">
             <mat-icon>question_mark</mat-icon>
