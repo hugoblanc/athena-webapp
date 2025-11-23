@@ -1,0 +1,52 @@
+.law-proposals-container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+
+.page-header { text-align: center; margin-bottom: 32px; }
+.page-title { font-size: 2rem; font-weight: 600; color: #fff; margin: 0 0 8px 0; }
+.page-subtitle { font-size: 1rem; color: rgba(255,255,255,0.6); margin: 0; }
+
+.filters-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; margin-bottom: 24px; box-shadow: none !important; }
+.filters-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.clear-filters-btn { height: 56px; color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); }
+
+.loading-container { display: flex; flex-direction: column; align-items: center; padding: 60px 0; gap: 16px; }
+.loading-container p { color: rgba(255,255,255,0.6); margin: 0; }
+
+.proposals-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+
+.proposal-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; box-shadow: none !important; }
+.proposal-card:hover { background: rgba(255,255,255,0.08); border-color: #ff6b35; transform: translateY(-2px); }
+
+.proposal-header { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.proposal-number { font-size: 0.85rem; font-weight: 600; color: #ff6b35; background: rgba(255,107,53,0.15); padding: 4px 10px; border-radius: 4px; }
+.proposal-type { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.08); padding: 4px 10px; border-radius: 4px; }
+.proposal-type.constitutional { color: #ffd700; background: rgba(255,215,0,0.15); }
+.proposal-status { font-size: 0.75rem; font-weight: 500; color: white; padding: 4px 10px; border-radius: 4px; margin-left: auto; }
+
+.proposal-title { font-size: 1.2rem; font-weight: 600; color: #fff; margin: 0 0 16px 0; line-height: 1.4; }
+
+.proposal-author { display: flex; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+.author-info { display: flex; gap: 12px; }
+.author-photo { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); }
+.author-name { font-size: 0.95rem; font-weight: 600; color: #fff; }
+.author-group { font-size: 0.85rem; font-weight: 500; }
+.cosignatories { display: flex; gap: 6px; color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+.key-points { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; padding: 12px; background: rgba(255,255,255,0.03); border-radius: 8px; border-left: 3px solid #ff6b35; }
+.key-point { display: flex; gap: 8px; font-size: 0.9rem; color: #fff; line-height: 1.5; }
+.key-point mat-icon { font-size: 18px; width: 18px; height: 18px; color: #ff6b35; margin-top: 2px; }
+
+.proposal-date { display: flex; gap: 6px; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+.proposal-date mat-icon { font-size: 16px; width: 16px; height: 16px; }
+
+.empty-state { display: flex; flex-direction: column; align-items: center; padding: 60px 20px; text-align: center; }
+.empty-state mat-icon { font-size: 72px; width: 72px; height: 72px; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+.empty-state h3 { font-size: 1.4rem; font-weight: 600; color: #fff; margin: 0 0 8px 0; }
+.empty-state p { font-size: 1rem; color: rgba(255,255,255,0.6); margin: 0; }
+
+@media (max-width: 768px) {
+  .law-proposals-container { padding: 16px 12px; }
+  .page-title { font-size: 1.5rem; }
+  .filters-form { grid-template-columns: 1fr; }
+  .proposal-card { padding: 16px; }
+  .proposal-title { font-size: 1.1rem; }
+}

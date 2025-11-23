@@ -1,0 +1,254 @@
+<div class="detail-container">
+  <!-- Loading State -->
+  <div class="loading-container" *ngIf="isLoading">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Chargement de la proposition...</p>
+  </div>
+
+  <!-- Proposal Details -->
+  <div class="proposal-detail" *ngIf="!isLoading && proposal">
+    <!-- Back Button -->
+    <button mat-stroked-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Retour à la liste
+    </button>
+
+    <!-- Header Card -->
+    <mat-card class="header-card">
+      <div class="header-top">
+        <span class="proposal-number">{{ proposal.numero }}</span>
+        <span class="proposal-type" [class.constitutional]="proposal.typeProposition === 'constitutionnelle'">
+          {{ proposal.typeProposition === 'constitutionnelle' ? 'Proposition constitutionnelle' : 'Proposition ordinaire' }}
+        </span>
+      </div>
+
+      <h1 class="proposal-title">{{ proposal.titre }}</h1>
+
+      <div class="proposal-meta">
+        <div class="meta-item">
+          <mat-icon>calendar_today</mat-icon>
+          <span>Mise en ligne : {{ proposal.dateMiseEnLigne | date: 'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="meta-item" *ngIf="proposal.dateDepot">
+          <mat-icon>event</mat-icon>
+          <span>Déposée : {{ proposal.dateDepot | date: 'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="meta-item">
+          <mat-icon>account_balance</mat-icon>
+          <span>{{ proposal.legislature }}</span>
+        </div>
+      </div>
+
+      <div class="description" *ngIf="proposal.description">
+        <p>{{ proposal.description }}</p>
+      </div>
+
+      <div class="header-actions">
+        <button mat-raised-button color="primary" (click)="openDocument()" *ngIf="proposal.urlDocument">
+          <mat-icon>picture_as_pdf</mat-icon>
+          Voir le document PDF
+        </button>
+        <button mat-stroked-button (click)="openDossier()" *ngIf="proposal.urlDossierLegislatif">
+          <mat-icon>folder_open</mat-icon>
+          Dossier législatif
+        </button>
+      </div>
+    </mat-card>
+
+    <!-- Author and Co-signatories -->
+    <mat-card class="authors-card">
+      <h2>
+        <mat-icon>person</mat-icon>
+        Auteur et cosignataires
+      </h2>
+
+      <!-- Main Author -->
+      <div class="author-main">
+        <div class="depute-card primary-author">
+          <img *ngIf="proposal.auteur.photoUrl" [src]="proposal.auteur.photoUrl" [alt]="proposal.auteur.nom" class="depute-photo">
+          <div class="depute-info">
+            <div class="depute-name">{{ proposal.auteur.nom }}</div>
+            <div class="depute-group" [style.color]="getPoliticalGroupColor(proposal.auteur.groupePolitiqueCode)">
+              {{ getPoliticalGroupName(proposal.auteur.groupePolitiqueCode) }}
+            </div>
+            <button mat-button *ngIf="proposal.auteur.urlDepute" (click)="openDeputeProfile(proposal.auteur.urlDepute)" class="depute-link">
+              <mat-icon>open_in_new</mat-icon>
+              Voir le profil
+            </button>
+          </div>
+          <mat-chip class="author-badge">Auteur</mat-chip>
+        </div>
+      </div>
+
+      <!-- Co-signatories -->
+      <div class="cosignatories-section" *ngIf="proposal.coSignataires.length > 0">
+        <h3>Cosignataires ({{ proposal.coSignataires.length }})</h3>
+        <div class="cosignatories-grid">
+          <div class="depute-card" *ngFor="let depute of proposal.coSignataires">
+            <img *ngIf="depute.photoUrl" [src]="depute.photoUrl" [alt]="depute.nom" class="depute-photo">
+            <div class="depute-info">
+              <div class="depute-name">{{ depute.nom }}</div>
+              <div class="depute-group" [style.color]="getPoliticalGroupColor(depute.groupePolitiqueCode)">
+                {{ getPoliticalGroupName(depute.groupePolitiqueCode) }}
+              </div>
+              <button mat-button *ngIf="depute.urlDepute" (click)="openDeputeProfile(depute.urlDepute)" class="depute-link">
+                <mat-icon>open_in_new</mat-icon>
+                Profil
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Tabs: Simplified vs Official -->
+    <mat-card class="content-card">
+      <mat-tab-group [(selectedIndex)]="selectedTabIndex" animationDuration="300ms">
+        <!-- Simplified Version Tab -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>auto_awesome</mat-icon>
+            Version simplifiée
+          </ng-template>
+
+          <div class="tab-content simplified-content">
+            <!-- Simplified Status -->
+            <div class="status-banner" [style.background-color]="getStatusColor(proposal.simplified.status)">
+              <mat-icon>{{ proposal.simplified.status === 'completed' ? 'check_circle' : proposal.simplified.status === 'pending' ? 'schedule' : 'error' }}</mat-icon>
+              <span>{{ getStatusLabel(proposal.simplified.status) }}</span>
+              <span class="status-date" *ngIf="proposal.simplified.generatedAt">
+                • Générée le {{ proposal.simplified.generatedAt | date: 'dd/MM/yyyy HH:mm' }}
+              </span>
+            </div>
+
+            <div *ngIf="proposal.simplified.status === 'completed'">
+              <!-- Key Points -->
+              <section class="section" *ngIf="proposal.simplified.keyPoints.length > 0">
+                <h2 class="section-title">
+                  <mat-icon>lightbulb</mat-icon>
+                  Points clés
+                </h2>
+                <div class="key-points">
+                  <div class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
+                    <mat-icon>check_circle</mat-icon>
+                    <span>{{ point }}</span>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Exposé des motifs simplifié -->
+              <section class="section" *ngIf="proposal.simplified.exposeMotifs && proposal.simplified.exposeMotifs.length > 0">
+                <h2 class="section-title">
+                  <mat-icon>description</mat-icon>
+                  Exposé des motifs (simplifié)
+                </h2>
+                <div class="expose-motifs">
+                  <div class="expose-section" *ngFor="let section of proposal.simplified.exposeMotifs">
+                    <h3 class="expose-title">{{ section.ordre }}. {{ section.titre }}</h3>
+                    <p class="expose-text">{{ section.texte }}</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Articles simplifiés -->
+              <section class="section" *ngIf="proposal.simplified.articles && proposal.simplified.articles.length > 0">
+                <h2 class="section-title">
+                  <mat-icon>gavel</mat-icon>
+                  Articles (simplifiés)
+                </h2>
+                <div class="simplified-articles">
+                  <div class="simplified-article" *ngFor="let article of proposal.simplified.articles">
+                    <div class="article-header">
+                      <span class="article-numero">{{ article.numero }}</span>
+                    </div>
+                    <p class="article-resume">{{ article.resume }}</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Pending/Failed States -->
+            <div class="empty-simplified" *ngIf="proposal.simplified.status !== 'completed'">
+              <mat-icon>{{ proposal.simplified.status === 'pending' ? 'hourglass_empty' : 'error_outline' }}</mat-icon>
+              <p *ngIf="proposal.simplified.status === 'pending'">
+                La version simplifiée est en cours de génération. Revenez dans quelques instants.
+              </p>
+              <p *ngIf="proposal.simplified.status === 'failed'">
+                La simplification n'a pas pu être générée. Consultez la version officielle ci-dessous.
+              </p>
+            </div>
+          </div>
+        </mat-tab>
+
+        <!-- Official Version Tab -->
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon>article</mat-icon>
+            Version officielle
+          </ng-template>
+
+          <div class="tab-content official-content">
+            <!-- Sections -->
+            <section class="section" *ngFor="let section of proposal.sections">
+              <h2 class="section-title">
+                <mat-icon>folder</mat-icon>
+                {{ getSectionTypeLabel(section.type) }}
+              </h2>
+
+              <h3 class="section-subtitle" *ngIf="section.titre">{{ section.titre }}</h3>
+
+              <div class="section-text" *ngIf="section.texte">
+                <p>{{ section.texte }}</p>
+              </div>
+
+              <!-- Articles in this section -->
+              <div class="official-articles" *ngIf="section.articles.length > 0">
+                <mat-expansion-panel *ngFor="let article of section.articles" class="article-panel">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <strong>{{ article.numero }}</strong>
+                      <span *ngIf="article.titre"> - {{ article.titre }}</span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="article-content">
+                    <p>{{ article.texte }}</p>
+                  </div>
+                </mat-expansion-panel>
+              </div>
+            </section>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+
+    <!-- Amendments -->
+    <mat-card class="amendments-card" *ngIf="proposal.amendements.length > 0">
+      <h2>
+        <mat-icon>edit_note</mat-icon>
+        Amendements ({{ proposal.amendements.length }})
+      </h2>
+      <div class="amendments-list">
+        <div class="amendment-item" *ngFor="let amendement of proposal.amendements">
+          <div class="amendment-header">
+            <span class="amendment-numero">{{ amendement.numero }}</span>
+            <span class="amendment-date">{{ amendement.date | date: 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="amendment-info">
+            <p class="amendment-author" *ngIf="amendement.auteur">
+              <mat-icon>person</mat-icon>
+              {{ amendement.auteur }}
+            </p>
+            <p class="amendment-status" *ngIf="amendement.statut">
+              <mat-icon>info</mat-icon>
+              {{ amendement.statut }}
+            </p>
+          </div>
+          <a mat-button *ngIf="amendement.url" [href]="amendement.url" target="_blank" class="amendment-link">
+            <mat-icon>open_in_new</mat-icon>
+            Voir l'amendement
+          </a>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

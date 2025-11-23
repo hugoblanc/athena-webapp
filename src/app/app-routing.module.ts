@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: 'feed', loadChildren: () => import('./features/feed/feed.module').then(m => m.FeedModule) },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       { path: 'qa', loadChildren: () => import('./features/qa/qa.module').then(m => m.QaModule) },
+      { path: 'propositions', loadChildren: () => import('./features/law-proposals/law-proposals.module').then(m => m.LawProposalsModule) },
       { path: 'informations', loadChildren: () => import('./features/informations/informations.module').then(m => m.InformationsModule) },
       {
         path: 'media/:key',
