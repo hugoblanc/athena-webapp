@@ -35,7 +35,7 @@ export interface SimplifiedArticle {
  */
 export interface SimplifiedVersion {
   status: 'completed' | 'pending' | 'failed';
-  generatedAt: string;
+  generatedAt?: string;
   keyPoints: string[];
   exposeMotifs?: SimplifiedExposeMotif[];
   articles?: SimplifiedArticle[];

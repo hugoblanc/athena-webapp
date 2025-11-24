@@ -95,12 +95,11 @@
       </div>
 
       <!-- Key points (simplified version) -->
-      <div class="key-points" *ngIf="proposal.simplified.status === 'completed' && proposal.simplified.keyPoints.length > 0">
-        <div class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
-          <mat-icon>check_circle</mat-icon>
-          <span>{{ point }}</span>
-        </div>
-      </div>
+      <ul class="key-points" *ngIf="proposal.simplified.status === 'completed' && proposal.simplified.keyPoints && proposal.simplified.keyPoints.length > 0">
+        <li class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
+          {{ point }}
+        </li>
+      </ul>
 
       <!-- Date -->
       <div class="proposal-date">

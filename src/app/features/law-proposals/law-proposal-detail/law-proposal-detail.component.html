@@ -16,88 +16,32 @@
     <!-- Header Card -->
     <mat-card class="header-card">
       <div class="header-top">
-        <span class="proposal-number">{{ proposal.numero }}</span>
+        <span class="proposal-number">N° {{ proposal.numero }}</span>
         <span class="proposal-type" [class.constitutional]="proposal.typeProposition === 'constitutionnelle'">
-          {{ proposal.typeProposition === 'constitutionnelle' ? 'Proposition constitutionnelle' : 'Proposition ordinaire' }}
+          {{ proposal.typeProposition === 'constitutionnelle' ? 'Constitutionnelle' : 'Ordinaire' }}
         </span>
+        <span class="legislature-badge">{{ proposal.legislature }}e législature</span>
       </div>
 
       <h1 class="proposal-title">{{ proposal.titre }}</h1>
 
       <div class="proposal-meta">
-        <div class="meta-item">
-          <mat-icon>calendar_today</mat-icon>
-          <span>Mise en ligne : {{ proposal.dateMiseEnLigne | date: 'dd/MM/yyyy' }}</span>
-        </div>
-        <div class="meta-item" *ngIf="proposal.dateDepot">
-          <mat-icon>event</mat-icon>
-          <span>Déposée : {{ proposal.dateDepot | date: 'dd/MM/yyyy' }}</span>
-        </div>
-        <div class="meta-item">
-          <mat-icon>account_balance</mat-icon>
-          <span>{{ proposal.legislature }}</span>
-        </div>
-      </div>
-
-      <div class="description" *ngIf="proposal.description">
-        <p>{{ proposal.description }}</p>
+        <span class="meta-item">{{ proposal.dateMiseEnLigne | date: 'dd MMMM yyyy' }}</span>
+        <span class="meta-separator">•</span>
+        <span class="meta-item">{{ proposal.auteur.nom }}</span>
+        <span class="meta-separator">•</span>
+        <span class="meta-item">{{ proposal.coSignataires.length }} cosignataire{{ proposal.coSignataires.length > 1 ? 's' : '' }}</span>
       </div>
 
       <div class="header-actions">
-        <button mat-raised-button color="primary" (click)="openDocument()" *ngIf="proposal.urlDocument">
-          <mat-icon>picture_as_pdf</mat-icon>
-          Voir le document PDF
+        <button mat-stroked-button (click)="openDocument()" *ngIf="proposal.urlDocument">
+          <mat-icon>description</mat-icon>
+          Document PDF
         </button>
         <button mat-stroked-button (click)="openDossier()" *ngIf="proposal.urlDossierLegislatif">
           <mat-icon>folder_open</mat-icon>
           Dossier législatif
         </button>
-      </div>
-    </mat-card>
-
-    <!-- Author and Co-signatories -->
-    <mat-card class="authors-card">
-      <h2>
-        <mat-icon>person</mat-icon>
-        Auteur et cosignataires
-      </h2>
-
-      <!-- Main Author -->
-      <div class="author-main">
-        <div class="depute-card primary-author">
-          <img *ngIf="proposal.auteur.photoUrl" [src]="proposal.auteur.photoUrl" [alt]="proposal.auteur.nom" class="depute-photo">
-          <div class="depute-info">
-            <div class="depute-name">{{ proposal.auteur.nom }}</div>
-            <div class="depute-group" [style.color]="getPoliticalGroupColor(proposal.auteur.groupePolitiqueCode)">
-              {{ getPoliticalGroupName(proposal.auteur.groupePolitiqueCode) }}
-            </div>
-            <button mat-button *ngIf="proposal.auteur.urlDepute" (click)="openDeputeProfile(proposal.auteur.urlDepute)" class="depute-link">
-              <mat-icon>open_in_new</mat-icon>
-              Voir le profil
-            </button>
-          </div>
-          <mat-chip class="author-badge">Auteur</mat-chip>
-        </div>
-      </div>
-
-      <!-- Co-signatories -->
-      <div class="cosignatories-section" *ngIf="proposal.coSignataires.length > 0">
-        <h3>Cosignataires ({{ proposal.coSignataires.length }})</h3>
-        <div class="cosignatories-grid">
-          <div class="depute-card" *ngFor="let depute of proposal.coSignataires">
-            <img *ngIf="depute.photoUrl" [src]="depute.photoUrl" [alt]="depute.nom" class="depute-photo">
-            <div class="depute-info">
-              <div class="depute-name">{{ depute.nom }}</div>
-              <div class="depute-group" [style.color]="getPoliticalGroupColor(depute.groupePolitiqueCode)">
-                {{ getPoliticalGroupName(depute.groupePolitiqueCode) }}
-              </div>
-              <button mat-button *ngIf="depute.urlDepute" (click)="openDeputeProfile(depute.urlDepute)" class="depute-link">
-                <mat-icon>open_in_new</mat-icon>
-                Profil
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </mat-card>
 
@@ -113,8 +57,9 @@
 
           <div class="tab-content simplified-content">
             <!-- Simplified Status -->
-            <div class="status-banner" [style.background-color]="getStatusColor(proposal.simplified.status)">
-              <mat-icon>{{ proposal.simplified.status === 'completed' ? 'check_circle' : proposal.simplified.status === 'pending' ? 'schedule' : 'error' }}</mat-icon>
+            <div class="status-banner" [ngClass]="'status-' + proposal.simplified.status">
+              <mat-icon>{{ proposal.simplified.status === 'completed' ? 'check_circle' :
+                proposal.simplified.status === 'pending' ? 'schedule' : 'error' }}</mat-icon>
               <span>{{ getStatusLabel(proposal.simplified.status) }}</span>
               <span class="status-date" *ngIf="proposal.simplified.generatedAt">
                 • Générée le {{ proposal.simplified.generatedAt | date: 'dd/MM/yyyy HH:mm' }}
@@ -123,21 +68,22 @@
 
             <div *ngIf="proposal.simplified.status === 'completed'">
               <!-- Key Points -->
-              <section class="section" *ngIf="proposal.simplified.keyPoints.length > 0">
+              <section class="section"
+                *ngIf="proposal.simplified.keyPoints && proposal.simplified.keyPoints.length > 0">
                 <h2 class="section-title">
                   <mat-icon>lightbulb</mat-icon>
                   Points clés
                 </h2>
-                <div class="key-points">
-                  <div class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
-                    <mat-icon>check_circle</mat-icon>
-                    <span>{{ point }}</span>
-                  </div>
-                </div>
+                <ul class="key-points">
+                  <li class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
+                    {{ point }}
+                  </li>
+                </ul>
               </section>
 
               <!-- Exposé des motifs simplifié -->
-              <section class="section" *ngIf="proposal.simplified.exposeMotifs && proposal.simplified.exposeMotifs.length > 0">
+              <section class="section"
+                *ngIf="proposal.simplified.exposeMotifs && proposal.simplified.exposeMotifs.length > 0">
                 <h2 class="section-title">
                   <mat-icon>description</mat-icon>
                   Exposé des motifs (simplifié)
@@ -151,7 +97,8 @@
               </section>
 
               <!-- Articles simplifiés -->
-              <section class="section" *ngIf="proposal.simplified.articles && proposal.simplified.articles.length > 0">
+              <section class="section"
+                *ngIf="proposal.simplified.articles && proposal.simplified.articles.length > 0">
                 <h2 class="section-title">
                   <mat-icon>gavel</mat-icon>
                   Articles (simplifiés)
@@ -169,7 +116,8 @@
 
             <!-- Pending/Failed States -->
             <div class="empty-simplified" *ngIf="proposal.simplified.status !== 'completed'">
-              <mat-icon>{{ proposal.simplified.status === 'pending' ? 'hourglass_empty' : 'error_outline' }}</mat-icon>
+              <mat-icon>{{ proposal.simplified.status === 'pending' ? 'hourglass_empty' : 'error_outline'
+                }}</mat-icon>
               <p *ngIf="proposal.simplified.status === 'pending'">
                 La version simplifiée est en cours de génération. Revenez dans quelques instants.
               </p>
@@ -219,6 +167,55 @@
           </div>
         </mat-tab>
       </mat-tab-group>
+    </mat-card>
+
+    <!-- Author and Co-signatories -->
+    <mat-card class="authors-card">
+      <h2>
+        <mat-icon>person</mat-icon>
+        Auteur et cosignataires
+      </h2>
+
+      <!-- Main Author -->
+      <div class="author-main">
+        <div class="depute-card primary-author">
+          <img *ngIf="proposal.auteur.photoUrl" [src]="proposal.auteur.photoUrl" [alt]="proposal.auteur.nom"
+            class="depute-photo">
+          <div class="depute-info">
+            <div class="depute-name">{{ proposal.auteur.nom }}</div>
+            <div class="depute-group" [style.color]="getPoliticalGroupColor(proposal.auteur.groupePolitiqueCode)">
+              {{ getPoliticalGroupName(proposal.auteur.groupePolitiqueCode) }}
+            </div>
+            <button mat-button *ngIf="proposal.auteur.urlDepute" (click)="openDeputeProfile(proposal.auteur.urlDepute)"
+              class="depute-link">
+              <mat-icon>open_in_new</mat-icon>
+              Voir le profil
+            </button>
+          </div>
+          <mat-chip class="author-badge">Auteur</mat-chip>
+        </div>
+      </div>
+
+      <!-- Co-signatories -->
+      <div class="cosignatories-section" *ngIf="proposal.coSignataires.length > 0">
+        <h3>Cosignataires ({{ proposal.coSignataires.length }})</h3>
+        <div class="cosignatories-grid">
+          <div class="depute-card" *ngFor="let depute of proposal.coSignataires">
+            <img *ngIf="depute.photoUrl" [src]="depute.photoUrl" [alt]="depute.nom" class="depute-photo">
+            <div class="depute-info">
+              <div class="depute-name">{{ depute.nom }}</div>
+              <div class="depute-group" [style.color]="getPoliticalGroupColor(depute.groupePolitiqueCode)">
+                {{ getPoliticalGroupName(depute.groupePolitiqueCode) }}
+              </div>
+              <button mat-button *ngIf="depute.urlDepute" (click)="openDeputeProfile(depute.urlDepute)"
+                class="depute-link">
+                <mat-icon>open_in_new</mat-icon>
+                Profil
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </mat-card>
 
     <!-- Amendments -->
