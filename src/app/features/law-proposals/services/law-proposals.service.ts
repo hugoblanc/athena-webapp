@@ -40,36 +40,21 @@ export class LawProposalsService {
         httpParams = httpParams.set('sort', params.sort);
       }
 
-      // Filters
-      if (params['filter[groupePolitique]']) {
-        httpParams = httpParams.set(
-          'filter[groupePolitique]',
-          params['filter[groupePolitique]']
-        );
+      // Filters (flat params)
+      if (params.groupePolitique) {
+        httpParams = httpParams.set('groupePolitique', params.groupePolitique);
       }
-      if (params['filter[typeProposition]']) {
-        httpParams = httpParams.set(
-          'filter[typeProposition]',
-          params['filter[typeProposition]']
-        );
+      if (params.typeProposition) {
+        httpParams = httpParams.set('typeProposition', params.typeProposition);
       }
-      if (params['filter[dateDebut]']) {
-        httpParams = httpParams.set(
-          'filter[dateDebut]',
-          params['filter[dateDebut]']
-        );
+      if (params.dateDebut) {
+        httpParams = httpParams.set('dateDebut', params.dateDebut);
       }
-      if (params['filter[dateFin]']) {
-        httpParams = httpParams.set(
-          'filter[dateFin]',
-          params['filter[dateFin]']
-        );
+      if (params.dateFin) {
+        httpParams = httpParams.set('dateFin', params.dateFin);
       }
-      if (params['filter[simplificationStatus]']) {
-        httpParams = httpParams.set(
-          'filter[simplificationStatus]',
-          params['filter[simplificationStatus]']
-        );
+      if (params.simplificationStatus) {
+        httpParams = httpParams.set('simplificationStatus', params.simplificationStatus);
       }
     }
 

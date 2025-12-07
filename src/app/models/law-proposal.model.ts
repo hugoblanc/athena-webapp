@@ -140,11 +140,11 @@ export interface LawProposalsQueryParams {
   page?: number;
   limit?: number;
   sort?: string;
-  'filter[groupePolitique]'?: string;
-  'filter[typeProposition]'?: 'ordinaire' | 'constitutionnelle';
-  'filter[dateDebut]'?: string;
-  'filter[dateFin]'?: string;
-  'filter[simplificationStatus]'?: 'completed' | 'pending' | 'failed';
+  groupePolitique?: string;
+  typeProposition?: 'ordinaire' | 'constitutionnelle';
+  dateDebut?: string;
+  dateFin?: string;
+  simplificationStatus?: 'completed' | 'pending' | 'failed';
 }
 
 /**

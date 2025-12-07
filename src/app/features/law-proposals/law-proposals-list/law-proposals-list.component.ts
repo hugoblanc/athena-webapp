@@ -106,25 +106,32 @@ export class LawProposalsListComponent implements OnInit, OnDestroy {
     const filters = this.filterForm.value;
     const params: any = {
       page,
-      limit,
-      sort: filters.sort
+      limit
     };
 
+    // Only add sort if it has a value
+    if (filters.sort) {
+      params.sort = filters.sort;
+    }
+
     if (filters.groupePolitique) {
-      params['filter[groupePolitique]'] = filters.groupePolitique;
+      params.groupePolitique = filters.groupePolitique;
     }
     if (filters.typeProposition) {
-      params['filter[typeProposition]'] = filters.typeProposition;
+      params.typeProposition = filters.typeProposition;
     }
     if (filters.simplificationStatus) {
-      params['filter[simplificationStatus]'] = filters.simplificationStatus;
+      params.simplificationStatus = filters.simplificationStatus;
     }
+
+    console.log('Loading proposals with params:', params);
 
     this.lawProposalsService
       .getLawProposals(params)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (response) => {
+          console.log('Received response:', response);
           this.proposals = response.data;
           this.pagination = response.pagination;
           this.isLoading = false;
@@ -185,7 +192,7 @@ export class LawProposalsListComponent implements OnInit, OnDestroy {
       groupePolitique: '',
       typeProposition: '',
       simplificationStatus: '',
-      sort: '-dateMiseEnLigne'
+      sort: 'dateMiseEnLigne:desc'
     });
   }
 }

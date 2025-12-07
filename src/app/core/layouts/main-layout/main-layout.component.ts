@@ -20,6 +20,7 @@ export class MainLayoutComponent implements OnInit {
     { label: 'Feed', icon: 'dynamic_feed', route: '/feed' },
     { label: 'Accueil', icon: 'home', route: '/home' },
     { label: 'Q&A', icon: 'question_answer', route: '/qa' },
+    { label: 'Propositions', icon: 'gavel', route: '/propositions/list' },
     { label: 'Informations', icon: 'info', route: '/informations' }
   ];
 

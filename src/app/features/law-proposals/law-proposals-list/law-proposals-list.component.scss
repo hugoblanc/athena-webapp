@@ -43,6 +43,17 @@
 .empty-state h3 { font-size: 1.4rem; font-weight: 600; color: #fff; margin: 0 0 8px 0; }
 .empty-state p { font-size: 1rem; color: rgba(255,255,255,0.6); margin: 0; }
 
+::ng-deep .mat-mdc-paginator {
+  background: transparent !important;
+  color: rgba(255,255,255,0.7);
+}
+::ng-deep .mat-mdc-paginator-container { padding: 8px 0; }
+::ng-deep .mat-mdc-paginator-range-label { color: rgba(255,255,255,0.6); }
+::ng-deep .mat-mdc-paginator-icon { fill: rgba(255,255,255,0.6); }
+::ng-deep .mat-mdc-icon-button:not(:disabled) { color: rgba(255,255,255,0.7); }
+::ng-deep .mat-mdc-select-value { color: rgba(255,255,255,0.7); }
+::ng-deep .mat-mdc-select-arrow { color: rgba(255,255,255,0.5); }
+
 @media (max-width: 768px) {
   .law-proposals-container { padding: 16px 12px; }
   .page-title { font-size: 1.5rem; }
