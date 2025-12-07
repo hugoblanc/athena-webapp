@@ -88,7 +88,7 @@ export interface LawProposal {
   auteur: Depute;
   coSignataires: Depute[];
 
-  simplified: SimplifiedVersion;
+  simplified?: SimplifiedVersion;
 
   sections: Section[];
   amendements: Amendement[];

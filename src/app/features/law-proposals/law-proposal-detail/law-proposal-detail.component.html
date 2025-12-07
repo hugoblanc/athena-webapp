@@ -57,7 +57,7 @@
 
           <div class="tab-content simplified-content">
             <!-- Simplified Status -->
-            <div class="status-banner" [ngClass]="'status-' + proposal.simplified.status">
+            <div class="status-banner" *ngIf="proposal.simplified" [ngClass]="'status-' + proposal.simplified.status">
               <mat-icon>{{ proposal.simplified.status === 'completed' ? 'check_circle' :
                 proposal.simplified.status === 'pending' ? 'schedule' : 'error' }}</mat-icon>
               <span>{{ getStatusLabel(proposal.simplified.status) }}</span>
@@ -66,16 +66,16 @@
               </span>
             </div>
 
-            <div *ngIf="proposal.simplified.status === 'completed'">
+            <div *ngIf="proposal.simplified?.status === 'completed'">
               <!-- Key Points -->
               <section class="section"
-                *ngIf="proposal.simplified.keyPoints && proposal.simplified.keyPoints.length > 0">
+                *ngIf="proposal.simplified!.keyPoints?.length">
                 <h2 class="section-title">
                   <mat-icon>lightbulb</mat-icon>
                   Points clés
                 </h2>
                 <ul class="key-points">
-                  <li class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
+                  <li class="key-point" *ngFor="let point of proposal.simplified!.keyPoints">
                     {{ point }}
                   </li>
                 </ul>
@@ -83,13 +83,13 @@
 
               <!-- Exposé des motifs simplifié -->
               <section class="section"
-                *ngIf="proposal.simplified.exposeMotifs && proposal.simplified.exposeMotifs.length > 0">
+                *ngIf="proposal.simplified!.exposeMotifs?.length">
                 <h2 class="section-title">
                   <mat-icon>description</mat-icon>
                   Exposé des motifs (simplifié)
                 </h2>
                 <div class="expose-motifs">
-                  <div class="expose-section" *ngFor="let section of proposal.simplified.exposeMotifs">
+                  <div class="expose-section" *ngFor="let section of proposal.simplified!.exposeMotifs!">
                     <h3 class="expose-title">{{ section.ordre }}. {{ section.titre }}</h3>
                     <p class="expose-text">{{ section.texte }}</p>
                   </div>
@@ -98,13 +98,13 @@
 
               <!-- Articles simplifiés -->
               <section class="section"
-                *ngIf="proposal.simplified.articles && proposal.simplified.articles.length > 0">
+                *ngIf="proposal.simplified!.articles?.length">
                 <h2 class="section-title">
                   <mat-icon>gavel</mat-icon>
                   Articles (simplifiés)
                 </h2>
                 <div class="simplified-articles">
-                  <div class="simplified-article" *ngFor="let article of proposal.simplified.articles">
+                  <div class="simplified-article" *ngFor="let article of proposal.simplified!.articles!">
                     <div class="article-header">
                       <span class="article-numero">{{ article.numero }}</span>
                     </div>
@@ -114,14 +114,17 @@
               </section>
             </div>
 
-            <!-- Pending/Failed States -->
-            <div class="empty-simplified" *ngIf="proposal.simplified.status !== 'completed'">
-              <mat-icon>{{ proposal.simplified.status === 'pending' ? 'hourglass_empty' : 'error_outline'
+            <!-- Pending/Failed/Missing States -->
+            <div class="empty-simplified" *ngIf="!proposal.simplified || proposal.simplified.status !== 'completed'">
+              <mat-icon>{{ proposal.simplified?.status === 'pending' ? 'hourglass_empty' : 'error_outline'
                 }}</mat-icon>
-              <p *ngIf="proposal.simplified.status === 'pending'">
+              <p *ngIf="!proposal.simplified">
+                Aucune version simplifiée disponible. Consultez la version officielle ci-dessous.
+              </p>
+              <p *ngIf="proposal.simplified?.status === 'pending'">
                 La version simplifiée est en cours de génération. Revenez dans quelques instants.
               </p>
-              <p *ngIf="proposal.simplified.status === 'failed'">
+              <p *ngIf="proposal.simplified?.status === 'failed'">
                 La simplification n'a pas pu être générée. Consultez la version officielle ci-dessous.
               </p>
             </div>
