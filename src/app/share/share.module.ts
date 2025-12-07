@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ShareRoutingModule } from './share-routing.module';
 import { ShareComponent } from './share.component';
+import { DownloadComponent } from './download/download.component';
 
 
 @NgModule({
   declarations: [
-    ShareComponent
+    ShareComponent,
+    DownloadComponent
   ],
   imports: [
     CommonModule,

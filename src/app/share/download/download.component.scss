@@ -1,0 +1,203 @@
+// Design tokens
+$font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$color-bg-start: #0a0a0f;
+$color-bg-end: #12121a;
+$color-text: #ffffff;
+$color-text-muted: rgba(255, 255, 255, 0.55);
+$color-accent: #e67e22;
+
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.download-page {
+  min-height: 100vh;
+  background: linear-gradient(165deg, $color-bg-start 0%, $color-bg-end 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 360px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 40px;
+}
+
+header {
+  .logo {
+    height: 56px;
+    width: auto;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h1 {
+  font-family: $font-stack;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: $color-text;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: $font-stack;
+  font-size: 0.95rem;
+  color: $color-text-muted;
+  margin: 0;
+}
+
+.features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  width: 100%;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: $font-stack;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+  }
+
+  .bullet {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: $color-accent;
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+}
+
+.stores {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.store-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  overflow: hidden;
+
+  img {
+    height: 52px;
+    width: auto;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.primary {
+    background: transparent;
+  }
+
+  &.secondary {
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: $font-stack;
+
+  .stars {
+    color: #fbbf24;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .text {
+    font-size: 0.8rem;
+    color: $color-text-muted;
+  }
+}
+
+
+footer {
+  .back-link {
+    font-family: $font-stack;
+    font-size: 0.85rem;
+    color: $color-text-muted;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $color-text;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+// Mobile adjustments
+@media (max-width: 380px) {
+  .download-page {
+    padding: 20px 16px;
+  }
+
+  .content {
+    gap: 32px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .features li {
+    font-size: 0.85rem;
+  }
+
+  .store-btn img {
+    height: 46px;
+  }
+}

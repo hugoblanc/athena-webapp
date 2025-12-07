@@ -1,0 +1,50 @@
+<div class="download-page">
+  <div class="content">
+    <header>
+      <img src="assets/menu.png" alt="Athena" class="logo">
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>L'info indépendante,<br>accessible à tous</h1>
+        <p class="subtitle">Rejoignez des milliers de lecteurs</p>
+      </div>
+
+      <ul class="features">
+        <li>
+          <span class="bullet"></span>
+          <span>Agrège les médias indépendants en un seul flux</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span>100% gratuit, sans publicité ni tracking</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span>Open-source et transparent</span>
+        </li>
+      </ul>
+
+      <div class="stores">
+        <a [href]="primaryStoreUrl" class="store-btn primary" target="_blank" rel="noopener">
+          <img [src]="primaryStoreIcon" [alt]="primaryStoreName">
+        </a>
+
+        <a [href]="secondaryStoreUrl" class="store-btn secondary" target="_blank" rel="noopener">
+          <img [src]="secondaryStoreIcon" [alt]="secondaryStoreName">
+        </a>
+      </div>
+
+      <p class="rating">
+        <span class="stars">★★★★☆</span>
+        <span class="text">4.4 sur les stores</span>
+      </p>
+    </main>
+
+    <footer *ngIf="articleUrl">
+      <a [href]="articleUrl" class="back-link">
+        Continuer vers l'article
+      </a>
+    </footer>
+  </div>
+</div>

@@ -1,19 +1,40 @@
-<ng-container *ngIf="shareableContent$ | async as shareableContent">
+<div class="share-page">
+  <ng-container *ngIf="shareableContent$ | async as shareableContent">
+    <header>
+      <img src="assets/menu.png" alt="Athena" class="logo">
+      <span class="tagline">L'actu indépendante</span>
+    </header>
 
-  <div>
-    <div class="img-container">
-      <img [src]="shareableContent.image.url" alt="">
+    <main>
+      <article class="article-card">
+        <div class="article-image" *ngIf="shareableContent.image?.url">
+          <img [src]="shareableContent.image.url" [alt]="shareableContent.title">
+        </div>
+        <div class="article-content">
+          <span class="shared-badge">Article partagé</span>
+          <h1 [innerHTML]="shareableContent.title"></h1>
+        </div>
+      </article>
+
+      <div class="actions">
+        <a [routerLink]="['/share/download']"
+           [queryParams]="{ articleUrl: shareableContent.originalUrl }"
+           class="cta-primary">
+          Télécharger l'app gratuite
+        </a>
+
+        <p class="promise">Promis, vous n'êtes pas le produit.</p>
+
+        <a [href]="shareableContent.originalUrl" class="cta-secondary">
+          Lire l'article sans l'app
+        </a>
+      </div>
+    </main>
+  </ng-container>
+
+  <ng-container *ngIf="!(shareableContent$ | async)">
+    <div class="loading">
+      <div class="spinner"></div>
     </div>
-    <div>
-      <h1 [innerHtml]="shareableContent.title"></h1>
-      <a class="access-button" [href]="shareableContent.originalUrl">Lire l'article</a>
-    </div>
-  </div>
-
-  <p>Sinon tu peux aussi télécharger l'application Athena pour rejoindre le mouvement</p>
-
-
-
-  <div class="cta-container"><a routerLink="/home" class="cta-button">Télécharger Athena</a></div>
-
-</ng-container>
+  </ng-container>
+</div>
