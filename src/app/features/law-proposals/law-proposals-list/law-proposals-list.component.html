@@ -96,7 +96,7 @@
 
       <!-- Key points (simplified version) -->
       <ul class="key-points" *ngIf="proposal.simplified?.status === 'completed' && proposal.simplified?.keyPoints?.length">
-        <li class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
+        <li class="key-point" *ngFor="let point of proposal.simplified!.keyPoints">
           {{ point }}
         </li>
       </ul>
