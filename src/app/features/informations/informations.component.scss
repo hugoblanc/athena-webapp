@@ -75,22 +75,21 @@
     gap: 12px;
     flex-wrap: wrap;
     margin-top: 20px;
-
-    button {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-transform: none;
-      font-weight: 500;
-    }
   }
 
-  a[mat-raised-button] {
+  button[mat-stroked-button],
+  a[mat-stroked-button] {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     text-transform: none;
     font-weight: 500;
     margin-top: 12px;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--athena-text-primary);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
   }
 }
