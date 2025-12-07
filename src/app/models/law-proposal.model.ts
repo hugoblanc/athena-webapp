@@ -107,7 +107,7 @@ export interface LawProposalSummary {
   auteur: Depute;
   coSignatairesCount: number;
 
-  simplified: {
+  simplified?: {
     status: 'completed' | 'pending' | 'failed';
     keyPoints: string[];
   };

@@ -69,7 +69,7 @@
         <span class="proposal-type" [class.constitutional]="proposal.typeProposition === 'constitutionnelle'">
           {{ proposal.typeProposition === 'constitutionnelle' ? 'Constitutionnelle' : 'Ordinaire' }}
         </span>
-        <span class="proposal-status" [style.background-color]="getStatusColor(proposal.simplified.status)">
+        <span class="proposal-status" *ngIf="proposal.simplified" [style.background-color]="getStatusColor(proposal.simplified.status)">
           {{ getStatusLabel(proposal.simplified.status) }}
         </span>
       </div>
@@ -95,7 +95,7 @@
       </div>
 
       <!-- Key points (simplified version) -->
-      <ul class="key-points" *ngIf="proposal.simplified.status === 'completed' && proposal.simplified.keyPoints && proposal.simplified.keyPoints.length > 0">
+      <ul class="key-points" *ngIf="proposal.simplified?.status === 'completed' && proposal.simplified?.keyPoints?.length">
         <li class="key-point" *ngFor="let point of proposal.simplified.keyPoints">
           {{ point }}
         </li>
