@@ -30,6 +30,8 @@ const routes: Routes = [
   // Routes without layout (standalone pages)
   { path: 'privacy', loadChildren: () => import('./privacy/privacy.module').then(m => m.PrivacyModule) },
   { path: 'share', loadChildren: () => import('./share/share.module').then(m => m.ShareModule) },
+  // Auth routes (without layout)
+  { path: '', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
   // Fallback
   { path: '**', redirectTo: 'feed' }
 ];

@@ -1,0 +1,114 @@
+@use '../../../../styles/variables' as vars;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: vars.$athena-spacing-lg;
+}
+
+.login-card {
+  max-width: 450px;
+  width: 100%;
+
+  mat-card-header {
+    text-align: center;
+    margin-bottom: vars.$athena-spacing-lg;
+  }
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: vars.$athena-spacing-sm;
+  padding: vars.$athena-spacing-md;
+  margin-bottom: vars.$athena-spacing-md;
+  background-color: rgba(230, 102, 90, 0.1);
+  border-radius: vars.$athena-radius-sm;
+  border-left: 4px solid vars.$athena-accent-red;
+  color: vars.$athena-accent-red;
+
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    font-size: 14px;
+  }
+}
+
+.google-button {
+  width: 100%;
+  height: 48px;
+  margin-bottom: vars.$athena-spacing-md;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: vars.$athena-spacing-lg 0;
+  color: vars.$athena-text-secondary;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  span {
+    padding: 0 vars.$athena-spacing-md;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$athena-spacing-md;
+
+  .full-width {
+    width: 100%;
+  }
+
+  button[type="submit"] {
+    height: 48px;
+    margin-top: vars.$athena-spacing-sm;
+    position: relative;
+
+    mat-spinner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.register-link {
+  text-align: center;
+  margin-top: vars.$athena-spacing-lg;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: vars.$athena-text-secondary;
+  }
+
+  a {
+    color: vars.$athena-primary-base;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 4px;
+
+    &:hover {
+      color: vars.$athena-primary-tint;
+      text-decoration: underline;
+    }
+  }
+}

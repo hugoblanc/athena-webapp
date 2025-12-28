@@ -155,6 +155,10 @@ mat-toolbar.mat-toolbar.mat-primary {
   letter-spacing: -0.3px;
 }
 
+.spacer {
+  flex: 1 1 auto;
+}
+
 // Contenu principal
 .content-wrapper {
   padding: var(--athena-spacing-lg);

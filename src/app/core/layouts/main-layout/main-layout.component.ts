@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AuthService, AuthUser } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -16,6 +17,8 @@ export class MainLayoutComponent implements OnInit {
       shareReplay()
     );
 
+  user$: Observable<AuthUser | null>;
+
   navItems = [
     { label: 'Feed', icon: 'dynamic_feed', route: '/feed' },
     { label: 'Accueil', icon: 'home', route: '/home' },
@@ -24,7 +27,12 @@ export class MainLayoutComponent implements OnInit {
     { label: 'Informations', icon: 'info', route: '/informations' }
   ];
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService
+  ) {
+    this.user$ = this.authService.getCurrentUser();
+  }
 
   ngOnInit(): void {}
 }

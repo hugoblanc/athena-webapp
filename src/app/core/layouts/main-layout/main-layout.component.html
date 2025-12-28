@@ -9,6 +9,15 @@
         <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
         <span matListItemTitle>{{item.label}}</span>
       </a>
+      <mat-divider></mat-divider>
+      <a mat-list-item *ngIf="!(user$ | async)" [routerLink]="'/login'" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>login</mat-icon>
+        <span matListItemTitle>Se connecter</span>
+      </a>
+      <a mat-list-item *ngIf="user$ | async" [routerLink]="'/profile'" routerLinkActive="active-link">
+        <mat-icon matListItemIcon>account_circle</mat-icon>
+        <span matListItemTitle>Mon profil</span>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -20,6 +29,13 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="app-title">Athena</span>
+      <span class="spacer"></span>
+      <button mat-icon-button *ngIf="!(user$ | async)" [routerLink]="'/login'">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="user$ | async" [routerLink]="'/profile'">
+        <mat-icon>account_circle</mat-icon>
+      </button>
     </mat-toolbar>
 
     <!-- Router outlet for page content -->
