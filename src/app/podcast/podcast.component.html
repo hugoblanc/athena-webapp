@@ -1,0 +1,90 @@
+<div class="podcast-page">
+  <!-- État de chargement -->
+  <ng-container *ngIf="isLoading">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Chargement du podcast...</p>
+    </div>
+  </ng-container>
+
+  <!-- État d'erreur -->
+  <ng-container *ngIf="hasError && !isLoading">
+    <header>
+      <img src="assets/menu.png" alt="Athena" class="logo">
+      <span class="tagline">L'actu indépendante</span>
+    </header>
+    <div class="error">
+      <h2>Oups !</h2>
+      <p>{{ errorMessage }}</p>
+      <a routerLink="/" class="cta-secondary">Retour à l'accueil</a>
+    </div>
+  </ng-container>
+
+  <!-- Contenu principal -->
+  <ng-container *ngIf="podcast && !isLoading && !hasError">
+    <header>
+      <img src="assets/menu.png" alt="Athena" class="logo">
+      <span class="tagline">L'actu indépendante</span>
+    </header>
+
+    <main>
+      <!-- Section CTA (AVANT le lecteur) -->
+      <div class="cta-section">
+        <p class="cta-message">Une meilleure expérience vous attend sur l'app</p>
+        <a routerLink="/share/download" class="cta-primary">
+          Télécharger l'app gratuite
+        </a>
+      </div>
+
+      <!-- Section Lecteur -->
+      <div class="player-container">
+        <!-- Artwork -->
+        <div class="artwork-container">
+          <img
+            [src]="podcast.content.meta_media.logo"
+            [alt]="podcast.content.title"
+            class="podcast-artwork">
+        </div>
+
+        <!-- Infos podcast -->
+        <div class="podcast-info">
+          <h1 class="podcast-title">{{ podcast.content.title }}</h1>
+          <p class="podcast-source">{{ podcast.content.meta_media.title }}</p>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="progress-container">
+          <div class="progress-track">
+            <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
+            <input
+              type="range"
+              [min]="0"
+              [max]="duration"
+              [value]="currentTime"
+              (input)="onSeek($event)"
+              class="progress-slider">
+          </div>
+          <div class="time-labels">
+            <span>{{ currentTime | formatTime }}</span>
+            <span>{{ duration | formatTime }}</span>
+          </div>
+        </div>
+
+        <!-- Bouton Play/Pause -->
+        <div class="playback-controls">
+          <button class="play-pause-button" (click)="togglePlayPause()">
+            <span class="icon">{{ isPlaying ? '⏸' : '▶' }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Élément audio caché -->
+      <audio
+        #audioPlayer
+        [src]="podcast.audioUrl"
+        (loadedmetadata)="onAudioLoaded()"
+        preload="metadata">
+      </audio>
+    </main>
+  </ng-container>
+</div>
