@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PodcastService } from './podcast.service';
 import { Podcast } from './models/podcast.model';
 
@@ -12,6 +12,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
   @ViewChild('audioPlayer', { static: false }) audioPlayerRef!: ElementRef<HTMLAudioElement>;
 
   podcast: Podcast | null = null;
+  nextPodcast: Podcast | null = null;
 
   // État du lecteur
   isPlaying = false;
@@ -25,6 +26,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private podcastService: PodcastService
   ) {}
 
@@ -49,12 +51,27 @@ export class PodcastComponent implements OnInit, OnDestroy {
         if (podcast.status === 'error') {
           this.hasError = true;
           this.errorMessage = podcast.errorMessage || 'Erreur lors du chargement du podcast';
+        } else {
+          // Charger le podcast suivant
+          this.loadNextPodcast(podcast.id);
         }
       },
       error: () => {
         this.isLoading = false;
         this.hasError = true;
         this.errorMessage = 'Podcast introuvable';
+      }
+    });
+  }
+
+  private loadNextPodcast(currentPodcastId: number): void {
+    this.podcastService.getNextPodcast(currentPodcastId).subscribe({
+      next: (nextPodcast) => {
+        this.nextPodcast = nextPodcast;
+      },
+      error: (error) => {
+        console.log('Pas de podcast suivant disponible', error);
+        this.nextPodcast = null;
       }
     });
   }
@@ -108,6 +125,13 @@ export class PodcastComponent implements OnInit, OnDestroy {
   getProgressPercentage(): number {
     if (this.duration === 0) return 0;
     return (this.currentTime / this.duration) * 100;
+  }
+
+  goToNextPodcast(): void {
+    if (this.nextPodcast) {
+      this.cleanup();
+      this.router.navigate(['/podcast', this.nextPodcast.id]);
+    }
   }
 
   private cleanup(): void {

@@ -76,6 +76,16 @@
             <span class="icon">{{ isPlaying ? '⏸' : '▶' }}</span>
           </button>
         </div>
+
+        <!-- Bouton Suivant -->
+        <div class="next-button" *ngIf="nextPodcast">
+          <button class="next-podcast-button" (click)="goToNextPodcast()">
+            <span class="button-content">
+              <span class="next-icon">▶▶</span>
+              <span class="next-label">Podcast suivant</span>
+            </span>
+          </button>
+        </div>
       </div>
 
       <!-- Élément audio caché -->

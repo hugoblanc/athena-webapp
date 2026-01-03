@@ -24,5 +24,11 @@ export interface Podcast {
       title: string;
       logo: string;
     };
+    image?: {
+      id: number;
+      url: string;
+      width: number;
+      height: number;
+    };
   };
 }

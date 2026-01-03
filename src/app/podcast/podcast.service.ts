@@ -34,4 +34,9 @@ export class PodcastService {
 
     return this.http.get<PodcastListResponse>(`${this.baseUrl}/list`, { params });
   }
+
+  getNextPodcast(currentPodcastId: number): Observable<Podcast | null> {
+    // Récupère le podcast suivant (plus récent que l'actuel)
+    return this.http.get<Podcast | null>(`${this.baseUrl}/${currentPodcastId}/next`);
+  }
 }

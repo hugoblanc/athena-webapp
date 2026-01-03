@@ -79,4 +79,9 @@ export class PodcastsComponent implements OnInit {
   trackByPodcastId(index: number, podcast: Podcast): number {
     return podcast.id;
   }
+
+  getPodcastImage(podcast: Podcast): string {
+    // Priorité : image de l'article, sinon logo du média
+    return podcast.content.image?.url || podcast.content.meta_media.logo;
+  }
 }

@@ -17,9 +17,9 @@
          (click)="navigateToPodcast(podcast)">
 
       <div class="card-content-wrapper">
-        <!-- Image (media logo) -->
-        <div class="podcast-image" *ngIf="podcast.content.meta_media">
-          <img [src]="podcast.content.meta_media.logo"
+        <!-- Image (article image or media logo) -->
+        <div class="podcast-image">
+          <img [src]="getPodcastImage(podcast)"
                [alt]="podcast.content.title" />
           <div class="play-overlay">
             <mat-icon>play_circle_filled</mat-icon>

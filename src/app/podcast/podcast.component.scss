@@ -253,6 +253,51 @@ main {
   }
 }
 
+// Bouton Suivant
+.next-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.next-podcast-button {
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: $font-stack;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  .button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .next-icon {
+    font-size: 14px;
+    color: $color-text;
+    line-height: 1;
+  }
+
+  .next-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: $color-text;
+  }
+}
+
 // État de chargement
 .loading {
   flex: 1;
