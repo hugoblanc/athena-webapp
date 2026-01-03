@@ -31,7 +31,7 @@
       <!-- Section CTA (AVANT le lecteur) -->
       <div class="cta-section">
         <p class="cta-message">Une meilleure expérience vous attend sur l'app</p>
-        <a routerLink="/share/download" class="cta-primary">
+        <a routerLink="/share/download" class="cta-button">
           Télécharger l'app gratuite
         </a>
       </div>
@@ -45,6 +45,10 @@
               [src]="getPodcastImage()"
               [alt]="podcast.content.title"
               class="podcast-artwork">
+            <div class="link-indicator">
+              <ion-icon name="link-outline" class="link-icon"></ion-icon>
+              <span class="link-text">Voir l'article</span>
+            </div>
           </a>
         </div>
 
