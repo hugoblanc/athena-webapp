@@ -158,11 +158,11 @@ main {
 }
 
 .podcast-artwork {
-  width: 260px;
-  height: 260px;
+  max-width: 100%;
+  width: 280px;
+  height: auto;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  object-fit: cover;
   display: block;
 }
 
@@ -435,7 +435,6 @@ main {
   }
 
   .podcast-artwork {
-    width: 280px;
-    height: 280px;
+    width: 320px;
   }
 }
