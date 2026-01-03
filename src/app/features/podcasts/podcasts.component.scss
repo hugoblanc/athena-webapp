@@ -1,0 +1,245 @@
+.podcasts-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.search-bar {
+  margin-bottom: 24px;
+
+  :host ::ng-deep .search-field {
+    width: 100%;
+
+    .mat-mdc-floating-label {
+      color: var(--athena-text-secondary);
+    }
+
+    &.mat-focused {
+      .mat-mdc-floating-label {
+        color: var(--athena-primary);
+      }
+    }
+
+    .mat-mdc-input-element {
+      color: var(--athena-text-primary);
+
+      &::placeholder {
+        color: var(--athena-text-secondary);
+        opacity: 0.7;
+      }
+    }
+
+    .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    &:hover .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    &.mat-focused .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: var(--athena-primary);
+        border-width: 2px;
+      }
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+      color: var(--athena-text-secondary);
+    }
+
+    &.mat-focused .mat-mdc-form-field-icon-suffix {
+      color: var(--athena-primary);
+    }
+  }
+}
+
+.podcast-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.podcast-card {
+  cursor: pointer;
+  border-radius: 12px;
+  background: var(--athena-surface-dark);
+  padding: 16px;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  &:hover {
+    background: var(--athena-surface-light);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.card-content-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.podcast-image {
+  position: relative;
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      color: #FC743A;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+    }
+  }
+
+  &:hover .play-overlay {
+    opacity: 1;
+  }
+}
+
+.podcast-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.media-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--athena-text-secondary);
+
+  .media-logo {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.podcast-title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--athena-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.podcast-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: var(--athena-text-secondary);
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  gap: 16px;
+
+  p {
+    color: var(--athena-text-secondary);
+    margin: 0;
+  }
+}
+
+.load-more {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 16px;
+  gap: 16px;
+  color: var(--athena-text-secondary);
+
+  mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    opacity: 0.5;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.125rem;
+  }
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .podcast-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .podcast-title {
+    font-size: 1rem;
+  }
+}

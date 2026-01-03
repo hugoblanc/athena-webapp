@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: 'feed', loadChildren: () => import('./features/feed/feed.module').then(m => m.FeedModule) },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+      { path: 'podcasts', loadChildren: () => import('./features/podcasts/podcasts.module').then(m => m.PodcastsModule) },
       { path: 'qa', loadChildren: () => import('./features/qa/qa.module').then(m => m.QaModule) },
       { path: 'propositions', loadChildren: () => import('./features/law-proposals/law-proposals.module').then(m => m.LawProposalsModule) },
       { path: 'informations', loadChildren: () => import('./features/informations/informations.module').then(m => m.InformationsModule) },

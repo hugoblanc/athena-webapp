@@ -22,6 +22,7 @@ export class MainLayoutComponent implements OnInit {
   navItems = [
     { label: 'Feed', icon: 'dynamic_feed', route: '/feed' },
     { label: 'Accueil', icon: 'home', route: '/home' },
+    { label: 'Podcasts', icon: 'podcasts', route: '/podcasts' },
     { label: 'Q&A', icon: 'question_answer', route: '/qa' },
     { label: 'Propositions', icon: 'gavel', route: '/propositions/list' },
     { label: 'Informations', icon: 'info', route: '/informations' }

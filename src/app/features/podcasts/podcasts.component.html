@@ -1,0 +1,69 @@
+<div class="podcasts-container">
+  <!-- Search bar -->
+  <div class="search-bar">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Rechercher un podcast</mat-label>
+      <input matInput
+             type="text"
+             (input)="onSearch($any($event.target).value)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <!-- Podcast list -->
+  <div class="podcast-list" *ngIf="podcasts.length > 0">
+    <div *ngFor="let podcast of podcasts; trackBy: trackByPodcastId"
+         class="podcast-card"
+         (click)="navigateToPodcast(podcast)">
+
+      <div class="card-content-wrapper">
+        <!-- Image (media logo) -->
+        <div class="podcast-image" *ngIf="podcast.content.meta_media">
+          <img [src]="podcast.content.meta_media.logo"
+               [alt]="podcast.content.title" />
+          <div class="play-overlay">
+            <mat-icon>play_circle_filled</mat-icon>
+          </div>
+        </div>
+
+        <!-- Podcast info -->
+        <div class="podcast-info">
+          <div class="media-badge">
+            <img [src]="podcast.content.meta_media.logo"
+                 [alt]="podcast.content.meta_media.title"
+                 class="media-logo" />
+            <span>{{ podcast.content.meta_media.title }}</span>
+          </div>
+
+          <h3 class="podcast-title">{{ podcast.content.title }}</h3>
+
+          <div class="podcast-meta">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ podcast.createdAt | date:'short' }}</span>
+            <mat-icon *ngIf="podcast.duration">timer</mat-icon>
+            <span *ngIf="podcast.duration">{{ podcast.duration | number:'1.0-0' }}s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading spinner -->
+  <div class="loading-container" *ngIf="loading && podcasts.length === 0">
+    <mat-spinner></mat-spinner>
+    <p>Chargement des podcasts...</p>
+  </div>
+
+  <!-- Load more button -->
+  <div class="load-more" *ngIf="!loading && hasMore && podcasts.length > 0">
+    <button mat-raised-button color="primary" (click)="loadPodcasts()">
+      Charger plus
+    </button>
+  </div>
+
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="!loading && podcasts.length === 0">
+    <mat-icon>podcasts</mat-icon>
+    <p>Aucun podcast trouvé</p>
+  </div>
+</div>
