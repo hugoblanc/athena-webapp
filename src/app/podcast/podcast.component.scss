@@ -106,12 +106,29 @@ main {
   margin-top: 8px;
 }
 
+.artwork-link {
+  display: block;
+  position: relative;
+  border-radius: 12px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
 .podcast-artwork {
   width: 260px;
   height: 260px;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   object-fit: cover;
+  display: block;
 }
 
 .podcast-info {

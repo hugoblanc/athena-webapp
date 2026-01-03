@@ -40,10 +40,12 @@
       <div class="player-container">
         <!-- Artwork -->
         <div class="artwork-container">
-          <img
-            [src]="getPodcastImage()"
-            [alt]="podcast.content.title"
-            class="podcast-artwork">
+          <a [routerLink]="['/content', podcast.content.contentId]" class="artwork-link">
+            <img
+              [src]="getPodcastImage()"
+              [alt]="podcast.content.title"
+              class="podcast-artwork">
+          </a>
         </div>
 
         <!-- Infos podcast -->
