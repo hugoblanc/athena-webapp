@@ -40,7 +40,7 @@
       <div class="player-container">
         <!-- Artwork -->
         <div class="artwork-container">
-          <a [routerLink]="['/content', podcast.content.meta_media.key, podcast.content.contentId]" class="artwork-link">
+          <a [routerLink]="['/media', podcast.content.meta_media.key, 'details', podcast.content.contentId]" class="artwork-link">
             <img
               [src]="getPodcastImage()"
               [alt]="podcast.content.title"
@@ -54,8 +54,8 @@
 
         <!-- Infos podcast -->
         <div class="podcast-info">
-          <h1 class="podcast-title">{{ podcast.content.title }}</h1>
-          <p class="podcast-source">{{ podcast.content.meta_media.title }}</p>
+          <h1 class="podcast-title">{{ podcast.content.title | decodeHtml }}</h1>
+          <p class="podcast-source">{{ podcast.content.meta_media.title | decodeHtml }}</p>
         </div>
 
         <!-- Barre de progression -->

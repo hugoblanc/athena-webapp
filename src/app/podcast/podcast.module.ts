@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PodcastRoutingModule } from './podcast-routing.module';
 import { PodcastComponent } from './podcast.component';
 import { FormatTimePipe } from './pipes/format-time.pipe';
+import { DecodeHtmlPipe } from './pipes/decode-html.pipe';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FormatTimePipe } from './pipes/format-time.pipe';
   imports: [
     CommonModule,
     PodcastRoutingModule,
-    FormatTimePipe
+    FormatTimePipe,
+    DecodeHtmlPipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
