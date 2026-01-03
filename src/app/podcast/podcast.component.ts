@@ -32,10 +32,13 @@ export class PodcastComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const podcastId = this.route.snapshot.paramMap.get('id');
-    if (podcastId) {
-      this.loadPodcast(podcastId);
-    }
+    // Écouter les changements de paramètres dans l'URL
+    this.route.paramMap.subscribe(params => {
+      const podcastId = params.get('id');
+      if (podcastId) {
+        this.loadPodcast(podcastId);
+      }
+    });
   }
 
   ngOnDestroy(): void {
