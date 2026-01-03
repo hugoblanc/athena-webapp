@@ -41,7 +41,7 @@
         <!-- Artwork -->
         <div class="artwork-container">
           <img
-            [src]="podcast.content.meta_media.logo"
+            [src]="getPodcastImage()"
             [alt]="podcast.content.title"
             class="podcast-artwork">
         </div>
@@ -70,20 +70,26 @@
           </div>
         </div>
 
-        <!-- Bouton Play/Pause -->
+        <!-- Contrôles de lecture -->
         <div class="playback-controls">
+          <button
+            class="control-button"
+            (click)="goToPreviousPodcast()"
+            [disabled]="!previousPodcast"
+            [class.disabled]="!previousPodcast">
+            <span class="icon">⏮</span>
+          </button>
+
           <button class="play-pause-button" (click)="togglePlayPause()">
             <span class="icon">{{ isPlaying ? '⏸' : '▶' }}</span>
           </button>
-        </div>
 
-        <!-- Bouton Suivant -->
-        <div class="next-button" *ngIf="nextPodcast">
-          <button class="next-podcast-button" (click)="goToNextPodcast()">
-            <span class="button-content">
-              <span class="next-icon">▶▶</span>
-              <span class="next-label">Podcast suivant</span>
-            </span>
+          <button
+            class="control-button"
+            (click)="goToNextPodcast()"
+            [disabled]="!nextPodcast"
+            [class.disabled]="!nextPodcast">
+            <span class="icon">⏭</span>
           </button>
         </div>
       </div>

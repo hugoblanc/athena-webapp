@@ -13,6 +13,7 @@ export class PodcastComponent implements OnInit, OnDestroy {
 
   podcast: Podcast | null = null;
   nextPodcast: Podcast | null = null;
+  previousPodcast: Podcast | null = null;
 
   // État du lecteur
   isPlaying = false;
@@ -52,8 +53,9 @@ export class PodcastComponent implements OnInit, OnDestroy {
           this.hasError = true;
           this.errorMessage = podcast.errorMessage || 'Erreur lors du chargement du podcast';
         } else {
-          // Charger le podcast suivant
+          // Charger les podcasts suivant et précédent
           this.loadNextPodcast(podcast.id);
+          this.loadPreviousPodcast(podcast.id);
         }
       },
       error: () => {
@@ -72,6 +74,18 @@ export class PodcastComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.log('Pas de podcast suivant disponible', error);
         this.nextPodcast = null;
+      }
+    });
+  }
+
+  private loadPreviousPodcast(currentPodcastId: number): void {
+    this.podcastService.getPreviousPodcast(currentPodcastId).subscribe({
+      next: (previousPodcast) => {
+        this.previousPodcast = previousPodcast;
+      },
+      error: (error) => {
+        console.log('Pas de podcast précédent disponible', error);
+        this.previousPodcast = null;
       }
     });
   }
@@ -132,6 +146,18 @@ export class PodcastComponent implements OnInit, OnDestroy {
       this.cleanup();
       this.router.navigate(['/podcast', this.nextPodcast.id]);
     }
+  }
+
+  goToPreviousPodcast(): void {
+    if (this.previousPodcast) {
+      this.cleanup();
+      this.router.navigate(['/podcast', this.previousPodcast.id]);
+    }
+  }
+
+  getPodcastImage(): string {
+    if (!this.podcast) return '';
+    return this.podcast.content.image?.url || this.podcast.content.meta_media.logo;
   }
 
   private cleanup(): void {
