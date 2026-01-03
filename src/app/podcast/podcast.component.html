@@ -40,7 +40,7 @@
       <div class="player-container">
         <!-- Artwork -->
         <div class="artwork-container">
-          <a [routerLink]="['/content', podcast.content.contentId]" class="artwork-link">
+          <a [routerLink]="['/content', podcast.content.meta_media.key, podcast.content.contentId]" class="artwork-link">
             <img
               [src]="getPodcastImage()"
               [alt]="podcast.content.title"
